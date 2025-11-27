@@ -1,0 +1,574 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo-Dashboard Minimalista - [Seu Nome]</title>
+    <!-- Carrega o Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração do Tailwind para Cores e Fonte Moderna -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-deep-black': '#000000',     // Fundo Principal (Preto Profundo)
+                        'bg-card-dark': '#0F0F0F',      // Fundo do Card (Cinza Ultra Escuro)
+                        'accent-lime': '#84CC16',       // Destaque Primário (Verde Limão Vívido)
+                        'accent-yellow': '#FBBF24',     // Destaque Secundário (Âmbar/Dourado)
+                        'text-light': '#F3F4F6',        // Texto Principal (Quase Branco)
+                        'text-muted': '#A3A3A3',        // Texto Secundário/Muted
+                    },
+                    fontFamily: {
+                        // Fonte clean e moderna
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        // Sombra sutil para dar profundidade aos cards
+                        'custom': '0 4px 15px rgba(0, 0, 0, 0.6)',
+                        'lime-glow': '0 0 10px rgba(132, 204, 22, 0.5)',
+                    },
+                    keyframes: {
+                        pulseEffect: {
+                            '0%, 100%': { 'opacity': '1' },
+                            '50%': { 'opacity': '0.7' },
+                        },
+                    },
+                    animation: {
+                        'pulse-slow': 'pulseEffect 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Carrega a fonte Inter do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Ícones Lucide (Ainda usados para ícones gerais de seção) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Estilos Globais */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Deep Black */
+            color: #F3F4F6;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Estilo para a Seção */
+        .dashboard-section {
+            min-height: 100vh;
+            padding: 8rem 1rem 4rem 1rem;
+            position: relative;
+        }
+        
+        /* Contêiner de Conteúdo Central */
+        .content-container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        /* Card Principal/Componente */
+        .data-card {
+            background-color: #0F0F0F; /* Card Dark */
+            border: 1px solid rgba(132, 204, 22, 0.2); /* Lime border sutil */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .data-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(132, 204, 22, 0.5); /* Lime hover glow */
+        }
+
+        /* Destaque para Icones e Texto Principal */
+        .accent-icon {
+            color: #FBBF24; /* Amber */
+        }
+
+        /* Linha de separação */
+        .divider {
+            width: 100%;
+            height: 1px;
+            /* Gradiente usando as novas cores */
+            background: linear-gradient(to right, #0F0F0F, #84CC16, #0F0F0F);
+            opacity: 0.3;
+            margin: 4rem 0;
+        }
+        
+        /* Estilo do Menu Flutuante */
+        .floating-menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 8px 12px;
+            margin-bottom: 4px;
+            border-radius: 8px 0 0 8px;
+            background-color: transparent;
+            color: #A3A3A3;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .floating-menu-item:hover, .floating-menu-item.active {
+            background-color: #0F0F0F;
+            color: #84CC16;
+            transform: translateX(-5px);
+            border-left: 3px solid #FBBF24;
+        }
+        .floating-menu-item span {
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600; /* semi-bold */
+            margin-left: 8px;
+            transition: color 0.3s;
+        }
+
+        /* Esconde o label no mobile */
+        @media (max-width: 1024px) {
+            .floating-menu-item span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-bg-deep-black text-text-light">
+
+    <!-- CABEÇALHO/NAVEGAÇÃO FIXA -->
+    <header class="fixed top-0 left-0 right-0 bg-bg-deep-black/95 backdrop-blur-sm border-b border-accent-lime/30 z-50 p-4 shadow-custom">
+        <nav class="content-container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-xl font-extrabold text-accent-lime flex items-center space-x-2 animate-pulse-slow">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                <span>[SEU NOME] | DASHBOARD ONLINE</span>
+            </h1>
+            <a href="#contact-module" class="px-3 py-1 text-sm font-medium bg-accent-yellow/10 text-accent-yellow rounded-lg hover:bg-accent-yellow/30 transition duration-200 flex items-center space-x-1">
+                <i data-lucide="corner-down-right" class="w-4 h-4"></i>
+                <span>CONTATO</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- FLOATING NAVIGATION MENU (Lateral Direita) -->
+    <nav id="floating-menu" class="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:block bg-bg-deep-black/70 backdrop-blur-sm p-2 rounded-l-xl border-y border-l border-accent-lime/30 shadow-custom">
+        <a href="#intro-module" class="floating-menu-item group" data-section="intro-module">
+            <i data-lucide="aperture" class="w-5 h-5 group-hover:text-accent-yellow"></i>
+            <span>INÍCIO</span>
+        </a>
+        <a href="#skills-module" class="floating-menu-item group" data-section="skills-module">
+            <i data-lucide="area-chart" class="w-5 h-5 group-hover:text-accent-yellow"></i>
+            <span>SKILLS</span>
+        </a>
+        <a href="#projects-module" class="floating-menu-item group" data-section="projects-module">
+            <i data-lucide="layout-dashboard" class="w-5 h-5 group-hover:text-accent-yellow"></i>
+            <span>PROJETOS</span>
+        </a>
+        <a href="#events-module" class="floating-menu-item group" data-section="events-module">
+            <i data-lucide="calendar" class="w-5 h-5 group-hover:text-accent-yellow"></i>
+            <span>EVENTOS</span>
+        </a>
+        <a href="#contact-module" class="floating-menu-item group" data-section="contact-module">
+            <i data-lucide="send" class="w-5 h-5 group-hover:text-accent-yellow"></i>
+            <span>CONTATO</span>
+        </a>
+    </nav>
+
+
+    <!-- 1. INTRODUÇÃO (DISPLAY INTEGRADO E FOTO) -->
+    <section id="intro-module" class="dashboard-section flex items-center justify-center pt-40">
+        <div class="content-container">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                
+                <!-- Coluna da Foto (4/12 na Lg) -->
+                <div class="lg:col-span-4 flex justify-center lg:justify-start mb-8 lg:mb-0">
+                    <!-- Placeholder de Foto Estilizada (Estilo Integrado) -->
+                    <div class="relative w-64 h-80 bg-bg-card-dark p-3 border-4 border-accent-yellow/50 rounded-2xl shadow-lime-glow overflow-hidden rotate-1">
+                        <!-- Imagem: Maior e com estilo integrado -->
+                        <img src="https://placehold.co/256x320/0F0F0F/84CC16?text=FOTO%20INTEGRADA%0A%5BSEU%20PERFIL%5D" 
+                             alt="Foto Estilizada do Desenvolvedor" 
+                             class="w-full h-full object-cover rounded-xl opacity-90 transition duration-500 hover:scale-[1.02] hover:opacity-100" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/256x320/0F0F0F/A3A3A3?text=FOTO%20INDISPON%C3%8DVEL';">
+                        <!-- Efeito de sobreposição ou "glitch" -->
+                        <div class="absolute inset-0 border-4 border-accent-lime/50 rounded-2xl pointer-events-none transition duration-500 hover:border-accent-yellow"></div>
+                    </div>
+                </div>
+
+                <!-- Coluna do Texto (8/12 na Lg) -->
+                <div class="lg:col-span-8 lg:text-left text-center">
+                    <span class="text-sm font-semibold uppercase tracking-widest text-accent-yellow animate-pulse-slow mb-4 block">
+                        [STATUS: ATIVO]
+                    </span>
+                    <h2 class="text-5xl md:text-7xl font-black text-text-light mb-4 leading-tight">
+                        Engenharia de Software
+                    </h2>
+                    <h1 class="text-2xl md:text-4xl font-light text-accent-lime mb-8">
+                        Arquiteto e Desenvolvedor Full-Stack
+                    </h1>
+                    
+                    <p class="text-lg text-text-muted mb-10 max-w-3xl lg:max-w-none">
+                        Especializado em construir sistemas escaláveis e interfaces performáticas. Meu foco é na excelência do código e na entrega de valor com tecnologias de ponta. Com uma paixão por arquitetura limpa e soluções eficientes, transformo requisitos complexos em aplicações robustas e seguras.
+                    </p>
+                    
+                    <a href="#skills-module" class="px-8 py-3 bg-accent-lime text-bg-deep-black font-bold rounded-full hover:bg-accent-lime/80 transition duration-300 shadow-xl shadow-accent-lime/30 flex items-center justify-center lg:justify-start space-x-2 w-max text-lg mx-auto lg:mx-0">
+                        <i data-lucide="area-chart" class="w-6 h-6"></i>
+                        <span>VISUALIZAR MATRIZ DE COMPETÊNCIAS</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="content-container mx-auto px-4"><div class="divider"></div></div>
+
+    <!-- 2. COMPETÊNCIAS (MATRIZ DE DADOS COM ÍCONES ESPECÍFICOS) -->
+    <section id="skills-module" class="dashboard-section pt-0">
+        <div class="content-container">
+            <h2 class="text-3xl md:text-4xl font-bold text-accent-yellow mb-12 border-l-4 border-accent-lime pl-4">
+                Matriz de Competências Técnicas
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Skill Set 1: Frontend/UI -->
+                <div class="data-card p-6">
+                    <p class="text-2xl font-extrabold text-accent-lime mb-4 flex items-center space-x-3">
+                        <i data-lucide="layout-grid" class="w-7 h-7 text-accent-yellow"></i>
+                        Interface & Experiência
+                    </p>
+                    <p class="text-text-muted mb-4 text-sm">Frameworks Reativos e Estilização Avançada.</p>
+                    <div class="space-y-3 text-text-light text-base pl-0">
+                        <!-- Ícones de Tecnologia: React, TypeScript, Tailwind -->
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo React (Ciano) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/61DAFB?text=R" alt="Logo React" class="w-6 h-6 rounded-full shadow-md">
+                            <p>React, Next.js</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo TypeScript (Azul Escuro) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/007ACC?text=TS" alt="Logo TypeScript" class="w-6 h-6 rounded-full shadow-md">
+                            <p>TypeScript, JavaScript ES6+</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo Tailwind CSS (Ciano Escuro) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/06B6D4?text=TW" alt="Logo Tailwind CSS" class="w-6 h-6 rounded-full shadow-md">
+                            <p>Tailwind CSS, SCSS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Set 2: Backend/Logic -->
+                <div class="data-card p-6">
+                    <p class="text-2xl font-extrabold text-accent-lime mb-4 flex items-center space-x-3">
+                        <i data-lucide="server" class="w-7 h-7 text-accent-yellow"></i>
+                        Lógica de Servidor & APIs
+                    </p>
+                    <p class="text-text-muted mb-4 text-sm">Desenvolvimento de APIs robustas e performáticas.</p>
+                    <div class="space-y-3 text-text-light text-base pl-0">
+                        <!-- Ícones de Tecnologia: Node.js, GoLang, Python -->
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo Node.js (Verde) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/6DA55E?text=NODE" alt="Logo Node.js" class="w-6 h-6 rounded-full shadow-md">
+                            <p>Node.js, Express, NestJS</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo GoLang (Azul) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/00ADD8?text=GO" alt="Logo GoLang" class="w-6 h-6 rounded-full shadow-md">
+                            <p>GoLang, Python</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo GraphQL (Pink) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/E10098?text=QL" alt="Logo GraphQL" class="w-6 h-6 rounded-full shadow-md">
+                            <p>GraphQL, REST</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Set 3: Infra & Data -->
+                <div class="data-card p-6">
+                    <p class="text-2xl font-extrabold text-accent-lime mb-4 flex items-center space-x-3">
+                        <i data-lucide="cloud-cog" class="w-7 h-7 text-accent-yellow"></i>
+                        Cloud & DevOps
+                    </p>
+                    <p class="text-text-muted mb-4 text-sm">Implantação, Monitoramento e Gerenciamento de Dados.</p>
+                    <div class="space-y-3 text-text-light text-base pl-0">
+                        <!-- Ícones de Tecnologia: AWS, Docker, PostgreSQL -->
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo AWS (Laranja) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/FF9900?text=AWS" alt="Logo AWS" class="w-6 h-6 rounded-full shadow-md">
+                            <p>AWS, GCP, Azure</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo Docker (Azul) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/2496ED?text=D" alt="Logo Docker" class="w-6 h-6 rounded-full shadow-md">
+                            <p>Docker, Kubernetes (K8s)</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <!-- Placeholder Logo PostgreSQL (Azul Escuro) - Fundo Card Dark (0F0F0F) -->
+                            <img src="https://placehold.co/24x24/0F0F0F/336791?text=PG" alt="Logo PostgreSQL" class="w-6 h-6 rounded-full shadow-md">
+                            <p>PostgreSQL, MongoDB, Redis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="content-container mx-auto px-4"><div class="divider"></div></div>
+
+    <!-- 3. PROJETOS (VISUALIZAÇÃO DE PROJETOS) -->
+    <section id="projects-module" class="dashboard-section pt-0">
+        <div class="content-container">
+            <h2 class="text-3xl md:text-4xl font-bold text-accent-yellow mb-12 border-l-4 border-accent-lime pl-4">
+                Portfólio de Aplicações Críticas
+            </h2>
+
+            <p class="text-lg max-w-4xl text-text-muted mb-10">
+                Visualize os resultados das principais missões. Substitua os placeholders abaixo com os screenshots reais dos seus projetos.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                
+                <!-- Projeto 1 com Screenshot Placeholder -->
+                <div class="data-card p-6">
+                    <div class="text-center mb-6">
+                        <!-- Placeholder de Imagem para Screenshot -->
+                        <img src="https://placehold.co/1000x560/0F0F0F/84CC16?text=SNAPSHOT%20PROJETO%20%2301%0A(Substituir%20por%20Print%20do%20Projeto)" 
+                             alt="Placeholder para o Screenshot do Projeto 01" 
+                             class="w-full h-auto border-2 border-accent-lime/50 rounded-lg object-cover shadow-custom">
+                    </div>
+                    
+                    <p class="text-2xl font-bold text-accent-yellow mb-2 flex items-center space-x-2">
+                        <i data-lucide="activity" class="w-6 h-6 text-accent-lime"></i>
+                        Sistema de Análise Preditiva
+                    </p>
+                    <p class="text-text-muted text-sm my-2">
+                        Plataforma de visualização de dados em tempo real, utilizando D3.js no frontend e GoLang no backend.
+                    </p>
+                    <ul class="flex space-x-3 text-xs text-text-muted mt-4">
+                        <li class="bg-bg-card-dark border border-accent-lime/50 px-2 py-1 rounded-full text-accent-lime">#Rust</li>
+                        <li class="bg-bg-card-dark border border-accent-lime/50 px-2 py-1 rounded-full text-accent-lime">#Redis</li>
+                        <li class="bg-bg-card-dark border border-accent-lime/50 px-2 py-1 rounded-full text-accent-lime">#D3js</li>
+                    </ul>
+                    <a href="[Link do Projeto 1]" target="_blank" class="text-accent-lime text-base font-medium flex items-center space-x-1 hover:text-accent-lime/80 transition duration-300 mt-4">
+                        <i data-lucide="external-link" class="w-4 h-4"></i> ACESSAR DEMO
+                    </a>
+                </div>
+                
+                <!-- Projeto 2 com Screenshot Placeholder -->
+                <div class="data-card p-6">
+                    <div class="text-center mb-6">
+                        <!-- Placeholder de Imagem para Screenshot -->
+                        <img src="https://placehold.co/1000x560/0F0F0F/FBBF24?text=SNAPSHOT%20PROJETO%20%2302%0A(Substituir%20por%20Print%20do%20Projeto)" 
+                             alt="Placeholder para o Screenshot do Projeto 02" 
+                             class="w-full h-auto border-2 border-accent-yellow/50 rounded-lg object-cover shadow-custom">
+                    </div>
+                    
+                    <p class="text-2xl font-bold text-accent-yellow mb-2 flex items-center space-x-2">
+                        <i data-lucide="code" class="w-6 h-6 text-accent-lime"></i>
+                        Orquestrador de CI/CD
+                    </p>
+                    <p class="text-text-muted text-sm my-2">
+                        Ferramenta interna para gerenciar pipelines de deployment com integração a Kubernetes e Git Hooks.
+                    </p>
+                    <ul class="flex space-x-3 text-xs text-text-muted mt-4">
+                        <li class="bg-bg-card-dark border border-accent-lime/50 px-2 py-1 rounded-full text-accent-lime">#Kubernetes</li>
+                        <li class="bg-bg-card-dark border border-accent-lime/50 px-2 py-1 rounded-full text-accent-lime">#AWS</li>
+                        <li class="bg-bg-card-dark border border-accent-lime/50 px-2 py-1 rounded-full text-accent-lime">#NextJS</li>
+                    </ul>
+                    <a href="[Link do Projeto 2]" target="_blank" class="text-accent-lime text-base font-medium flex items-center space-x-1 hover:text-accent-lime/80 transition duration-300 mt-4">
+                        <i data-lucide="external-link" class="w-4 h-4"></i> ACESSAR DEMO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="content-container mx-auto px-4"><div class="divider"></div></div>
+
+    <!-- 4. PARTICIPAÇÃO EM EVENTOS (NOVA SEÇÃO) -->
+    <section id="events-module" class="dashboard-section pt-0">
+        <div class="content-container">
+            <h2 class="text-3xl md:text-4xl font-bold text-accent-yellow mb-12 border-l-4 border-accent-lime pl-4">
+                Participação em Eventos & Conferências
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Evento 1 -->
+                <div class="data-card p-6 flex items-start space-x-4">
+                    <i data-lucide="calendar-check" class="w-10 h-10 flex-shrink-0 text-accent-lime mt-1"></i>
+                    <div>
+                        <p class="text-xl font-bold text-text-light">DevOps Summit Global 2024</p>
+                        <p class="text-text-muted text-sm mb-2">San Francisco, CA | Setembro 2024</p>
+                        <p class="text-base text-text-muted">Apresentador da palestra "Kubernetes em Escala: Otimização de Custos e Performance com K8s".</p>
+                    </div>
+                </div>
+
+                <!-- Evento 2 -->
+                <div class="data-card p-6 flex items-start space-x-4">
+                    <i data-lucide="calendar-check" class="w-10 h-10 flex-shrink-0 text-accent-lime mt-1"></i>
+                    <div>
+                        <p class="text-xl font-bold text-text-light">React Advanced Conference</p>
+                        <p class="text-text-muted text-sm mb-2">Londres, UK | Junho 2023</p>
+                        <p class="text-base text-text-muted">Participação e workshop sobre Server-Side Rendering (SSR) e Next.js para grandes aplicações.</p>
+                    </div>
+                </div>
+
+                <!-- Evento 3 -->
+                <div class="data-card p-6 flex items-start space-x-4">
+                    <i data-lucide="calendar-check" class="w-10 h-10 flex-shrink-0 text-accent-lime mt-1"></i>
+                    <div>
+                        <p class="text-xl font-bold text-text-light">Global Tech Hackathon 2022</p>
+                        <p class="text-text-muted text-sm mb-2">Remoto | Dezembro 2022</p>
+                        <p class="text-base text-text-muted">Vencedor na categoria "Melhor Solução de IoT" com projeto de monitoramento de frota em tempo real.</p>
+                    </div>
+                </div>
+
+                <!-- Evento 4 -->
+                <div class="data-card p-6 flex items-start space-x-4">
+                    <i data-lucide="calendar-check" class="w-10 h-10 flex-shrink-0 text-accent-lime mt-1"></i>
+                    <div>
+                        <p class="text-xl font-bold text-text-light">Workshop de Segurança de Dados</p>
+                        <p class="text-text-muted text-sm mb-2">São Paulo, BR | Março 2021</p>
+                        <p class="text-base text-text-muted">Certificação em melhores práticas de segurança de APIs e proteção de dados (GDPR/LGPD).</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="content-container mx-auto px-4"><div class="divider"></div></div>
+
+    <!-- 5. CONTATO (MÓDULO DE CONTATO) -->
+    <section id="contact-module" class="dashboard-section min-h-screen flex flex-col justify-center items-center pt-0">
+        <div class="content-container w-full max-w-2xl p-8 md:p-10 data-card text-center">
+            
+            <h2 class="text-3xl md:text-4xl font-bold text-accent-yellow mb-8 flex items-center justify-center space-x-3">
+                <i data-lucide="send" class="w-8 h-8 text-accent-lime"></i>
+                <span>Abrir Protocolo de Comunicação</span>
+            </h2>
+            
+            <p class="text-text-muted mb-8">
+                Preencha o formulário abaixo para iniciar uma comunicação segura.
+            </p>
+
+            <form id="contact-form" class="space-y-4 text-left">
+                <div>
+                    <label for="c_name" class="block text-sm font-medium text-text-muted mb-1">Nome</label>
+                    <input type="text" id="c_name" name="name" required
+                           class="w-full px-4 py-3 bg-bg-deep-black border border-accent-lime/50 focus:ring-accent-lime focus:border-accent-lime text-text-light placeholder-text-muted rounded-lg">
+                </div>
+                <div>
+                    <label for="c_email" class="block text-sm font-medium text-text-muted mb-1">Email</label>
+                    <input type="email" id="c_email" name="email" required
+                           class="w-full px-4 py-3 bg-bg-deep-black border border-accent-lime/50 focus:ring-accent-lime focus:border-accent-lime text-text-light placeholder-text-muted rounded-lg">
+                </div>
+                <div>
+                    <label for="c_message" class="block text-sm font-medium text-text-muted mb-1">Mensagem</label>
+                    <textarea id="c_message" name="message" rows="5" required
+                              class="w-full px-4 py-3 bg-bg-deep-black border border-accent-lime/50 focus:ring-accent-lime focus:border-accent-lime text-text-light placeholder-text-muted rounded-lg"></textarea>
+                </div>
+                <button type="submit" id="submit-button" class="px-6 py-3 bg-accent-lime text-bg-deep-black font-bold rounded-lg hover:bg-accent-lime/80 transition duration-300 shadow-xl shadow-accent-lime/30 w-full flex items-center justify-center space-x-2 text-lg mt-6">
+                    <i data-lucide="send-check" class="w-6 h-6"></i>
+                    <span>ENVIAR MENSAGEM</span>
+                </button>
+            </form>
+
+            <div id="form-message" class="mt-8 p-4 text-center font-bold text-base bg-accent-yellow/20 text-accent-yellow border border-accent-yellow hidden rounded-lg"></div>
+        </div>
+    </section>
+    
+    <!-- Script JavaScript para a Lógica de Simulação e Navegação Flutuante -->
+    <script>
+        // Inicializa os ícones Lucide
+        lucide.createIcons();
+        
+        // 1. Lógica de Simulação de Envio de Formulário de Contato
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitButton = document.getElementById('submit-button');
+            const formMessage = document.getElementById('form-message');
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i> PROCESSANDO TRANSMISSÃO...';
+            lucide.createIcons(); 
+
+            // Simula o processamento do envio
+            setTimeout(() => {
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i data-lucide="send-check" class="w-6 h-6"></i> <span>ENVIAR MENSAGEM</span>';
+                lucide.createIcons(); 
+                
+                const txID = 'MSG-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+
+                // Simulação de sucesso
+                formMessage.classList.remove('hidden');
+                formMessage.textContent = `[SUCCESS] Mensagem enviada com sucesso. ID: ${txID}.`;
+                
+                // Limpa o formulário após o envio
+                document.getElementById('contact-form').reset();
+
+                // Esconde a mensagem após 7 segundos
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 7000);
+
+            }, 2000); // 2 segundos para simular a transmissão
+        });
+
+        // 2. Configurações de Rolagem Suave (Scroll)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Usa offset para contabilizar a altura do header fixo
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                const headerHeight = document.querySelector('header').offsetHeight;
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - headerHeight - 10, // 10px de padding extra
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
+        // 3. Lógica do Menu Flutuante (Highlight da seção ativa)
+        const sections = document.querySelectorAll('.dashboard-section');
+        const navLinks = document.querySelectorAll('#floating-menu a');
+
+        function updateFloatingMenu() {
+            let current = 'intro-module';
+            const headerHeight = document.querySelector('header').offsetHeight;
+
+            sections.forEach(section => {
+                // Ponto de detecção: 50 pixels abaixo do topo da seção
+                const sectionTop = section.offsetTop - headerHeight - 50; 
+                const sectionBottom = sectionTop + section.offsetHeight;
+
+                if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateFloatingMenu);
+        // Garante que o estado inicial do menu esteja correto ao carregar a página
+        updateFloatingMenu(); 
+    </script>
+</body>
+</html>
