@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoie Projetos Open Source - Mabesi Apps</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-orange: #fba74f;
+            --secondary-orange: #e09646;
+            --dark-bg: #0F172A;
+            --card-bg: #1E293B;
+            --text-light: #F8FAFC;
+            --text-gray: #94A3B8;
+            --success-green: #10B981;
+            --crypto-gold: #F7931A;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            border-bottom: 1px solid rgba(251, 167, 79, 0.2);
+            flex-wrap: wrap;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 4px 16px rgba(251, 167, 79, 0.3);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .lang-flag {
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+        }
+
+        .lang-flag:hover,
+        .lang-flag.active {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.2);
+        }
+
+        .hero {
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .impact-section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .impact-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            color: var(--text-gray);
+        }
+
+        .cost-breakdown {
+            background: rgba(251, 167, 79, 0.1);
+            border-left: 4px solid var(--primary-orange);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cost-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-orange);
+        }
+
+        .donation-methods {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .method-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--secondary-orange));
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 48px rgba(251, 167, 79, 0.3);
+        }
+
+        .method-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .method-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .method-description {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: white;
+            margin: 1rem auto;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #333;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .wallet-address {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .wallet-address:hover {
+            background: rgba(251, 167, 79, 0.2);
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .network-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success-green);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.5rem 0.2rem;
+        }
+
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(251, 167, 79, 0.2);
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .methods-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <img src="mabesiapps_logo.png" alt="Mabesi Apps Logo" class="logo-img">
+            <div>
+                <div class="logo">Mabesi Apps</div>
+                <div class="tagline" data-i18n="tagline">Desenvolvendo soluções gratuitas e open source</div>
+            </div>
+        </div>
+        <div class="language-switcher">
+            <span class="lang-flag" data-lang="pt" title="Português">🇧🇷</span>
+            <span class="lang-flag" data-lang="en" title="English">🇺🇸</span>
+            <span class="lang-flag" data-lang="es" title="Español">🇪🇸</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 data-i18n="heroTitle">Apoie o Desenvolvimento</h1>
+        <p data-i18n="heroText">Desenvolver e manter aplicativos gratuitos e de código aberto como o MySplit requer
+            tempo, dedicação e recursos. Sua contribuição ajuda a manter esses projetos vivos, em constante evolução, e
+            totalmente gratuitos para todos.</p>
+    </section>
+
+    <section class="impact-section">
+        <h2 class="section-title" data-i18n="impactTitle">O Impacto da Sua Doação</h2>
+        <div class="impact-grid">
+            <div class="impact-card">
+                <div class="impact-icon">⚡</div>
+                <div class="impact-value">100%</div>
+                <div class="impact-label" data-i18n="impact1">Gratuito para Sempre</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">🌍</div>
+                <div class="impact-value">24/7</div>
+                <div class="impact-label" data-i18n="impact2">Disponibilidade Global</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">🔓</div>
+                <div class="impact-value">Open</div>
+                <div class="impact-label" data-i18n="impact3">Código Aberto</div>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">🚀</div>
+                <div class="impact-value">∞</div>
+                <div class="impact-label" data-i18n="impact4">Melhorias Contínuas</div>
+            </div>
+        </div>
+
+        <div class="cost-breakdown">
+            <h3 style="margin-bottom: 1rem;" data-i18n="costsTitle">�� Custos Mensais Estimados</h3>
+            <div class="cost-item">
+                <span data-i18n="cost1">Hospedagem e Infraestrutura (Firebase, Servidores)</span>
+                <span>R$ 150/mês</span>
+            </div>
+            <div class="cost-item">
+                <span data-i18n="cost2">APIs de IA (GPT, Gemini, Claude)</span>
+                <span>R$ 200/mês</span>
+            </div>
+            <div class="cost-item">
+                <span data-i18n="cost3">Domínios e Certificados SSL</span>
+                <span>R$ 50/mês</span>
+            </div>
+            <div class="cost-item">
+                <span data-i18n="cost4">Ferramentas de Desenvolvimento</span>
+                <span>R$ 100/mês</span>
+            </div>
+            <div class="cost-item">
+                <span data-i18n="cost5">Tempo de Desenvolvimento (40h/mês)</span>
+                <span>R$ 2.000/mês</span>
+            </div>
+            <div class="cost-item">
+                <span data-i18n="costTotal">Total Mensal</span>
+                <span>R$ 2.500/mês</span>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--text-gray); margin-top: 2rem;" data-i18n="costNote">
+            Mesmo pequenas contribuições fazem grande diferença! Cada doação nos ajuda a continuar desenvolvendo
+            ferramentas úteis para todos.
+        </p>
+    </section>
+
+    <section class="donation-methods">
+        <h2 class="section-title" data-i18n="methodsTitle">Como Contribuir</h2>
+        <div class="methods-grid">
+            <!-- PIX -->
+            <div class="method-card">
+                <div class="method-icon">🇧🇷</div>
+                <div class="method-title">PIX (Brasil)</div>
+                <div class="method-description" data-i18n="pixDesc">Forma mais rápida e fácil para brasileiros. Sem
+                    taxas!</div>
+                <div class="qr-code">
+                    [QR Code PIX]<br>
+                    <small>Escaneie com seu app bancário</small>
+                </div>
+                <div class="wallet-address" onclick="copyToClipboard(this)">
+                    mabesiapps@gmail.com
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling)"
+                    data-i18n="copyBtn">Copiar Chave PIX</button>
+            </div>
+
+            <!-- Bitcoin Lightning -->
+            <div class="method-card">
+                <div class="method-icon">⚡</div>
+                <div class="method-title">Bitcoin Lightning</div>
+                <div class="method-description" data-i18n="lightningDesc">Transações instantâneas com taxas mínimas.
+                </div>
+                <div class="qr-code">
+                    [QR Code Lightning]<br>
+                    <small>Escaneie com carteira Lightning</small>
+                </div>
+                <div class="wallet-address" onclick="copyToClipboard(this)">
+                    lnbc1000u1p3xnhl2pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypq
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling)"
+                    data-i18n="copyBtn">Copiar Endereço</button>
+            </div>
+
+            <!-- Stablecoins -->
+            <div class="method-card">
+                <div class="method-icon">💎</div>
+                <div class="method-title">Stablecoins (USDT/USDC)</div>
+                <div class="method-description" data-i18n="stableDesc">Criptomoedas estáveis em múltiplas redes.</div>
+                <div class="network-badge">BNB Chain</div>
+                <div class="network-badge">Polygon</div>
+                <div class="network-badge">Solana</div>
+                <div class="wallet-address" onclick="copyToClipboard(this)">
+                    0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling)"
+                    data-i18n="copyBtn">Copiar Endereço</button>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-gray);" data-i18n="stableNote">
+                    ⚠️ Verifique a rede antes de enviar!
+                </p>
+            </div>
+
+            <!-- PayPal / Wise -->
+            <div class="method-card">
+                <div class="method-icon">🌐</div>
+                <div class="method-title">PayPal / Wise</div>
+                <div class="method-description" data-i18n="paypalDesc">Transferências internacionais tradicionais.</div>
+                <div style="margin: 2rem 0;">
+                    <a href="https://paypal.me/mabesiapps" target="_blank"
+                        style="display: inline-block; background: #0070ba; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; margin: 0.5rem;">
+                        PayPal
+                    </a>
+                    <a href="https://wise.com/pay/me/pliniom4" target="_blank"
+                        style="display: inline-block; background: #00B9FF; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; margin: 0.5rem;">
+                        Wise
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ko-fi / Buy Me a Coffee -->
+            <div class="method-card">
+                <div class="method-icon">☕</div>
+                <div class="method-title">Ko-fi / Buy Me a Coffee</div>
+                <div class="method-description" data-i18n="coffeeDesc">Plataformas de apoio a criadores.</div>
+                <div style="margin: 2rem 0;">
+                    <a href="https://ko-fi.com/mabesiapps" target="_blank"
+                        style="display: inline-block; background: #FF5E5B; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; margin: 0.5rem;">
+                        Ko-fi
+                    </a>
+                    <a href="https://buymeacoffee.com/mabesiapps" target="_blank"
+                        style="display: inline-block; background: #FFDD00; color: #000; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; margin: 0.5rem;">
+                        Buy Me a Coffee
+                    </a>
+                </div>
+            </div>
+
+            <!-- GitHub Sponsors -->
+            <div class="method-card">
+                <div class="method-icon">💻</div>
+                <div class="method-title">GitHub Sponsors</div>
+                <div class="method-description" data-i18n="githubDesc">Apoie diretamente no GitHub com benefícios
+                    exclusivos.</div>
+                <div style="margin: 2rem 0;">
+                    <a href="https://github.com/sponsors/mabesi" target="_blank"
+                        style="display: inline-block; background: #6e5494; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none;">
+                        Sponsor on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="color: var(--text-gray);">
+            <span data-i18n="footerMade">Feito com</span> ❤️ <span data-i18n="footerBy">por</span> <a
+                href="https://mabesi.github.io/apps" target="_blank"
+                style="color: var(--primary-orange); text-decoration: none;">Mabesi Apps</a>
+        </p>
+        <p style="color: var(--text-gray); margin-top: 0.5rem; font-size: 0.9rem;">
+            © 2025 Mabesi Apps. <span data-i18n="footerLicense">Licenciado sob</span> <a
+                href="https://opensource.org/license/MIT" target="_blank"
+                style="color: var(--primary-orange); text-decoration: none;">MIT License</a>.
+        </p>
+    </footer>
+
+    <script>
+        // Translations
+        const translations = {
+            pt: {
+                tagline: "Desenvolvendo soluções gratuitas e open source",
+                heroTitle: "Apoie o Desenvolvimento",
+                heroText: "Desenvolver e manter aplicativos gratuitos e de código aberto como o MySplit requer tempo, dedicação e recursos. Sua contribuição ajuda a manter esses projetos vivos, em constante evolução, e totalmente gratuitos para todos.",
+                impactTitle: "O Impacto da Sua Doação",
+                impact1: "Gratuito para Sempre",
+                impact2: "Disponibilidade Global",
+                impact3: "Código Aberto",
+                impact4: "Melhorias Contínuas",
+                costsTitle: "💰 Custos Mensais Estimados",
+                cost1: "Hospedagem e Infraestrutura (Firebase, Servidores)",
+                cost2: "APIs de IA (GPT, Gemini, Claude)",
+                cost3: "Domínios e Certificados SSL",
+                cost4: "Ferramentas de Desenvolvimento",
+                cost5: "Tempo de Desenvolvimento (40h/mês)",
+                costTotal: "Total Mensal",
+                costNote: "Mesmo pequenas contribuições fazem grande diferença! Cada doação nos ajuda a continuar desenvolvendo ferramentas úteis para todos.",
+                methodsTitle: "Como Contribuir",
+                pixDesc: "Forma mais rápida e fácil para brasileiros. Sem taxas!",
+                lightningDesc: "Transações instantâneas com taxas mínimas.",
+                stableDesc: "Criptomoedas estáveis em múltiplas redes.",
+                stableNote: "⚠️ Verifique a rede antes de enviar!",
+                paypalDesc: "Transferências internacionais tradicionais.",
+                coffeeDesc: "Plataformas de apoio a criadores.",
+                githubDesc: "Apoie diretamente no GitHub com benefícios exclusivos.",
+                copyBtn: "Copiar Endereço",
+                footerMade: "Feito com",
+                footerBy: "por",
+                footerLicense: "Licenciado sob"
+            },
+            en: {
+                tagline: "Developing free and open source solutions",
+                heroTitle: "Support Development",
+                heroText: "Developing and maintaining free and open source applications like MySplit requires time, dedication, and resources. Your contribution helps keep these projects alive, constantly evolving, and completely free for everyone.",
+                impactTitle: "The Impact of Your Donation",
+                impact1: "Free Forever",
+                impact2: "Global Availability",
+                impact3: "Open Source",
+                impact4: "Continuous Improvements",
+                costsTitle: "💰 Estimated Monthly Costs",
+                cost1: "Hosting and Infrastructure (Firebase, Servers)",
+                cost2: "AI APIs (GPT, Gemini, Claude)",
+                cost3: "Domains and SSL Certificates",
+                cost4: "Development Tools",
+                cost5: "Development Time (40h/month)",
+                costTotal: "Monthly Total",
+                costNote: "Even small contributions make a big difference! Every donation helps us continue developing useful tools for everyone.",
+                methodsTitle: "How to Contribute",
+                pixDesc: "Fastest and easiest way for Brazilians. No fees!",
+                lightningDesc: "Instant transactions with minimal fees.",
+                stableDesc: "Stable cryptocurrencies on multiple networks.",
+                stableNote: "⚠️ Check the network before sending!",
+                paypalDesc: "Traditional international transfers.",
+                coffeeDesc: "Creator support platforms.",
+                githubDesc: "Support directly on GitHub with exclusive benefits.",
+                copyBtn: "Copy Address",
+                footerMade: "Made with",
+                footerBy: "by",
+                footerLicense: "Licensed under"
+            },
+            es: {
+                tagline: "Desarrollando soluciones gratuitas y de código abierto",
+                heroTitle: "Apoya el Desarrollo",
+                heroText: "Desarrollar y mantener aplicaciones gratuitas y de código abierto como MySplit requiere tiempo, dedicación y recursos. Tu contribución ayuda a mantener estos proyectos vivos, en constante evolución y completamente gratuitos para todos.",
+                impactTitle: "El Impacto de Tu Donación",
+                impact1: "Gratis para Siempre",
+                impact2: "Disponibilidad Global",
+                impact3: "Código Abierto",
+                impact4: "Mejoras Continuas",
+                costsTitle: "💰 Costos Mensuales Estimados",
+                cost1: "Alojamiento e Infraestructura (Firebase, Servidores)",
+                cost2: "APIs de IA (GPT, Gemini, Claude)",
+                cost3: "Dominios y Certificados SSL",
+                cost4: "Herramientas de Desarrollo",
+                cost5: "Tiempo de Desarrollo (40h/mes)",
+                costTotal: "Total Mensual",
+                costNote: "¡Incluso las pequeñas contribuciones marcan una gran diferencia! Cada donación nos ayuda a seguir desarrollando herramientas útiles para todos.",
+                methodsTitle: "Cómo Contribuir",
+                pixDesc: "Forma más rápida y fácil para brasileños. ¡Sin tarifas!",
+                lightningDesc: "Transacciones instantáneas con tarifas mínimas.",
+                stableDesc: "Criptomonedas estables en múltiples redes.",
+                stableNote: "⚠️ ¡Verifica la red antes de enviar!",
+                paypalDesc: "Transferencias internacionales tradicionales.",
+                coffeeDesc: "Plataformas de apoyo a creadores.",
+                githubDesc: "Apoya directamente en GitHub con beneficios exclusivos.",
+                copyBtn: "Copiar Dirección",
+                footerMade: "Hecho con",
+                footerBy: "por",
+                footerLicense: "Licenciado bajo"
+            }
+        };
+
+        // Copy to clipboard function
+        function copyToClipboard(element) {
+            const text = element.textContent.trim();
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = element.textContent;
+                element.textContent = '✓ Copiado!';
+                setTimeout(() => {
+                    element.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        // Apply translations
+        function applyTranslations(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+
+            // Update active flag
+            document.querySelectorAll('.lang-flag').forEach(flag => {
+                flag.classList.remove('active');
+                if (flag.dataset.lang === lang) {
+                    flag.classList.add('active');
+                }
+            });
+
+            // Save preference
+            localStorage.setItem('mabesi-donate-lang', lang);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('mabesi-donate-lang') || 'pt';
+            applyTranslations(savedLang);
+
+            document.querySelectorAll('.lang-flag').forEach(flag => {
+                flag.addEventListener('click', () => {
+                    applyTranslations(flag.dataset.lang);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

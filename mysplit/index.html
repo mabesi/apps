@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySplit - Split Bills with Friends</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-orange: #fba74f;
+            --secondary-orange: #e09646;
+            --dark-bg: #0F172A;
+            --card-bg: #1E293B;
+            --text-light: #F8FAFC;
+            --text-gray: #94A3B8;
+            --success-green: #10B981;
+            --pending-orange: #fba74f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .smartphone-mockup {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(251, 167, 79, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+            z-index: 10;
+        }
+
+        .logo-container img {
+            width: 280px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 30px rgba(251, 167, 79, 0.4));
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .lang-flag {
+            font-size: 2rem;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+        }
+
+        .lang-flag:hover,
+        .lang-flag.active {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .avatar-network {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 3rem auto;
+        }
+
+        .avatar {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 32px rgba(251, 167, 79, 0.4);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 5;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .avatar-1 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .avatar-2 {
+            top: 10%;
+            left: 20%;
+        }
+
+        .avatar-3 {
+            top: 10%;
+            right: 20%;
+        }
+
+        .avatar-4 {
+            bottom: 10%;
+            left: 20%;
+        }
+
+        .avatar-5 {
+            bottom: 10%;
+            right: 20%;
+        }
+
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, var(--success-green), var(--pending-orange));
+            transform-origin: left center;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        .money-flow {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: flow 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes flow {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: translateY(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-20px);
+            }
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            z-index: 10;
+        }
+
+        .store-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-orange);
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .store-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(251, 167, 79, 0.4);
+            background: rgba(251, 167, 79, 0.1);
+        }
+
+        .store-icon {
+            font-size: 1.8rem;
+        }
+
+        /* Banner Section */
+        .banner-section {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .banner-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Simulations Section */
+        .simulations-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stories-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .simulation-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .simulation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--secondary-orange));
+        }
+
+        .simulation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 48px rgba(251, 167, 79, 0.3);
+        }
+
+        .simulation-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .simulation-icon {
+            font-size: 2.5rem;
+        }
+
+        .simulation-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .simulation-subtitle {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .expense-list {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .expense-item:last-child {
+            border-bottom: none;
+        }
+
+        .expense-total {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .settlement-section {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid var(--success-green);
+        }
+
+        .settlement-title {
+            font-weight: 700;
+            color: var(--success-green);
+            margin-bottom: 0.8rem;
+        }
+
+        .settlement-item {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .screenshots-section {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .screenshots-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .screenshot-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-card:hover {
+            transform: scale(1.05);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .how-it-works-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .step-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .smartphone-preview {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .smartphone-preview img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        .live-stats {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+
+        .features-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(251, 167, 79, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(251, 167, 79, 0.2);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        .footer-link-icon {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
+            .hero-right {
+                order: -1;
+            }
+
+            .smartphone-mockup {
+                max-width: 300px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-container img {
+                width: 200px;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .avatar-network {
+                height: 300px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-left">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="MySplit Logo">
+                <div class="language-switcher">
+                    <span class="lang-flag" data-lang="pt" title="Português">🇧🇷</span>
+                    <span class="lang-flag" data-lang="en" title="English">🇺🇸</span>
+                    <span class="lang-flag" data-lang="es" title="Español">🇪🇸</span>
+                </div>
+                <p class="hero-subtitle">Split bills with friends. No awkward conversations. Just fair shares.</p>
+            </div>
+
+            <div class="avatar-network">
+                <div class="avatar avatar-1">👤</div>
+                <div class="avatar avatar-2">🧑</div>
+                <div class="avatar avatar-3">👨</div>
+                <div class="avatar avatar-4">👩</div>
+                <div class="avatar avatar-5">🧔</div>
+
+                <div class="money-flow" style="top: 30%; left: 35%;">💸</div>
+                <div class="money-flow" style="top: 60%; right: 35%; animation-delay: 1s;">💰</div>
+                <div class="money-flow" style="bottom: 30%; left: 45%; animation-delay: 2s;">💵</div>
+            </div>
+
+            <div class="store-buttons">
+                <a href="#" class="store-button">
+                    <span class="store-icon">📱</span>
+                    <div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;" class="store-text-small">Download on the</div>
+                        <div class="store-text-large">App Store</div>
+                    </div>
+                </a>
+                <a href="#" class="store-button">
+                    <span class="store-icon">🤖</span>
+                    <div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;" class="store-text-small">Get it on</div>
+                        <div class="store-text-large">Google Play</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <img src="img/01_smartphone_view.png" alt="MySplit App" class="smartphone-mockup">
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <img src="img/banner.png" alt="MySplit Banner">
+    </section>
+
+    <!-- Simulations Section -->
+    <section class="simulations-section">
+        <h2 class="section-title">Simulações de Grupos de Despesas</h2>
+        <div class="stories-grid">
+            <div class="simulation-card">
+                <div class="simulation-header">
+                    <span class="simulation-icon">🏖️</span>
+                    <div>
+                        <div class="simulation-title">Férias Nordeste</div>
+                        <div class="simulation-subtitle">6 amigos • 7 dias</div>
+                    </div>
+                </div>
+
+                <div class="expense-list">
+                    <div class="expense-item">
+                        <span>Hotel (João)</span>
+                        <span>R$ 2.400,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Aluguel carro (Maria)</span>
+                        <span>R$ 900,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Gasolina (Pedro)</span>
+                        <span>R$ 450,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Restaurantes (Ana)</span>
+                        <span>R$ 1.200,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Passeios (Carlos)</span>
+                        <span>R$ 750,00</span>
+                    </div>
+                </div>
+
+                <div class="expense-total">Total: R$ 5.700,00</div>
+
+                <div class="settlement-section">
+                    <div class="settlement-title">💰 Como Quitar:</div>
+                    <div class="settlement-item">• Pedro paga R$ 500 para João</div>
+                    <div class="settlement-item">• Ana paga R$ 250 para Maria</div>
+                    <div class="settlement-item">• Carlos paga R$ 200 para João</div>
+                    <div class="settlement-item">✅ Todos quitados em 3 transações!</div>
+                </div>
+            </div>
+
+            <div class="simulation-card">
+                <div class="simulation-header">
+                    <span class="simulation-icon">🎉</span>
+                    <div>
+                        <div class="simulation-title">Festa Revéillon</div>
+                        <div class="simulation-subtitle">10 pessoas • 1 noite</div>
+                    </div>
+                </div>
+
+                <div class="expense-list">
+                    <div class="expense-item">
+                        <span>Casa alugada (Lucas)</span>
+                        <span>R$ 3.000,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Bebidas (Fernanda)</span>
+                        <span>R$ 800,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Comida (Rafael)</span>
+                        <span>R$ 1.200,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Decoração (Juliana)</span>
+                        <span>R$ 400,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Som/DJ (Bruno)</span>
+                        <span>R$ 600,00</span>
+                    </div>
+                </div>
+
+                <div class="expense-total">Total: R$ 6.000,00</div>
+
+                <div class="settlement-section">
+                    <div class="settlement-title">💰 Como Quitar:</div>
+                    <div class="settlement-item">• Rafael paga R$ 600 para Lucas</div>
+                    <div class="settlement-item">• Fernanda paga R$ 200 para Lucas</div>
+                    <div class="settlement-item">• Juliana paga R$ 200 para Lucas</div>
+                    <div class="settlement-item">• Bruno paga R$ 0 (já quitado)</div>
+                    <div class="settlement-item">✅ Balanceado em 3 pagamentos!</div>
+                </div>
+            </div>
+
+            <div class="simulation-card">
+                <div class="simulation-header">
+                    <span class="simulation-icon">🍖</span>
+                    <div>
+                        <div class="simulation-title">Churrasco Firma</div>
+                        <div class="simulation-subtitle">8 colegas • Sábado</div>
+                    </div>
+                </div>
+
+                <div class="expense-list">
+                    <div class="expense-item">
+                        <span>Carne (Roberto)</span>
+                        <span>R$ 480,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Cerveja (Marcos)</span>
+                        <span>R$ 320,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Carvão/Sal (Paula)</span>
+                        <span>R$ 80,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Saladas (Carla)</span>
+                        <span>R$ 120,00</span>
+                    </div>
+                    <div class="expense-item">
+                        <span>Pão/Farofa (Diego)</span>
+                        <span>R$ 100,00</span>
+                    </div>
+                </div>
+
+                <div class="expense-total">Total: R$ 1.100,00</div>
+
+                <div class="settlement-section">
+                    <div class="settlement-title">💰 Como Quitar:</div>
+                    <div class="settlement-item">• Marcos paga R$ 182,50 para Roberto</div>
+                    <div class="settlement-item">• Paula paga R$ 57,50 para Roberto</div>
+                    <div class="settlement-item">• Carla paga R$ 17,50 para Roberto</div>
+                    <div class="settlement-item">• Diego paga R$ 37,50 para Roberto</div>
+                    <div class="settlement-item">✅ Tudo certo em 4 transações!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="how-it-works-container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Crie um Grupo</div>
+                    <div class="step-description">
+                        Crie um grupo para sua viagem, festa ou evento. Compartilhe via QR code ou link.
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Adicione Despesas</div>
+                    <div class="step-description">
+                        Registre todas as despesas do grupo. Selecione quem participou de cada gasto.
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Veja os Saldos</div>
+                    <div class="step-description">
+                        O app calcula automaticamente quem deve para quem e quanto.
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Quite as Contas</div>
+                    <div class="step-description">
+                        Registre os pagamentos e veja os saldos atualizarem em tempo real.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots-section">
+        <h2 class="section-title">Veja em Ação</h2>
+        <div class="screenshots-container">
+            <div class="screenshot-card">
+                <img src="img/2_create_group.png" alt="Criar Grupo">
+            </div>
+            <div class="screenshot-card">
+                <img src="img/3_config_group.png" alt="Configurar Grupo">
+            </div>
+            <div class="screenshot-card">
+                <img src="img/4_view_groups.png" alt="Ver Grupos">
+            </div>
+            <div class="screenshot-card">
+                <img src="img/5_bills_balances.png" alt="Contas e Saldos">
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <h2 class="section-title">Why Friends Love MySplit</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">Easy Group Creation</div>
+                <div class="feature-description">
+                    Create groups in seconds. Share via QR code or link. No signup required for members.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Instant Calculations</div>
+                <div class="feature-description">
+                    Smart algorithm calculates who owes whom. Minimizes transactions automatically.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <div class="feature-title">Multi-Language</div>
+                <div class="feature-description">
+                    Available in English, Portuguese, and Spanish. Perfect for international groups.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">��</div>
+                <div class="feature-title">Secure & Private</div>
+                <div class="feature-description">
+                    Firebase-powered security. Your data is encrypted and protected.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <div class="feature-title">Real-Time Sync</div>
+                <div class="feature-description">
+                    Changes sync instantly across all devices. Everyone stays updated.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <div class="feature-title">Payment Tracking</div>
+                <div class="feature-description">
+                    Record payments and watch balances update automatically. No more confusion.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/mabesi/MySplit" target="_blank" class="footer-link">
+                <span class="footer-link-icon">💻</span>
+                <span>GitHub</span>
+            </a>
+            <a href="https://mabesi.github.io/apps/donate.html" target="_blank" class="footer-link">
+                <span class="footer-link-icon">❤️</span>
+                <span>Apoiar</span>
+            </a>
+            <a href="mailto:mabesiapps@gmail.com" class="footer-link">
+                <span class="footer-link-icon">📧</span>
+                <span>Contato</span>
+            </a>
+        </div>
+        <p style="color: var(--text-gray);">
+            Feito com ❤️ por <a href="https://mabesi.github.io/apps" target="_blank"
+                style="color: var(--primary-orange); text-decoration: none;">Mabesi Apps</a>
+        </p>
+        <p style="color: var(--text-gray); margin-top: 1rem; font-size: 0.9rem;">
+            © 2025 MySplit. Licenciado sob <a href="https://opensource.org/license/MIT" target="_blank"
+                style="color: var(--primary-orange); text-decoration: none;">MIT License</a>.
+        </p>
+    </footer>
+
+    <script>
+        // Draw connection lines between avatars
+        function drawConnections() {
+            const network = document.querySelector('.avatar-network');
+            const avatars = document.querySelectorAll('.avatar');
+            const center = avatars[0];
+
+            for (let i = 1; i < avatars.length; i++) {
+                const avatar = avatars[i];
+                const line = document.createElement('div');
+                line.className = 'connection-line';
+
+                const centerRect = center.getBoundingClientRect();
+                const avatarRect = avatar.getBoundingClientRect();
+                const networkRect = network.getBoundingClientRect();
+
+                const x1 = centerRect.left + centerRect.width / 2 - networkRect.left;
+                const y1 = centerRect.top + centerRect.height / 2 - networkRect.top;
+                const x2 = avatarRect.left + avatarRect.width / 2 - networkRect.left;
+                const y2 = avatarRect.top + avatarRect.height / 2 - networkRect.top;
+
+                const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+
+                line.style.width = length + 'px';
+                line.style.left = x1 + 'px';
+                line.style.top = y1 + 'px';
+                line.style.transform = 'rotate(' + angle + 'deg)';
+
+                network.appendChild(line);
+            }
+        }
+
+        window.addEventListener('load', drawConnections);
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.connection-line').forEach(line => line.remove());
+            drawConnections();
+        });
+    </script>
+</body>
+
+</html>
+<script>
+    // Translations
+    const translations = {
+        pt: {
+            heroSubtitle: "Divida contas com amigos. Sem conversas constrangedoras. Apenas partes justas.",
+            storeSmall1: "Baixar na",
+            storeLarge1: "App Store",
+            storeSmall2: "Disponível no",
+            storeLarge2: "Google Play",
+            simulationsTitle: "Simulações de Grupos de Despesas",
+            howItWorksTitle: "Como Funciona",
+            step1Title: "Crie um Grupo",
+            step1Desc: "Crie um grupo para sua viagem, festa ou evento. Compartilhe via QR code ou link.",
+            step2Title: "Adicione Despesas",
+            step2Desc: "Registre todas as despesas do grupo. Selecione quem participou de cada gasto.",
+            step3Title: "Veja os Saldos",
+            step3Desc: "O app calcula automaticamente quem deve para quem e quanto.",
+            step4Title: "Quite as Contas",
+            step4Desc: "Registre os pagamentos e veja os saldos atualizarem em tempo real.",
+            screenshotsTitle: "Veja em Ação",
+            featuresTitle: "Por Que Amigos Amam o MySplit",
+            footerMade: "Feito com ❤️ por",
+            footerCopyright: "© 2025 MySplit. Licenciado sob"
+        },
+        en: {
+            heroSubtitle: "Split bills with friends. No awkward conversations. Just fair shares.",
+            storeSmall1: "Download on the",
+            storeLarge1: "App Store",
+            storeSmall2: "Get it on",
+            storeLarge2: "Google Play",
+            simulationsTitle: "Expense Group Simulations",
+            howItWorksTitle: "How It Works",
+            step1Title: "Create a Group",
+            step1Desc: "Create a group for your trip, party or event. Share via QR code or link.",
+            step2Title: "Add Expenses",
+            step2Desc: "Record all group expenses. Select who participated in each expense.",
+            step3Title: "View Balances",
+            step3Desc: "The app automatically calculates who owes whom and how much.",
+            step4Title: "Settle Up",
+            step4Desc: "Record payments and watch balances update in real-time.",
+            screenshotsTitle: "See It In Action",
+            featuresTitle: "Why Friends Love MySplit",
+            footerMade: "Made with ❤️ by",
+            footerCopyright: "© 2025 MySplit. Licensed under"
+        },
+        es: {
+            heroSubtitle: "Divide cuentas con amigos. Sin conversaciones incómodas. Solo partes justas.",
+            storeSmall1: "Descargar en",
+            storeLarge1: "App Store",
+            storeSmall2: "Disponible en",
+            storeLarge2: "Google Play",
+            simulationsTitle: "Simulaciones de Grupos de Gastos",
+            howItWorksTitle: "Cómo Funciona",
+            step1Title: "Crea un Grupo",
+            step1Desc: "Crea un grupo para tu viaje, fiesta o evento. Comparte vía código QR o enlace.",
+            step2Title: "Añade Gastos",
+            step2Desc: "Registra todos los gastos del grupo. Selecciona quién participó en cada gasto.",
+            step3Title: "Ver Saldos",
+            step3Desc: "La app calcula automáticamente quién debe a quién y cuánto.",
+            step4Title: "Saldar Cuentas",
+            step4Desc: "Registra los pagos y observa cómo se actualizan los saldos en tiempo real.",
+            screenshotsTitle: "Míralo en Acción",
+            featuresTitle: "Por Qué Los Amigos Aman MySplit",
+            footerMade: "Hecho con ❤️ por",
+            footerCopyright: "© 2025 MySplit. Licenciado bajo"
+        }
+    };
+
+    // Set initial language
+    let currentLang = 'pt';
+
+    // Apply translations
+    function applyTranslations(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+
+        // Update text content
+        document.querySelector('.hero-subtitle').textContent = t.heroSubtitle;
+        document.querySelectorAll('.store-text-small')[0].textContent = t.storeSmall1;
+        document.querySelectorAll('.store-text-large')[0].textContent = t.storeLarge1;
+        document.querySelectorAll('.store-text-small')[1].textContent = t.storeSmall2;
+        document.querySelectorAll('.store-text-large')[1].textContent = t.storeLarge2;
+
+        // Update section titles
+        const sectionTitles = document.querySelectorAll('.section-title');
+        if (sectionTitles[0]) sectionTitles[0].textContent = t.simulationsTitle;
+        if (sectionTitles[1]) sectionTitles[1].textContent = t.howItWorksTitle;
+        if (sectionTitles[2]) sectionTitles[2].textContent = t.screenshotsTitle;
+        if (sectionTitles[3]) sectionTitles[3].textContent = t.featuresTitle;
+
+        // Update steps
+        const stepTitles = document.querySelectorAll('.step-title');
+        const stepDescs = document.querySelectorAll('.step-description');
+        if (stepTitles[0]) stepTitles[0].textContent = t.step1Title;
+        if (stepDescs[0]) stepDescs[0].textContent = t.step1Desc;
+        if (stepTitles[1]) stepTitles[1].textContent = t.step2Title;
+        if (stepDescs[1]) stepDescs[1].textContent = t.step2Desc;
+        if (stepTitles[2]) stepTitles[2].textContent = t.step3Title;
+        if (stepDescs[2]) stepDescs[2].textContent = t.step3Desc;
+        if (stepTitles[3]) stepTitles[3].textContent = t.step4Title;
+        if (stepDescs[3]) stepDescs[3].textContent = t.step4Desc;
+
+        // Update active flag
+        document.querySelectorAll('.lang-flag').forEach(flag => {
+            flag.classList.remove('active');
+            if (flag.dataset.lang === lang) {
+                flag.classList.add('active');
+            }
+        });
+
+        // Save preference
+        localStorage.setItem('mysplit-lang', lang);
+    }
+
+    // Language switcher event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load saved language or default to pt
+        const savedLang = localStorage.getItem('mysplit-lang') || 'pt';
+        applyTranslations(savedLang);
+
+        // Add click listeners to flags
+        document.querySelectorAll('.lang-flag').forEach(flag => {
+            flag.addEventListener('click', () => {
+                applyTranslations(flag.dataset.lang);
+            });
+        });
+    });
+</script>
