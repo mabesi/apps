@@ -24,12 +24,12 @@
         "value": 95.0
     },
     "grupos": {
-        "A": "Comandantes da Marinha, Exército e Aeronáutica e Cargos de Natureza Especial",
+        "A": "Comandantes",
         "B": "Oficiais-Generais",
         "C": "Oficiais-Superiores",
-        "D": "Oficiais Intermediários, Subalternos, Guardas-Marinha e Aspirantes",
-        "E": "Suboficiais, Subtenentes, Sargentos, Aspirantes e Cadetes",
-        "F": "Alunos de Formação de Oficiais, Colégio Naval e Escolas Preparatórias",
+        "D": "Demais Oficiais e Aspirantes",
+        "E": "Suboficiais, Subtenentes, Sargentos e Cadetes",
+        "F": "Alunos Oficiais, Colégio Naval e Escolas Prep.",
         "G": "Demais Praças e Praças Especiais"
     },
     "localidades": {
