@@ -1,0 +1,112 @@
+{
+  "linkPatterns": {
+    "github": "https://github.com/mabesi/",
+    "website": "https://apps.mabesi.dev/",
+    "playstore": "https://play.google.com/store/apps/details?id=com.mabesi.",
+    "appstore": "https://apps.apple.com/app/"
+  },
+  "categories": {
+    "finance": {
+      "name": {
+        "pt": "Finanças",
+        "en": "Finance",
+        "es": "Finanzas"
+      },
+      "icon": "💰"
+    },
+    "utilities": {
+      "name": {
+        "pt": "Utilidades",
+        "en": "Utilities",
+        "es": "Utilidades"
+      },
+      "icon": "🎖️"
+    },
+    "productivity": {
+      "name": {
+        "pt": "Produtividade",
+        "en": "Productivity",
+        "es": "Productividad"
+      },
+      "icon": "🚀"
+    },
+    "education": {
+      "name": {
+        "pt": "Educação",
+        "en": "Education",
+        "es": "Educación"
+      },
+      "icon": "📚"
+    }
+  },
+  "projects": [
+    {
+      "id": "mysplit",
+      "categoryId": "finance",
+      "name": "MySplit",
+      "description": {
+        "pt": "Divida despesas de forma justa e fácil com amigos e família",
+        "en": "Split expenses fairly and easily with friends and family",
+        "es": "Divide gastos de forma justa y fácil con amigos y familia"
+      },
+      "image": "MYSPLIT",
+      "links": {
+        "github": "mysplit",
+        "website": "mysplit",
+        "playstore": "mysplit",
+        "appstore": null
+      }
+    },
+    {
+      "id": "cadrimil",
+      "categoryId": "utilities",
+      "name": "Cadrimil",
+      "description": {
+        "pt": "Calculadora de diárias militares para missões e deslocamentos",
+        "en": "Military per diem calculator for missions and deployments",
+        "es": "Calculadora de dietas militares para misiones y desplazamientos"
+      },
+      "image": "CADRIMIL",
+      "links": {
+        "github": "cadrimil",
+        "website": "cadrimil",
+        "playstore": "cadrimil",
+        "appstore": "cadrimil/id123456789"
+      }
+    },
+    {
+      "id": "project3",
+      "categoryId": "productivity",
+      "name": "Em Breve",
+      "description": {
+        "pt": "Novo projeto em desenvolvimento. Fique ligado!",
+        "en": "New project under development. Stay tuned!",
+        "es": "Nuevo proyecto en desarrollo. ¡Mantente atento!"
+      },
+      "image": "COMING SOON",
+      "links": {
+        "github": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "project4",
+      "categoryId": "education",
+      "name": "Em Breve",
+      "description": {
+        "pt": "Mais um projeto incrível a caminho!",
+        "en": "Another amazing project on the way!",
+        "es": "¡Otro proyecto increíble en camino!"
+      },
+      "image": "COMING SOON",
+      "links": {
+        "github": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    }
+  ]
+}

@@ -6,349 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apoie Projetos Open Source - Mabesi Apps</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-orange: #fba74f;
-            --secondary-orange: #e09646;
-            --dark-bg: #0F172A;
-            --card-bg: #1E293B;
-            --text-light: #F8FAFC;
-            --text-gray: #94A3B8;
-            --success-green: #10B981;
-            --crypto-gold: #F7931A;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        header {
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            border-bottom: 1px solid rgba(251, 167, 79, 0.2);
-            flex-wrap: wrap;
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .logo-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 20%;
-            box-shadow: 0 4px 16px rgba(251, 167, 79, 0.3);
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .tagline {
-            color: var(--text-gray);
-            font-size: 1.1rem;
-        }
-
-        .language-switcher {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .lang-flag {
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: all 0.3s ease;
-            filter: grayscale(100%);
-        }
-
-        .lang-flag:hover,
-        .lang-flag.active {
-            opacity: 1;
-            filter: grayscale(0%);
-            transform: scale(1.2);
-        }
-
-        .hero {
-            padding: 2rem 2rem 1rem;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            line-height: 1.8;
-        }
-
-        .impact-section {
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .impact-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .impact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .impact-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-        }
-
-        .impact-label {
-            color: var(--text-gray);
-        }
-
-        .cost-breakdown {
-            background: rgba(251, 167, 79, 0.1);
-            border-left: 4px solid var(--primary-orange);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        .cost-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .cost-item:last-child {
-            border-bottom: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary-orange);
-        }
-
-        .donation-methods {
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .methods-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .method-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .method-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-orange), var(--secondary-orange));
-        }
-
-        .method-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 48px rgba(251, 167, 79, 0.3);
-        }
-
-        .method-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .method-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .method-description {
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .qr-code {
-            width: 200px;
-            height: 200px;
-            background: white;
-            margin: 1rem auto;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: #333;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .wallet-address {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1rem;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            word-break: break-all;
-            margin: 1rem 0;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .wallet-address:hover {
-            background: rgba(251, 167, 79, 0.2);
-        }
-
-        .copy-btn {
-            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: transform 0.3s ease;
-            margin-top: 0.5rem;
-        }
-
-        .copy-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .network-badge {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--success-green);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 0.5rem 0.2rem;
-        }
-
-        footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            background: rgba(15, 23, 42, 0.8);
-            border-top: 1px solid rgba(251, 167, 79, 0.2);
-            margin-top: 4rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-orange);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .methods-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <header>
-        <div class="header-content">
-            <img src="img/mabesiapps_logo.png" alt="Mabesi Apps Logo" class="logo-img">
-            <div>
-                <div class="logo">Mabesi Apps</div>
-                <div class="tagline" data-i18n="tagline">Desenvolvendo soluções gratuitas e open source</div>
+        <div class="header-wrapper">
+            <div class="header-content">
+                <img src="img/mabesiapps_logo.png" alt="Mabesi Apps Logo" class="logo-img">
+                <div>
+                    <div class="logo">Mabesi Apps</div>
+                    <div class="tagline" data-i18n="tagline">Desenvolvendo soluções gratuitas e open source</div>
+                </div>
             </div>
-        </div>
-        <div class="language-switcher">
-            <span class="lang-flag" data-lang="pt" title="Português">🇧🇷</span>
-            <span class="lang-flag" data-lang="en" title="English">🇺🇸</span>
-            <span class="lang-flag" data-lang="es" title="Español">🇪🇸</span>
+            <div class="language-switcher">
+                <span class="lang-flag" data-lang="pt" title="Português">🇧🇷</span>
+                <span class="lang-flag" data-lang="en" title="English">🇺🇸</span>
+                <span class="lang-flag" data-lang="es" title="Español">🇪🇸</span>
+            </div>
         </div>
     </header>
 
@@ -524,16 +199,38 @@
     </section>
 
     <footer>
-        <p style="color: var(--text-gray);">
-            <span data-i18n="footerMade">Feito com</span> ❤️ <span data-i18n="footerBy">por</span> <a
-                href="https://mabesi.github.io/apps" target="_blank"
-                style="color: var(--primary-orange); text-decoration: none;">Mabesi Apps</a>
-        </p>
-        <p style="color: var(--text-gray); margin-top: 0.5rem; font-size: 0.9rem;">
-            © 2025 Mabesi Apps. <span data-i18n="footerLicense">Licenciado sob</span> <a
-                href="https://opensource.org/license/MIT" target="_blank"
-                style="color: var(--primary-orange); text-decoration: none;">MIT License</a>.
-        </p>
+        <div class="footer-links">
+            <a href="index.html">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                </svg>
+                <span>Home</span>
+            </a>
+            <a href="https://github.com/mabesi" target="_blank" rel="noopener noreferrer" data-i18n="footerGithub">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                <span>GitHub</span>
+            </a>
+            <a href="mailto:mabesiapps@gmail.com" data-i18n="footerContact">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <span>Contato</span>
+            </a>
+        </div>
+        <div class="footer-info">
+            <p>
+                <span data-i18n="footerMade">Feito com</span> ❤️ <span data-i18n="footerBy">por</span>
+                <a href="https://github.com/mabesi" target="_blank" rel="noopener noreferrer">Mabesi Apps</a>
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                © 2025 Mabesi Apps. <span data-i18n="footerLicense">Licenciado sob</span>
+                <a href="https://opensource.org/license/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>.
+            </p>
+        </div>
     </footer>
 
     <script>
