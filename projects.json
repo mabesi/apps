@@ -82,6 +82,23 @@
       }
     },
     {
+      "id": "webclass",
+      "categoryId": "education",
+      "name": "WebClass",
+      "description": {
+        "pt": "Sistema completo de gerenciamento de cursos online desenvolvido em Laravel, com ambientes separados para Alunos e Administradores.",
+        "en": "Complete online course management system developed in Laravel, with separate environments for Students and Administrators.",
+        "es": "Sistema completo de gerenciamento de cursos online desenvolvido em Laravel, com ambientes separados para Alunos e Administradores."
+      },
+      "image": "WEBCLASS",
+      "links": {
+        "github": "webclass",
+        "website": "webclass",
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
       "id": "cadrimil",
       "categoryId": "utilities",
       "name": "Cadrimil",
@@ -128,6 +145,23 @@
       "links": {
         "github": null,
         "website": "rdsim",
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "geana",
+      "categoryId": "utilities",
+      "name": "GE Analyzer",
+      "description": {
+        "pt": "Sistema de Análise de Sinais Eletrônicos. Interfaces para filtragem, análise e geração de relatórios de dados de radar.",
+        "en": "Electronic Signal Analysis System. Interfaces for filtering, analyzing, and reporting radar data.",
+        "es": "Sistema de Análisis Electrónico de Señales. Interfaces para filtrar, analizar y reportar datos de radar."
+      },
+      "image": "GEANA",
+      "links": {
+        "github": null,
+        "website": "geana",
         "playstore": null,
         "appstore": null
       }
