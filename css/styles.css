@@ -70,7 +70,6 @@ header {
     width: 80px;
     height: 80px;
     border-radius: 20%;
-    box-shadow: 0 4px 16px rgba(251, 167, 79, 0.3);
 }
 
 .logo {
@@ -80,7 +79,7 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
 .tagline {
