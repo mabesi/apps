@@ -15,16 +15,22 @@
     --crypto-gold: #F7931A;
 
     /* Category Colors */
-    --finance-primary: #fba74f;
-    --finance-secondary: #e09646;
-    --utilities-primary: #3b82f6;
-    --utilities-secondary: #2563eb;
-    --productivity-primary: #10b981;
-    --productivity-secondary: #059669;
-    --education-primary: #a855f7;
-    --education-secondary: #9333ea;
-    --default-primary: #64748b;
-    --default-secondary: #475569;
+    --finance-primary: #fbbf24;
+    --finance-secondary: #f97316;
+    --utilities-primary: #60a5fa;
+    --utilities-secondary: #1d4ed8;
+    --productivity-primary: #34d399;
+    --productivity-secondary: #047857;
+    --education-primary: #c084fc;
+    --education-secondary: #7e22ce;
+    --tools-primary: #2dd4bf;
+    --tools-secondary: #0f766e;
+    --health-primary: #f472b6;
+    --health-secondary: #be185d;
+    --games-primary: #a78bfa;
+    --games-secondary: #6d28d9;
+    --default-primary: #94a3b8;
+    --default-secondary: #334155;
 }
 
 body {
@@ -300,6 +306,18 @@ header {
 
 .project-image.education {
     background: linear-gradient(135deg, var(--education-secondary), var(--education-primary));
+}
+
+.project-image.tools {
+    background: linear-gradient(135deg, var(--tools-secondary), var(--tools-primary));
+}
+
+.project-image.health {
+    background: linear-gradient(135deg, var(--health-secondary), var(--health-primary));
+}
+
+.project-image.games {
+    background: linear-gradient(135deg, var(--games-secondary), var(--games-primary));
 }
 
 .project-image.default {

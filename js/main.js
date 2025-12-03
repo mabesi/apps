@@ -29,6 +29,9 @@ const translations = {
         filterUtilities: "Utilidades",
         filterProductivity: "Produtividade",
         filterEducation: "Educação",
+        filterTools: "Ferramentas",
+        filterHealth: "Saúde",
+        filterGames: "Jogos",
         footerDonate: "Apoiar Projetos",
         footerGithub: "GitHub",
         footerContact: "Contato",
@@ -58,6 +61,9 @@ const translations = {
         filterUtilities: "Utilities",
         filterProductivity: "Productivity",
         filterEducation: "Education",
+        filterTools: "Tools",
+        filterHealth: "Health",
+        filterGames: "Games",
         footerDonate: "Support Projects",
         footerGithub: "GitHub",
         footerContact: "Contact",
@@ -87,6 +93,9 @@ const translations = {
         filterUtilities: "Utilidades",
         filterProductivity: "Productividad",
         filterEducation: "Educación",
+        filterTools: "Herramientas",
+        filterHealth: "Salud",
+        filterGames: "Juegos",
         footerDonate: "Apoyar Proyectos",
         footerGithub: "GitHub",
         footerContact: "Contacto",
@@ -160,7 +169,10 @@ function setupFilters() {
         { id: 'finance', key: 'filterFinance', icon: categories.finance?.icon || '💰' },
         { id: 'utilities', key: 'filterUtilities', icon: categories.utilities?.icon || '🎖️' },
         { id: 'productivity', key: 'filterProductivity', icon: categories.productivity?.icon || '🚀' },
-        { id: 'education', key: 'filterEducation', icon: categories.education?.icon || '📚' }
+        { id: 'education', key: 'filterEducation', icon: categories.education?.icon || '📚' },
+        { id: 'tools', key: 'filterTools', icon: categories.tools?.icon || '🔧' },
+        { id: 'health', key: 'filterHealth', icon: categories.health?.icon || '💊' },
+        { id: 'games', key: 'filterGames', icon: categories.games?.icon || '🎮' }
     ];
 
     filtersContainer.innerHTML = '';

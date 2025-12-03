@@ -37,23 +37,47 @@
         "es": "Educación"
       },
       "icon": "📚"
+    },
+    "tools": {
+      "name": {
+        "pt": "Ferramentas",
+        "en": "Tools",
+        "es": "Herramientas"
+      },
+      "icon": "🔧"
+    },
+    "health": {
+      "name": {
+        "pt": "Saúde",
+        "en": "Health",
+        "es": "Salud"
+      },
+      "icon": "💊"
+    },
+    "games": {
+      "name": {
+        "pt": "Saúde",
+        "en": "Health",
+        "es": "Salud"
+      },
+      "icon": "🎮"
     }
   },
   "projects": [
     {
-      "id": "mysplit",
+      "id": "cerberus",
       "categoryId": "finance",
-      "name": "MySplit",
+      "name": "Cerberus Dex Bot",
       "description": {
-        "pt": "Divida despesas de forma justa e fácil com amigos e família",
-        "en": "Split expenses fairly and easily with friends and family",
-        "es": "Divide gastos de forma justa y fácil con amigos y familia"
+        "pt": "Plataforma SaaS educacional para automação de operações em DEX. Web2 + Web3, autenticação segura e monitoramento de mercado.",
+        "en": "Educational SaaS platform for DEX operation automation. Web2 + Web3, secure authentication, and market monitoring.",
+        "es": "Plataforma SaaS educacional para automación de operaciones en DEX. Web2 + Web3, autenticación segura y monitoreo del mercado."
       },
-      "image": "MYSPLIT",
+      "image": "CERBERUS",
       "links": {
-        "github": "mysplit",
-        "website": "mysplit",
-        "playstore": "mysplit",
+        "github": "cerberus",
+        "website": "cerberus",
+        "playstore": null,
         "appstore": null
       }
     },
@@ -75,35 +99,35 @@
       }
     },
     {
-      "id": "project3",
-      "categoryId": "productivity",
-      "name": "Em Breve",
+      "id": "mysplit",
+      "categoryId": "finance",
+      "name": "MySplit",
       "description": {
-        "pt": "Novo projeto em desenvolvimento. Fique ligado!",
-        "en": "New project under development. Stay tuned!",
-        "es": "Nuevo proyecto en desarrollo. ¡Mantente atento!"
+        "pt": "Divida despesas de forma justa e fácil com amigos e família",
+        "en": "Split expenses fairly and easily with friends and family",
+        "es": "Divide gastos de forma justa y fácil con amigos y familia"
       },
-      "image": "COMING SOON",
+      "image": "MYSPLIT",
       "links": {
-        "github": null,
-        "website": null,
-        "playstore": null,
+        "github": "mysplit",
+        "website": "mysplit",
+        "playstore": "mysplit",
         "appstore": null
       }
     },
     {
-      "id": "project4",
-      "categoryId": "education",
-      "name": "Em Breve",
+      "id": "rdsim",
+      "categoryId": "tools",
+      "name": "RD Simulator",
       "description": {
-        "pt": "Mais um projeto incrível a caminho!",
-        "en": "Another amazing project on the way!",
-        "es": "¡Otro proyecto increíble en camino!"
+        "pt": "Simulador de Painel de Controle e Link de Dados. Componentes interativos para treinamento operacional.",
+        "en": "Radio Control Panel & Data Link Simulator. Interactive components for operational training.",
+        "es": "Simulador de Panel de Control y Enlace de Datos. Componentes interactivos para entrenamiento operativo."
       },
-      "image": "COMING SOON",
+      "image": "RDSIM",
       "links": {
         "github": null,
-        "website": null,
+        "website": "rdsim",
         "playstore": null,
         "appstore": null
       }
