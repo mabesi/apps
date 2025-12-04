@@ -29,7 +29,7 @@
 
     <section class="hero">
         <h1 data-i18n="heroTitle">Apoie o Desenvolvimento</h1>
-        <p data-i18n="heroText">Desenvolver e manter aplicativos gratuitos e de código aberto como o MySplit requer
+        <p data-i18n="heroText">Desenvolver e manter aplicativos gratuitos e de código aberto requer
             tempo, dedicação e recursos. Sua contribuição ajuda a manter esses projetos vivos, em constante evolução, e
             totalmente gratuitos para todos.</p>
     </section>
@@ -63,27 +63,27 @@
             <h3 style="margin-bottom: 1rem;" data-i18n="costsTitle">�� Custos Mensais Estimados</h3>
             <div class="cost-item">
                 <span data-i18n="cost1">Hospedagem e Infraestrutura (Firebase, Servidores)</span>
-                <span>R$ 150/mês</span>
+                <span>$ 250/mês</span>
             </div>
             <div class="cost-item">
                 <span data-i18n="cost2">APIs de IA (GPT, Gemini, Claude)</span>
-                <span>R$ 200/mês</span>
+                <span>$ 200/m</span>
             </div>
             <div class="cost-item">
                 <span data-i18n="cost3">Domínios e Certificados SSL</span>
-                <span>R$ 50/mês</span>
+                <span>$ 50/m</span>
             </div>
             <div class="cost-item">
                 <span data-i18n="cost4">Ferramentas de Desenvolvimento</span>
-                <span>R$ 100/mês</span>
+                <span>$ 200/m</span>
             </div>
             <div class="cost-item">
                 <span data-i18n="cost5">Tempo de Desenvolvimento (40h/mês)</span>
-                <span>R$ 2.000/mês</span>
+                <span>$ 2.500/m</span>
             </div>
             <div class="cost-item">
                 <span data-i18n="costTotal">Total Mensal</span>
-                <span>R$ 2.500/mês</span>
+                <span>$ 3.200/m</span>
             </div>
         </div>
 
@@ -103,14 +103,14 @@
                 <div class="method-description" data-i18n="pixDesc">Forma mais rápida e fácil para brasileiros. Sem
                     taxas!</div>
                 <div class="qr-code">
-                    [QR Code PIX]<br>
-                    <small>Escaneie com seu app bancário</small>
+                    <img src="img/pix.png" alt="Pix QR Code ">
                 </div>
                 <div class="wallet-address" onclick="copyToClipboard(this)">
-                    mabesiapps@gmail.com
+                    00020101021126420014br.gov.bcb.pix0120mabesiapps@gmail.com5204000053039865802BR5925PLINIO MARCOS
+                    BERNARDES D6009SAO PAULO622905251KBKBKJH7FEZ31DMHE3SRNY296304F590
                 </div>
                 <button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling)"
-                    data-i18n="copyBtn">Copiar Chave PIX</button>
+                    data-i18n="copyPixBtn">Pix Copia e Cola</button>
             </div>
 
             <!-- Bitcoin Lightning -->
@@ -120,11 +120,10 @@
                 <div class="method-description" data-i18n="lightningDesc">Transações instantâneas com taxas mínimas.
                 </div>
                 <div class="qr-code">
-                    [QR Code Lightning]<br>
-                    <small>Escaneie com carteira Lightning</small>
+                    <img src="img/satoshi.png" alt="Bitcoin Lightning QR Code">
                 </div>
                 <div class="wallet-address" onclick="copyToClipboard(this)">
-                    lnbc1000u1p3xnhl2pp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypq
+                    prizedsilk76@walletofsatoshi.com
                 </div>
                 <button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling)"
                     data-i18n="copyBtn">Copiar Endereço</button>
@@ -132,14 +131,19 @@
 
             <!-- Stablecoins -->
             <div class="method-card">
-                <div class="method-icon">💎</div>
-                <div class="method-title">Stablecoins (USDT/USDC)</div>
-                <div class="method-description" data-i18n="stableDesc">Criptomoedas estáveis em múltiplas redes.</div>
-                <div class="network-badge">BNB Chain</div>
-                <div class="network-badge">Polygon</div>
-                <div class="network-badge">Solana</div>
+                <div class="method-icon">💲</div>
+                <div class="method-title">USDT USDC BNB POL AVA</div>
+                <div class="method-description" data-i18n="stableDesc">Criptomoedas em múltiplas redes.</div>
+                <div class="qr-code">
+                    <img src="img/stablecoin.png" alt="Stablecoin & Altcoins QR Code">
+                </div>
+                <div class="badges-container">
+                    <div class="network-badge">BNB Chain</div>
+                    <div class="network-badge">Polygon</div>
+                    <div class="network-badge">Avalanche</div>
+                </div>
                 <div class="wallet-address" onclick="copyToClipboard(this)">
-                    0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1
+                    0x372745efc5b395ecf4bf45b8b55af7054e924a01
                 </div>
                 <button class="copy-btn" onclick="copyToClipboard(this.previousElementSibling)"
                     data-i18n="copyBtn">Copiar Endereço</button>
@@ -148,53 +152,23 @@
                 </p>
             </div>
 
-            <!-- PayPal / Wise -->
+            <!-- Wise -->
             <div class="method-card">
                 <div class="method-icon">🌐</div>
-                <div class="method-title">PayPal / Wise</div>
-                <div class="method-description" data-i18n="paypalDesc">Transferências internacionais tradicionais.</div>
-                <div style="margin: 2rem 0;">
-                    <a href="https://paypal.me/mabesiapps" target="_blank"
-                        style="display: inline-block; background: #0070ba; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; margin: 0.5rem;">
-                        PayPal
-                    </a>
-                    <a href="https://wise.com/pay/me/pliniom4" target="_blank"
-                        style="display: inline-block; background: #00B9FF; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; margin: 0.5rem;">
-                        Wise
-                    </a>
+                <div class="method-title">Wise</div>
+                <div class="method-description" data-i18n="wiseDesc">Transferências internacionais com taxas baixas.
                 </div>
+                <div class="qr-code">
+                    <img src="img/wise.png" alt="Wise QR Code">
+                </div>
+                <div class="wallet-address" onclick="copyToClipboard(this)">
+                    @pliniom101
+                </div>
+                <button class="copy-btn" onclick="copyText('@pliniom101', this)" data-i18n="copyCodeBtn">Copiar
+                    Código</button>
             </div>
 
-            <!-- Ko-fi / Buy Me a Coffee -->
-            <div class="method-card">
-                <div class="method-icon">☕</div>
-                <div class="method-title">Ko-fi / Buy Me a Coffee</div>
-                <div class="method-description" data-i18n="coffeeDesc">Plataformas de apoio a criadores.</div>
-                <div style="margin: 2rem 0;">
-                    <a href="https://ko-fi.com/mabesiapps" target="_blank"
-                        style="display: inline-block; background: #FF5E5B; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; margin: 0.5rem;">
-                        Ko-fi
-                    </a>
-                    <a href="https://buymeacoffee.com/mabesiapps" target="_blank"
-                        style="display: inline-block; background: #FFDD00; color: #000; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; margin: 0.5rem;">
-                        Buy Me a Coffee
-                    </a>
-                </div>
-            </div>
 
-            <!-- GitHub Sponsors -->
-            <div class="method-card">
-                <div class="method-icon">💻</div>
-                <div class="method-title">GitHub Sponsors</div>
-                <div class="method-description" data-i18n="githubDesc">Apoie diretamente no GitHub com benefícios
-                    exclusivos.</div>
-                <div style="margin: 2rem 0;">
-                    <a href="https://github.com/sponsors/mabesi" target="_blank"
-                        style="display: inline-block; background: #6e5494; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none;">
-                        Sponsor on GitHub
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -239,7 +213,7 @@
             pt: {
                 tagline: "Desenvolvendo soluções gratuitas e open source",
                 heroTitle: "Apoie o Desenvolvimento",
-                heroText: "Desenvolver e manter aplicativos gratuitos e de código aberto como o MySplit requer tempo, dedicação e recursos. Sua contribuição ajuda a manter esses projetos vivos, em constante evolução, e totalmente gratuitos para todos.",
+                heroText: "Desenvolver e manter aplicativos gratuitos e de código aberto requer tempo, dedicação e recursos. Sua contribuição ajuda a manter esses projetos vivos, em constante evolução, e totalmente gratuitos para todos.",
                 impactTitle: "O Impacto da Sua Doação",
                 impact1: "Gratuito para Sempre",
                 impact2: "Disponibilidade Global",
@@ -256,20 +230,20 @@
                 methodsTitle: "Como Contribuir",
                 pixDesc: "Forma mais rápida e fácil para brasileiros. Sem taxas!",
                 lightningDesc: "Transações instantâneas com taxas mínimas.",
-                stableDesc: "Criptomoedas estáveis em múltiplas redes.",
+                stableDesc: "Criptomoedas estáveis e altcoins em múltiplas redes.",
                 stableNote: "⚠️ Verifique a rede antes de enviar!",
-                paypalDesc: "Transferências internacionais tradicionais.",
-                coffeeDesc: "Plataformas de apoio a criadores.",
-                githubDesc: "Apoie diretamente no GitHub com benefícios exclusivos.",
+                wiseDesc: "Transferências internacionais com taxas baixas.",
+                copyCodeBtn: "Copiar Código",
                 copyBtn: "Copiar Endereço",
                 footerMade: "Feito com",
                 footerBy: "por",
-                footerLicense: "Licenciado sob"
+                footerLicense: "Licenciado sob",
+                copyPixBtn: "Pix Copia e Cola"
             },
             en: {
                 tagline: "Developing free and open source solutions",
                 heroTitle: "Support Development",
-                heroText: "Developing and maintaining free and open source applications like MySplit requires time, dedication, and resources. Your contribution helps keep these projects alive, constantly evolving, and completely free for everyone.",
+                heroText: "Developing and maintaining free and open source applications requires time, dedication, and resources. Your contribution helps keep these projects alive, constantly evolving, and completely free for everyone.",
                 impactTitle: "The Impact of Your Donation",
                 impact1: "Free Forever",
                 impact2: "Global Availability",
@@ -286,20 +260,20 @@
                 methodsTitle: "How to Contribute",
                 pixDesc: "Fastest and easiest way for Brazilians. No fees!",
                 lightningDesc: "Instant transactions with minimal fees.",
-                stableDesc: "Stable cryptocurrencies on multiple networks.",
+                stableDesc: "Stable Cryptocurrencies and altcoins on multiple networks.",
                 stableNote: "⚠️ Check the network before sending!",
-                paypalDesc: "Traditional international transfers.",
-                coffeeDesc: "Creator support platforms.",
-                githubDesc: "Support directly on GitHub with exclusive benefits.",
+                wiseDesc: "International transfers with low fees.",
+                copyCodeBtn: "Copy Code",
                 copyBtn: "Copy Address",
                 footerMade: "Made with",
                 footerBy: "by",
-                footerLicense: "Licensed under"
+                footerLicense: "Licensed under",
+                copyPixBtn: "Pix Copy and Paste"
             },
             es: {
                 tagline: "Desarrollando soluciones gratuitas y de código abierto",
                 heroTitle: "Apoya el Desarrollo",
-                heroText: "Desarrollar y mantener aplicaciones gratuitas y de código abierto como MySplit requiere tiempo, dedicación y recursos. Tu contribución ayuda a mantener estos proyectos vivos, en constante evolución y completamente gratuitos para todos.",
+                heroText: "Desarrollar y mantener aplicaciones gratuitas y de código abierto requiere tiempo, dedicación y recursos. Tu contribución ayuda a mantener estos proyectos vivos, en constante evolución y completamente gratuitos para todos.",
                 impactTitle: "El Impacto de Tu Donación",
                 impact1: "Gratis para Siempre",
                 impact2: "Disponibilidad Global",
@@ -316,21 +290,25 @@
                 methodsTitle: "Cómo Contribuir",
                 pixDesc: "Forma más rápida y fácil para brasileños. ¡Sin tarifas!",
                 lightningDesc: "Transacciones instantáneas con tarifas mínimas.",
-                stableDesc: "Criptomonedas estables en múltiples redes.",
+                stableDesc: "Criptomonedas estables e altcoins en múltiples redes.",
                 stableNote: "⚠️ ¡Verifica la red antes de enviar!",
-                paypalDesc: "Transferencias internacionales tradicionales.",
-                coffeeDesc: "Plataformas de apoyo a creadores.",
-                githubDesc: "Apoya directamente en GitHub con beneficios exclusivos.",
+                wiseDesc: "Transferencias internacionales con tarifas bajas.",
+                copyCodeBtn: "Copiar Código",
                 copyBtn: "Copiar Dirección",
                 footerMade: "Hecho con",
                 footerBy: "por",
-                footerLicense: "Licenciado bajo"
+                footerLicense: "Licenciado bajo",
+                copyPixBtn: "Pix Copia y Pega"
             }
         };
 
         // Copy to clipboard function
         function copyToClipboard(element) {
             const text = element.textContent.trim();
+            copyText(text, element);
+        }
+
+        function copyText(text, element) {
             navigator.clipboard.writeText(text).then(() => {
                 const originalText = element.textContent;
                 element.textContent = '✓ Copiado!';

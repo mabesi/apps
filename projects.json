@@ -103,9 +103,9 @@
       "categoryId": "utilities",
       "name": "Cadrimil",
       "description": {
-        "pt": "Calculadora de diárias militares para missões e deslocamentos",
-        "en": "Military per diem calculator for missions and deployments",
-        "es": "Calculadora de dietas militares para misiones y desplazamientos"
+        "pt": "Calculadora de diárias militares para missões e deslocamentos.",
+        "en": "Military per diem calculator for missions and deployments.",
+        "es": "Calculadora de dietas militares para misiones y desplazamientos."
       },
       "image": "CADRIMIL",
       "links": {
@@ -120,9 +120,9 @@
       "categoryId": "finance",
       "name": "MySplit",
       "description": {
-        "pt": "Divida despesas de forma justa e fácil com amigos e família",
-        "en": "Split expenses fairly and easily with friends and family",
-        "es": "Divide gastos de forma justa y fácil con amigos y familia"
+        "pt": "Este é um aplicativo móvel construído com React Native e Expo para dividir contas entre amigos e gerenciar despesas compartilhadas.",
+        "en": "This is a mobile application built with React Native and Expo for splitting bills among friends and managing shared expenses.",
+        "es": "Este es una aplicación móvil construida con React Native y Expo para dividir cuentas entre amigos y gestionar gastos compartidos."
       },
       "image": "MYSPLIT",
       "links": {
