@@ -82,6 +82,23 @@
       }
     },
     {
+      "id": "ts-blockchain",
+      "categoryId": "tools",
+      "name": "TS Blockchain",
+      "description": {
+        "pt": "TS Blockchain é um protótipo de um sistema de blockchain construído com Node.js e TypeScript. Implementa os conceitos fundamentais de uma blockchain, incluindo a estrutura do bloco, a validação da cadeia e um algoritmo de consenso Proof of Work (PoW).",
+        "en": "TS Blockchain is a prototype of a blockchain system built with Node.js and TypeScript. It implements the core concepts of a blockchain, including block structure, chain validation, and a Proof of Work (PoW) consensus algorithm.",
+        "es": "TS Blockchain es un prototipo de un sistema de cadena de bloques construido con Node.js y TypeScript. Implementa los conceptos fundamentais de una cadena de bloques, incluyendo la estructura del bloque, la validación de la cadena y un algoritmo de consenso de Proof of Work (PoW)."
+      },
+      "image": "TS BLOCKCHAIN",
+      "links": {
+        "github": "ts-blockchain",
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
       "id": "webclass",
       "categoryId": "education",
       "name": "WebClass",
