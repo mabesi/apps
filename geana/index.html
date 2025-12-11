@@ -1,0 +1,660 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GE Analyzer - Sistema de Análise de Sinais</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #004080;
+            --accent-color: #ffcc00;
+            --text-color: #333;
+            --text-light: #666;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        /* --- Floating Menu --- */
+        .floating-menu {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            min-width: 140px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            transform: scale(1.1);
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: block;
+            text-align: right;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-right: 3px solid transparent;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+            background-color: rgba(0, 51, 102, 0.05);
+            border-right: 3px solid var(--primary-color);
+        }
+
+        /* --- Centered Stacked Header --- */
+        header {
+            background-color: var(--white);
+            color: var(--text-color);
+            padding: 40px 20px;
+            position: relative;
+            /* Normal flow */
+            width: 100%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container img {
+            height: 250px;
+            /* Increased size */
+            width: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin: 0 0 5px 0;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 400;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #444;
+            text-align: justify;
+        }
+
+        /* --- Cards & Layout --- */
+        .card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-box h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-box p {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .img-wrapper {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            background: #fff;
+        }
+
+        .img-wrapper:hover {
+            transform: scale(1.01);
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .footer-link {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: var(--accent-color);
+        }
+
+        .footer-link-icon {
+            font-size: 1.2rem;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 10px;
+            max-width: 600px;
+        }
+
+        .footer-highlight {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-highlight:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .floating-menu {
+                top: auto;
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+                width: 90%;
+                max-width: 400px;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .lang-switcher {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+                border-right: 1px solid #eee;
+                padding-right: 10px;
+                margin-right: 10px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Menu -->
+    <nav class="floating-menu">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('pt')" title="Português">🇧🇷</button>
+            <button class="lang-btn" onclick="setLanguage('en')" title="English">🇺🇸</button>
+            <button class="lang-btn" onclick="setLanguage('es')" title="Español">🇪🇸</button>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active" data-i18n="nav_home">Início</a>
+            <a href="#about" class="nav-link" data-i18n="nav_about">Sobre</a>
+            <a href="#process" class="nav-link" data-i18n="nav_process">Fluxo</a>
+            <a href="#results" class="nav-link" data-i18n="nav_results">Resultados</a>
+            <a href="#map" class="nav-link" data-i18n="nav_map">Mapa</a>
+        </div>
+    </nav>
+
+    <!-- Centered Stacked Header -->
+    <header id="home">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="img/logo.jpg" alt="GEANA Logo">
+            </div>
+            <div class="header-text">
+                <h1 data-i18n="title">GE Analyzer</h1>
+                <p class="subtitle" data-i18n="subtitle">Sistema Avançado de Análise de Sinais de Guerra Eletrônica</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2 data-i18n="about_title">O que é o GEANA?</h2>
+        </div>
+        <div class="card">
+            <p data-i18n="about_text_1">O GEANA (Analisador de Sinais de Guerra Eletrônica) é uma ferramenta web de alta
+                performance projetada para processar grandes volumes de dados de sinais de radar. Seu principal objetivo
+                é identificar e agrupar sinais semelhantes em "emissores" distintos, permitindo uma análise detalhada de
+                suas características e comportamento tático.</p>
+            <p data-i18n="about_text_2">Com uma interface intuitiva, o sistema simplifica o fluxo de trabalho em três
+                etapas essenciais: pré-processamento de dados brutos, parametrização da análise e visualização
+                estratégica dos resultados.</p>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <div class="section-header">
+            <h2 data-i18n="process_title">Fluxo de Trabalho</h2>
+        </div>
+
+        <div class="grid-3">
+            <div class="feature-box">
+                <h3 data-i18n="step1_title">1. Reduzir e Ordenar</h3>
+                <p data-i18n="step1_desc">Limpeza e otimização do arquivo CSV original. Filtragem por acurácia, remoção
+                    de duplicatas e ordenação inteligente para máxima performance.</p>
+            </div>
+            <div class="feature-box">
+                <h3 data-i18n="step2_title">2. Analisar Sinais</h3>
+                <p data-i18n="step2_desc">Algoritmo de clustering avançado. Criação de grupos baseados em "centro de
+                    massa" e fusão inteligente de grupos próximos.</p>
+            </div>
+            <div class="feature-box">
+                <h3 data-i18n="step3_title">3. Ajustar Tolerâncias</h3>
+                <p data-i18n="step3_desc">Controle fino sobre o algoritmo. Ajuste as tolerâncias de Frequência, PRI, PW
+                    e Fusão para se adequar perfeitamente aos seus dados.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <div class="img-wrapper">
+                <img src="img/panel.png" alt="Painel de Controle GEANA">
+            </div>
+            <p class="caption" data-i18n="img_panel_caption">Interface de configuração e processamento.</p>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results">
+        <div class="section-header">
+            <h2 data-i18n="results_title">Análise e Relatórios</h2>
+        </div>
+
+        <div class="grid-2">
+            <div>
+                <h3 data-i18n="graph_title">Gráficos Interativos</h3>
+                <p data-i18n="graph_desc">Visualize a distribuição dos sinais com gráficos de dispersão (Frequência vs.
+                    PRI). Identifique padrões rapidamente com codificação de cores por emissor.</p>
+
+                <h3 data-i18n="table_title" style="margin-top: 20px;">Tabelas Consolidadas</h3>
+                <p data-i18n="table_desc">Acesse um resumo completo das características de cada emissor (Freq, PRI, PW,
+                    Amplitude). Exporte os dados processados para Excel com um clique.</p>
+            </div>
+            <div>
+                <div class="img-wrapper">
+                    <img src="img/graph.png" alt="Gráfico de Análise">
+                </div>
+                <p class="caption" data-i18n="img_graph_caption">Visualização gráfica dos sinais processados.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map">
+        <div class="section-header">
+            <h2 data-i18n="map_title">Visualização Geoespacial</h2>
+        </div>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;" data-i18n="map_desc">O sistema projeta as
+            informações processadas em um mapa tático, exibindo a localização estimada dos emissores e objetos de
+            cenário para uma compreensão geográfica completa.</p>
+
+        <div class="grid-2">
+            <div class="img-wrapper">
+                <img src="img/map.png" alt="Mapa Tático">
+            </div>
+            <div class="img-wrapper">
+                <img src="img/scenario.png" alt="Objetos de Cenário">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://mabesi.github.io/apps/donate.html" target="_blank" class="footer-link">
+                <span class="footer-link-icon">❤️</span>
+                <span>Apoiar</span>
+            </a>
+            <a href="mailto:mabesiapps@gmail.com" class="footer-link">
+                <span class="footer-link-icon">📧</span>
+                <span>Contato</span>
+            </a>
+        </div>
+        <p class="footer-text">
+            Feito com ❤️ por <a href="https://mabesi.github.io/apps" target="_blank" class="footer-highlight">Mabesi
+                Apps</a>
+        </p>
+        <p class="footer-text" style="font-size: 0.85rem;">
+            © 2025 GEANA. Internal project. Not licensed for public use.
+        </p>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                nav_home: "Início",
+                nav_about: "Sobre",
+                nav_process: "Fluxo",
+                nav_results: "Resultados",
+                nav_map: "Mapa",
+                title: "GE Analyzer",
+                subtitle: "Sistema Avançado de Análise de Sinais de Guerra Eletrônica",
+                about_title: "O que é o GEANA?",
+                about_text_1: "O GEANA (Analisador de Sinais de Guerra Eletrônica) é uma ferramenta web de alta performance projetada para processar grandes volumes de dados de sinais de radar. Seu principal objetivo é identificar e agrupar sinais semelhantes em \"emissores\" distintos, permitindo uma análise detalhada de suas características e comportamento tático.",
+                about_text_2: "Com uma interface intuitiva, o sistema simplifica o fluxo de trabalho em três etapas essenciais: pré-processamento de dados brutos, parametrização da análise e visualização estratégica dos resultados.",
+                process_title: "Fluxo de Trabalho",
+                step1_title: "1. Reduzir e Ordenar",
+                step1_desc: "Limpeza e otimização do arquivo CSV original. Filtragem por acurácia, remoção de duplicatas e ordenação inteligente para máxima performance.",
+                step2_title: "2. Analisar Sinais",
+                step2_desc: "Algoritmo de clustering avançado. Criação de grupos baseados em \"centro de massa\" e fusão inteligente de grupos próximos.",
+                step3_title: "3. Ajustar Tolerâncias",
+                step3_desc: "Controle fino sobre o algoritmo. Ajuste as tolerâncias de Frequência, PRI, PW e Fusão para se adequar perfeitamente aos seus dados.",
+                img_panel_caption: "Interface de configuração e processamento.",
+                results_title: "Análise e Relatórios",
+                results_intro: "Após o processamento, o sistema gera visualizações detalhadas e tabelas informativas.",
+                graph_title: "Gráficos Interativos",
+                graph_desc: "Visualize a distribuição dos sinais com gráficos de dispersão (Frequência vs. PRI). Identifique padrões rapidamente com codificação de cores por emissor.",
+                table_title: "Tabelas Consolidadas",
+                table_desc: "Acesse um resumo completo das características de cada emissor (Freq, PRI, PW, Amplitude). Exporte os dados processados para Excel com um clique.",
+                img_graph_caption: "Visualização gráfica dos sinais processados.",
+                map_title: "Visualización Geoespacial",
+                map_desc: "O sistema projeta as informações processadas em um mapa tático, exibindo a localização estimada dos emissores e objetos de cenário para uma compreensão geográfica completa."
+            },
+            en: {
+                nav_home: "Home",
+                nav_about: "About",
+                nav_process: "Workflow",
+                nav_results: "Results",
+                nav_map: "Map",
+                title: "GE Analyzer",
+                subtitle: "Advanced Electronic Warfare Signal Analysis System",
+                about_title: "What is GEANA?",
+                about_text_1: "GEANA (Electronic Warfare Signal Analyzer) is a high-performance web tool designed to process large volumes of radar signal data. Its main objective is to identify and group similar signals into distinct \"emitters\", allowing detailed analysis of their characteristics and tactical behavior.",
+                about_text_2: "With an intuitive interface, the system simplifies the workflow into three essential steps: raw data pre-processing, analysis parameterization, and strategic visualization of results.",
+                process_title: "Workflow",
+                step1_title: "1. Reduce and Sort",
+                step1_desc: "Cleaning and optimization of the original CSV file. Filtering by accuracy, duplicate removal, and intelligent sorting for maximum performance.",
+                step2_title: "2. Analyze Signals",
+                step2_desc: "Advanced clustering algorithm. Creation of groups based on \"center of mass\" and intelligent fusion of close groups.",
+                step3_title: "3. Adjust Tolerances",
+                step3_desc: "Fine control over the algorithm. Adjust Frequency, PRI, PW, and Merge tolerances to perfectly suit your data.",
+                img_panel_caption: "Configuration and processing interface.",
+                results_title: "Analysis and Reports",
+                results_intro: "After processing, the system generates detailed visualizations and informative tables.",
+                graph_title: "Interactive Charts",
+                graph_desc: "Visualize signal distribution with scatter plots (Frequency vs. PRI). Quickly identify patterns with color coding by emitter.",
+                table_title: "Consolidated Tables",
+                table_desc: "Access a complete summary of each emitter's characteristics (Freq, PRI, PW, Amplitude). Export processed data to Excel with one click.",
+                img_graph_caption: "Graphical visualization of processed signals.",
+                map_title: "Geospatial Visualization",
+                map_desc: "The system projects processed information onto a tactical map, displaying the estimated location of emitters and scenario objects for complete geographical understanding."
+            },
+            es: {
+                nav_home: "Inicio",
+                nav_about: "Sobre",
+                nav_process: "Flujo",
+                nav_results: "Resultados",
+                nav_map: "Mapa",
+                title: "GE Analyzer",
+                subtitle: "Sistema Avanzado de Análisis de Señales de Guerra Electrónica",
+                about_title: "¿Qué es GEANA?",
+                about_text_1: "GEANA (Analizador de Señales de Guerra Electrónica) es una herramienta web de alto rendimiento diseñada para procesar grandes volúmenes de datos de señales de radar. Su objetivo principal es identificar y agrupar señales similares en \"emisores\" distintos, permitiendo un análisis detallado de sus características y comportamiento táctico.",
+                about_text_2: "Con una interfaz intuitiva, el sistema simplifica el flujo de trabajo en tres pasos esenciales: preprocesamiento de datos brutos, parametrización del análisis y visualización estratégica de los resultados.",
+                process_title: "Flujo de Trabajo",
+                step1_title: "1. Reducir y Ordenar",
+                step1_desc: "Limpieza y optimización del archivo CSV original. Filtrado por precisión, eliminación de duplicados y ordenación inteligente para el máximo rendimiento.",
+                step2_title: "2. Analizar Señales",
+                step2_desc: "Algoritmo de agrupamiento avanzado. Creación de grupos basados en el \"centro de masa\" y fusión inteligente de grupos cercanos.",
+                step3_title: "3. Ajustar Tolerancias",
+                step3_desc: "Control fino sobre el algoritmo. Ajuste las tolerancias de Frecuencia, PRI, PW y Fusión para adaptarse perfectamente a sus datos.",
+                img_panel_caption: "Interfaz de configuración y procesamiento.",
+                results_title: "Análisis e Informes",
+                results_intro: "Después del procesamiento, el sistema genera visualizaciones detalladas y tablas informativas.",
+                graph_title: "Gráficos Interactivos",
+                graph_desc: "Visualice la distribución de las señales con gráficos de dispersión (Frecuencia vs. PRI). Identifique patrones rápidamente con codificación de colores por emisor.",
+                table_title: "Tablas Consolidadas",
+                table_desc: "Acceda a un resumen completo de las características de cada emisor (Frec, PRI, PW, Amplitud). Exporte los datos procesados a Excel con un clic.",
+                img_graph_caption: "Visualización gráfica de las señales procesadas.",
+                map_title: "Visualización Geoespacial",
+                map_desc: "El sistema proyecta la información procesada en un mapa táctico, mostrando la ubicación estimada de los emisores y objetos de escenario para una comprensión geográfica completa."
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update Text
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`).classList.add('active');
+
+            // Update Html Lang Attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Highlight active section on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section, header');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

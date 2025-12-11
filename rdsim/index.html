@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDSIM 3.0 - Radio & Data Link Simulator</title>
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #004080;
+            --accent-color: #ffcc00;
+            --text-color: #333;
+            --text-light: #666;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        /* --- Floating Menu --- */
+        .floating-menu {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            min-width: 140px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            transform: scale(1.1);
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: block;
+            text-align: right;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-right: 3px solid transparent;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+            background-color: rgba(0, 51, 102, 0.05);
+            border-right: 3px solid var(--primary-color);
+        }
+
+        /* --- Centered Stacked Header --- */
+        header {
+            background-color: var(--white);
+            color: var(--text-color);
+            padding: 40px 20px;
+            position: relative;
+            /* Normal flow */
+            width: 100%;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container img {
+            height: 250px;
+            /* Increased size */
+            width: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin: 0 0 5px 0;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 400;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: #444;
+            text-align: justify;
+        }
+
+        /* --- Cards & Layout --- */
+        .card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-box h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-box p {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .img-wrapper {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            background: #fff;
+        }
+
+        .img-wrapper:hover {
+            transform: scale(1.01);
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .footer-link {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .footer-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: var(--accent-color);
+        }
+
+        .footer-link-icon {
+            font-size: 1.2rem;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 10px;
+            max-width: 600px;
+        }
+
+        .footer-highlight {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-highlight:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .floating-menu {
+                top: auto;
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+                width: 90%;
+                max-width: 400px;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .lang-switcher {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+                border-right: 1px solid #eee;
+                padding-right: 10px;
+                margin-right: 10px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Menu -->
+    <nav class="floating-menu">
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('pt')" title="Português">🇧🇷</button>
+            <button class="lang-btn" onclick="setLanguage('en')" title="English">🇺🇸</button>
+            <button class="lang-btn" onclick="setLanguage('es')" title="Español">🇪🇸</button>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active" data-i18n="nav_home">Início</a>
+            <a href="#about" class="nav-link" data-i18n="nav_about">Sobre</a>
+            <a href="#features" class="nav-link" data-i18n="nav_features">Funcionalidades</a>
+            <a href="#integration" class="nav-link" data-i18n="nav_integration">Integração</a>
+        </div>
+    </nav>
+
+    <!-- Centered Stacked Header -->
+    <header id="home">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="img/logo.jpg" alt="RDSIM Logo">
+            </div>
+            <div class="header-text">
+                <h1 data-i18n="title">RDSIM 3.0</h1>
+                <p class="subtitle" data-i18n="subtitle">Radio & Data Link Simulator</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2 data-i18n="about_title">O que é o RDSIM?</h2>
+        </div>
+        <div class="card">
+            <p data-i18n="about_text_1">Sistema de treinamento de operadores através da simulação de configuração de
+                rádios e comunicações de dados.</p>
+            <p data-i18n="about_text_2">O projeto consiste em um simulador para um painel de controle de rádio M3SR, um
+                painel de controle simplificado de rádio HF e um painel de controle de Data Link associado.</p>
+            <p data-i18n="about_text_3">A aplicação,
+                desenvolvida em uma única página web, visa replicar as funcionalidades, os fluxos operacionais e a
+                interface visual dos equipamentos reais, permitindo treinamento e familiarização dos operadores.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="section-header">
+            <h2 data-i18n="features_title">Funcionalidades Principais</h2>
+        </div>
+
+        <div class="grid-3">
+            <div class="feature-box">
+                <h3 data-i18n="feat1_title">Simulação de Rádio</h3>
+                <p data-i18n="feat1_desc">Interface interativa com display, botões físicos e digitais (softkeys),
+                    teclado numérico e knob para configuração de rádios.</p>
+            </div>
+            <div class="feature-box">
+                <h3 data-i18n="feat2_title">Painel Data Link</h3>
+                <p data-i18n="feat2_desc">Permite configurar, selecionar e ativar o enlace de dados através dos rádios
+                    disponíveis, simulando modos de operação, como os de transição e espera.</p>
+            </div>
+            <div class="feature-box">
+                <h3 data-i18n="feat3_title">Controle e Logs</h3>
+                <p data-i18n="feat3_desc">Gerenciamento de estado físico (ON/OFF) e log de eventos em tempo real,
+                    registrando ações do usuário e eventos do sistema.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <div class="img-wrapper">
+                <img src="img/m3sr.png" alt="Painel de Rádio M3SR">
+            </div>
+            <p class="caption" data-i18n="img_m3sr_caption">Painel de configuração e operação remota dos rádios.
+            </p>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section id="integration">
+        <div class="section-header">
+            <h2 data-i18n="integration_title">Integração do Sistema</h2>
+        </div>
+
+        <div class="grid-2">
+            <div>
+                <h3 data-i18n="int_title">Operação Integrada</h3>
+                <p data-i18n="int_desc_1">Todos os sistemas operam de forma integrada. Para estabelecer o link de dados,
+                    o respectivo rádio deve estar ligado, configurado corretamente e sincronizado.</p>
+
+                <h3 data-i18n="sim_title" style="margin-top: 20px;">Simulação de Falhas</h3>
+                <p data-i18n="sim_desc">O sistema gera, de forma aleatória e configurável, a ocorrência de falhas na
+                    rede de dados, simulando panes em elementos da estrutura de comunicações.</p>
+            </div>
+            <div>
+                <div class="img-wrapper">
+                    <img src="img/dl.png" alt="Painel Data Link">
+                </div>
+                <p class="caption" data-i18n="img_dl_caption">Painel de configuração e operação do Data Link.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <div class="img-wrapper">
+                <img src="img/status.png" alt="Status e Logs">
+            </div>
+            <p class="caption" data-i18n="img_status_caption">Monitoramento de status e logs de eventos do sistema.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://mabesi.github.io/apps/donate.html" target="_blank" class="footer-link">
+                <span class="footer-link-icon">❤️</span>
+                <span>Apoiar</span>
+            </a>
+            <a href="mailto:mabesiapps@gmail.com" class="footer-link">
+                <span class="footer-link-icon">📧</span>
+                <span>Contato</span>
+            </a>
+        </div>
+        <p class="footer-text">
+            Feito com ❤️ por <a href="https://mabesi.github.io/apps" target="_blank" class="footer-highlight">Mabesi
+                Apps</a>
+        </p>
+        <p class="footer-text" style="font-size: 0.85rem;">
+            © 2025 RDSIM. Internal project. Not licensed for public use.
+        </p>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                nav_home: "Início",
+                nav_about: "Sobre",
+                nav_features: "Funcionalidades",
+                nav_integration: "Integração",
+                title: "RDSIM 3.0",
+                subtitle: "Radio & Data Link Simulator",
+                about_title: "O que é o RDSIM?",
+                about_text_1: "Sistema de treinamento de operadores através da simulação de configuração de rádios e comunicações de dados.",
+                about_text_2: "O projeto consiste em um simulador para um painel de controle de rádio M3SR, um painel de controle simplificado de rádio HF e um painel de controle de Data Link associado.",
+                about_text_3: "A aplicação, desenvolvida em uma única página web, visa replicar as funcionalidades, os fluxos operacionais e a interface visual dos equipamentos reais, permitindo treinamento e familiarização dos operadores.",
+                features_title: "Funcionalidades Principais",
+                feat1_title: "Simulação de Rádio",
+                feat1_desc: "Interface interativa com display, botões físicos e digitais (softkeys), teclado numérico e knob para configuração de rádios.",
+                feat2_title: "Painel Data Link",
+                feat2_desc: "Permite configurar, selecionar e ativar o enlace de dados através dos rádios disponíveis, simulando modos de operação, como os de transição e espera.",
+                feat3_title: "Controle e Logs",
+                feat3_desc: "Gerenciamento de estado físico (ON/OFF) e log de eventos em tempo real, registrando ações do usuário e eventos do sistema.",
+                img_m3sr_caption: "Painel de configuração e operação remota dos rádios.",
+                integration_title: "Integração do Sistema",
+                int_title: "Operação Integrada",
+                int_desc_1: "Todos os sistemas operam de forma integrada. Para estabelecer o link de dados, o respectivo rádio deve estar ligado, configurado corretamente e sincronizado.",
+                sim_title: "Simulação de Falhas",
+                sim_desc: "O sistema gera, de forma aleatória e configurável, a ocorrência de falhas na rede de dados, simulando panes em elementos da estrutura de comunicação.",
+                img_dl_caption: "Painel de configuração e operação do Data Link.",
+                img_status_caption: "Monitoramento de status e logs de eventos do sistema."
+            },
+            en: {
+                nav_home: "Home",
+                nav_about: "About",
+                nav_features: "Features",
+                nav_integration: "Integration",
+                title: "RDSIM 3.0",
+                subtitle: "Radio & Data Link Simulator",
+                about_title: "What is RDSIM?",
+                about_text_1: "Operator training system through simulation of radio configuration and data communications.",
+                about_text_2: "The project consists of a simulator for an M3SR radio control panel, a simplified HF radio control panel, and an associated Data Link control panel.",
+                about_text_3: "The application, developed as a single web page, aims to replicate the functionalities, operational flows, and visual interface of real equipment, allowing for operator training and familiarization.",
+                features_title: "Main Features",
+                feat1_title: "Radio Simulation",
+                feat1_desc: "Interactive interface with display, physical and digital buttons (softkeys), numeric keypad, and knob for radio configuration.",
+                feat2_title: "Data Link Panel",
+                feat2_desc: "It allows you to configure, select, and activate the data link through the available radios, simulating operating modes such as transition and standby.",
+                feat3_title: "Control & Logs",
+                feat3_desc: "Physical state management (ON/OFF) and real-time event log, recording user actions and system events.",
+                img_m3sr_caption: "Configuration and remote operation panel for radios.",
+                integration_title: "System Integration",
+                int_title: "Integrated Operation",
+                int_desc_1: "All systems operate in an integrated manner. To establish the data link, the respective radio must be on, correctly configured, and synchronized.",
+                sim_title: "Failure Simulation",
+                sim_desc: "The system randomly and configurably generates network failures, simulating malfunctions in communication infrastructure elements.",
+                img_dl_caption: "Data Link configuration and operation panel.",
+                img_status_caption: "System status monitoring and event logs."
+            },
+            es: {
+                nav_home: "Inicio",
+                nav_about: "Sobre",
+                nav_features: "Funcionalidades",
+                nav_integration: "Integración",
+                title: "RDSIM 3.0",
+                subtitle: "Simulador de Radio y Data Link",
+                about_title: "¿Qué es RDSIM?",
+                about_text_1: "Sistema de entrenamiento de operadores mediante simulación de configuración de radio y comunicaciones de datos.",
+                about_text_2: "El proyecto consiste en un simulador para un panel de control de radio M3SR, un panel de control simplificado de radio HF y un panel de control de Data Link asociado.",
+                about_text_3: "La aplicación, desarrollada en una única página web, tiene como objetivo replicar las funcionalidades, los flujos operativos y la interfaz visual de los equipos reales, permitiendo el entrenamiento y la familiarización de los operadores.",
+                features_title: "Funcionalidades Principales",
+                feat1_title: "Simulación de Radio",
+                feat1_desc: "Interfaz interactiva con pantalla, botones físicos y digitales (softkeys), teclado numérico y perilla para configuración de radios.",
+                feat2_title: "Panel Data Link",
+                feat2_desc: "Permite configurar, seleccionar y activar el enlace de datos a través de los radios disponibles, simulando modos de operación como transición y standby.",
+                feat3_title: "Control y Registros",
+                feat3_desc: "Gestión del estado físico (ON/OFF) y registro de eventos en tiempo real, registrando acciones del usuario y eventos del sistema.",
+                img_m3sr_caption: "Panel de configuración y operación remota de radios.",
+                integration_title: "Integración del Sistema",
+                int_title: "Operación Integrada",
+                int_desc_1: "Todos los sistemas operan de forma integrada. Para establecer el enlace de datos, la radio respectiva debe estar encendida, configurada correctamente y sincronizada.",
+                sim_title: "Simulación de Fallas",
+                sim_desc: "El sistema genera, de forma aleatoria y configurable, la ocurrencia de fallas en la red de datos, simulando averías en elementos de la estructura de comunicación.",
+                img_dl_caption: "Panel de configuración y operación de Data Link.",
+                img_status_caption: "Monitoreo de estado y registros de eventos del sistema."
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update Text
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="setLanguage('${lang}')"]`).classList.add('active');
+
+            // Update Html Lang Attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Highlight active section on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section, header');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
