@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadrimil - Calculadora de Diárias Militares</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Palette adapted for Cadrimil (Soft Dark Theme) */
+            /* Adjusted to be lighter than original dark, but not bright white */
+            --primary-color: #10B981;
+            /* Emerald 500 */
+            --secondary-color: #059669;
+            /* Emerald 600 */
+            --accent-gold: #fbbf24;
+            /* Amber 400 */
+
+            /* Soft Dark Backgrounds */
+            --dark-bg: #1E293B;
+            /* Slate 800 (Lighter than original Slate 900) */
+            --card-bg: #334155;
+            /* Slate 700 (Lighter card) */
+
+            /* Text Colors */
+            --text-light: #F8FAFC;
+            /* Light text */
+            --text-gray: #CBD5E1;
+            /* Slate 300 - lighter gray for readability */
+
+            --success-green: #10B981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centered for main impact */
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .smartphone-mockup {
+            max-width: 380px;
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Subtle green/gold glow */
+            background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 80%;
+            max-width: 500px;
+            /* Safety cap to prevent it from being too huge on very large screens */
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 25px rgba(16, 185, 129, 0.4));
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .lang-flag {
+            font-size: 2rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+        }
+
+        .lang-flag:hover,
+        .lang-flag.active {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.15);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-gray);
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Hero Illustration Removed */
+
+        .store-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .store-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: var(--card-bg);
+            border: 1px solid var(--primary-color);
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .store-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .store-icon {
+            font-size: 1.6rem;
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Banner */
+        .banner-section {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .banner-section img {
+            max-width: 100%;
+            max-height: 600px;
+            width: auto;
+            border-radius: 20px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Simulations / Examples */
+        .simulations-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .simulation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .simulation-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .simulation-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .simulation-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .simulation-icon {
+            font-size: 2rem;
+            padding: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 12px;
+            color: var(--primary-color);
+        }
+
+        .simulation-title h3 {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .simulation-title p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .calc-total {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        /* Screenshots */
+        .screenshots-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .screenshot-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-card:hover {
+            transform: scale(1.03);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Features */
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: left;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem 1.5rem;
+                text-align: center;
+            }
+
+            .hero-right {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .smartphone-mockup {
+                max-width: 280px;
+            }
+
+            .hero-illustration-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="hero-left">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="Cadrimil Logo">
+                <div class="language-switcher">
+                    <span class="lang-flag active" data-lang="pt" title="Português">🇧🇷</span>
+                    <span class="lang-flag" data-lang="en" title="English">🇺🇸</span>
+                    <span class="lang-flag" data-lang="es" title="Español">🇪🇸</span>
+                </div>
+            </div>
+
+            <h1 style="display:none;">Cadrimil</h1>
+            <p class="hero-subtitle" id="hero-subtitle">
+                O jeito mais fácil de calcular e gerenciar suas diárias de viagens administrativas e missões militares.
+                Simples, preciso e baseado na legislação.
+            </p>
+
+            <!-- New Art Replacement Removed -->
+
+            <div class="store-buttons">
+                <a href="#" class="store-button">
+                    <span class="store-icon">🤖</span>
+                    <div>
+                        <div class="store-text-small" style="font-size: 0.75rem; opacity: 0.8;">Disponível no</div>
+                        <div class="store-text-large">Google Play</div>
+                    </div>
+                </a>
+                <a href="#" class="store-button">
+                    <span class="store-icon">🍎</span>
+                    <div>
+                        <div class="store-text-small" style="font-size: 0.75rem; opacity: 0.8;">Baixar na</div>
+                        <div class="store-text-large">App Store</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <img src="img/view_app.png" alt="Cadrimil App" class="smartphone-mockup">
+        </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="banner-section">
+        <img src="img/banner.png" alt="Cadrimil Banner">
+    </section>
+
+    <!-- Funcionalidades / Simulação -->
+    <section class="simulations-section">
+        <h2 class="section-title" id="features-main-title">Simule os Custos da Missão</h2>
+        <div class="simulation-grid">
+
+            <div class="simulation-card">
+                <div class="simulation-header">
+                    <div class="simulation-icon">🚁</div>
+                    <div class="simulation-title">
+                        <h3 id="sim1-title">Exercício Operacional</h3>
+                        <p id="sim1-desc">12 dias • Manaus - AM</p>
+                    </div>
+                </div>
+                <div class="calc-row">
+                    <span id="label-sim1-row1">02 Oficiais Superiores</span>
+                    <span>R$ 11.730,00</span>
+                </div>
+                <div class="calc-row">
+                    <span id="label-sim1-row2">04 Oficiais</span>
+                    <span>R$ 19.550,00</span>
+                </div>
+                <div class="calc-row">
+                    <span id="label-sim1-row3">06 Suboficiais/Sargentos</span>
+                    <span>R$ 29.325,00</span>
+                </div>
+                <div class="calc-total">
+                    <span class="label-total">Total Estimado</span>
+                    <span>R$ 60.605,00</span>
+                </div>
+            </div>
+
+            <div class="simulation-card">
+                <div class="simulation-header">
+                    <div class="simulation-icon">📚</div>
+                    <div class="simulation-title">
+                        <h3 id="sim2-title">Curso / Estágio</h3>
+                        <p id="sim2-desc">5 dias • Belém - PA</p>
+                    </div>
+                </div>
+                <div class="calc-row">
+                    <span id="label-sim2-row1">02 Oficiais</span>
+                    <span>R$ 3.420,00</span>
+                </div>
+                <div class="calc-row">
+                    <span id="label-sim2-row2">02 Suboficiais/Sargentos</span>
+                    <span>R$ 3.420,00</span>
+                </div>
+                <div class="calc-row">
+                    <span>-</span>
+                    <span>-</span>
+                </div>
+                <div class="calc-total">
+                    <span class="label-total">Total Estimado</span>
+                    <span>R$ 6.840,00</span>
+                </div>
+            </div>
+
+            <div class="simulation-card">
+                <div class="simulation-header">
+                    <div class="simulation-icon">📄</div>
+                    <div class="simulation-title">
+                        <h3 id="sim3-title">Relatório PDF</h3>
+                        <p id="sim3-desc">Exportação Automática</p>
+                    </div>
+                </div>
+                <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6;" id="sim3-text">
+                    Gere um PDF completo com todos os detalhes da missão para prestação de contas.
+                    Inclui separação de trechos, valores unitários e totais.
+                </p>
+                <div style="margin-top: 1rem; text-align: center;">
+                    <span style="color: var(--secondary-color); font-size: 3rem;">📄</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section>
+        <h2 class="section-title" id="screenshots-title">Telas do App</h2>
+        <div class="screenshots-container">
+            <div class="screenshot-card"><img src="img/01_introducao.png" alt="Introdução"></div>
+            <div class="screenshot-card"><img src="img/02_calculo.png" alt="Cálculo"></div>
+            <div class="screenshot-card"><img src="img/03_missoes.png" alt="Missões"></div>
+            <div class="screenshot-card"><img src="img/04_tabelas.png" alt="Tabelas"></div>
+        </div>
+    </section>
+
+    <!-- Features List -->
+    <section>
+        <h2 class="section-title" id="resources-title">Recursos Principais</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧮</div>
+                <div class="feature-title" id="feat1-title">Cálculo Preciso</div>
+                <div class="feature-desc" id="feat1-desc">Baseado nas tabelas e legislações vigentes. Atualizado
+                    constantemente.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📂</div>
+                <div class="feature-title" id="feat2-title">Gerenciador de Missões</div>
+                <div class="feature-desc" id="feat2-desc">Organize e salve suas simulações. Mantenha um histórico fácil
+                    de acessar.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <div class="feature-title" id="feat3-title">Legislação Integrada</div>
+                <div class="feature-desc" id="feat3-desc">Acesso rápido aos decretos e normativas que regulam as
+                    diárias.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <div class="feature-title" id="feat4-title">Importação e Exportação</div>
+                <div class="feature-desc" id="feat4-desc">Faça backup de suas missões ou compartilhe com colegas via
+                    arquivo .cmil ou JSON.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/mabesi/cadrimil" target="_blank" class="footer-link">
+                <!-- GitHub Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                <span>GitHub</span>
+            </a>
+            <a href="https://mabesi.github.io/apps/donate.html" target="_blank" class="footer-link">
+                <span>❤️</span> <span>Apoiar</span>
+            </a>
+            <a href="mailto:mabesiapps@gmail.com" class="footer-link">
+                <span>📧</span> <span>Contato</span>
+            </a>
+            <a href="privacy_policy.html" class="footer-link">
+                <span>🔒</span> <span id="privacy-link">Política de Privacidade</span>
+            </a>
+        </div>
+        <p style="color: var(--text-gray); font-size: 0.9rem;">
+            © 2025 Cadrimil. <span id="copyright-text">Todos os direitos reservados.</span>
+        </p>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                heroSubtitle: "O jeito mais fácil de calcular e gerenciar suas diárias de viagens administrativas e missões militares. Simples, preciso e baseado na legislação.",
+                storeSmall1: "Disponível no",
+                storeLarge1: "Google Play",
+                storeSmall2: "Baixar na",
+                storeLarge2: "App Store",
+                featuresMainTitle: "Simule os Custos da Missão",
+                sim1Title: "Exercício Operacional",
+                sim1Desc: "12 dias • Manaus - AM",
+                sim1Row1: "02 Oficiais Superiores",
+                sim1Row2: "04 Oficiais",
+                sim1Row3: "06 Suboficiais/Sargentos",
+                sim2Title: "Curso / Estágio",
+                sim2Desc: "5 dias • Belém - PA",
+                sim2Row1: "02 Oficiais",
+                sim2Row2: "02 Suboficiais/Sargentos",
+                sim3Title: "Relatório PDF",
+                sim3Desc: "Exportação Automática",
+                sim3Text: "Gere um PDF completo com todos os detalhes da missão para prestação de contas. Inclui separação de trechos, valores unitários e totais.",
+                screenshotsTitle: "Telas do App",
+                resourcesTitle: "Recursos Principais",
+                feat1Title: "Cálculo Preciso",
+                feat1Desc: "Baseado nas tabelas e legislações vigentes. Atualizado constantemente.",
+                feat2Title: "Gerenciador de Missões",
+                feat2Desc: "Organize e salve suas simulações. Mantenha um histórico fácil de acessar.",
+                feat3Title: "Legislação Integrada",
+                feat3Desc: "Acesso rápido aos decretos e normativas que regulam as diárias.",
+                feat4Title: "Importação e Exportação",
+                feat4Desc: "Faça backup de suas missões ou compartilhe com colegas via arquivo .cmil ou JSON.",
+                contactLink: "Contato",
+                privacyLink: "Política de Privacidade",
+                copyrightText: "Todos os direitos reservados.",
+                labelTotal: "Total Estimado"
+            },
+            en: {
+                heroSubtitle: "The easiest way to calculate and manage your daily allowances for administrative travel and military missions. Simple, accurate and legislation-based.",
+                storeSmall1: "Get it on",
+                storeLarge1: "Google Play",
+                storeSmall2: "Download on the",
+                storeLarge2: "App Store",
+                featuresMainTitle: "Simulate Mission Costs",
+                sim1Title: "Operational Exercise",
+                sim1Desc: "12 days • Manaus - AM",
+                sim1Row1: "02 Senior Officers",
+                sim1Row2: "04 Officers",
+                sim1Row3: "06 Sub-officers/Sergeants",
+                sim2Title: "Course / Internship",
+                sim2Desc: "5 days • Belém - PA",
+                sim2Row1: "02 Officers",
+                sim2Row2: "02 Sub-officers/Sergeants",
+                sim3Title: "PDF Report",
+                sim3Desc: "Automatic Export",
+                sim3Text: "Generate a complete PDF with all mission details for accountability. Includes separation of legs, unit values and totals.",
+                screenshotsTitle: "App Screens",
+                resourcesTitle: "Main Features",
+                feat1Title: "Accurate Calculation",
+                feat1Desc: "Based on current tables and legislation. Constantly updated.",
+                feat2Title: "Mission Manager",
+                feat2Desc: "Organize and save your simulations. Keep an easy-to-access history.",
+                feat3Title: "Integrated Legislation",
+                feat3Desc: "Quick access to decrees and regulations governing daily allowances.",
+                feat4Title: "Import & Export",
+                feat4Desc: "Backup your missions or share with colleagues via .cmil file or JSON.",
+                contactLink: "Contact",
+                privacyLink: "Privacy Policy",
+                copyrightText: "All rights reserved.",
+                labelTotal: "Estimated Total"
+            },
+            es: {
+                heroSubtitle: "La forma más fácil de calcular y gestionar sus viáticos para viajes administrativos y misiones militares. Simple, preciso y basado en la legislación.",
+                storeSmall1: "Disponible en",
+                storeLarge1: "Google Play",
+                storeSmall2: "Consíguelo en el",
+                storeLarge2: "App Store",
+                featuresMainTitle: "Simule los Costos de la Misión",
+                sim1Title: "Ejercicio Operacional",
+                sim1Desc: "12 días • Manaus - AM",
+                sim1Row1: "02 Oficiales Superiores",
+                sim1Row2: "04 Oficiales",
+                sim1Row3: "06 Suboficiales/Sargentos",
+                sim2Title: "Curso / Pasantía",
+                sim2Desc: "5 días • Belém - PA",
+                sim2Row1: "02 Oficiales",
+                sim2Row2: "02 Suboficiales/Sargentos",
+                sim3Title: "Informe PDF",
+                sim3Desc: "Exportación Automática",
+                sim3Text: "Genere un PDF completo con todos los detalles de la misión para la rendición de cuentas. Incluye separación de tramos, valores unitarios y totales.",
+                screenshotsTitle: "Pantallas de la App",
+                resourcesTitle: "Características Principales",
+                feat1Title: "Cálculo Preciso",
+                feat1Desc: "Basado en tablas y legislación vigentes. Constantemente actualizado.",
+                feat2Title: "Gestor de Misiones",
+                feat2Desc: "Organice y guarde sus simulaciones. Mantenga un historial de fácil acceso.",
+                feat3Title: "Legislación Integrada",
+                feat3Desc: "Acceso rápido a decretos y normativas que regulan los viáticos.",
+                feat4Title: "Importación y Exportación",
+                feat4Desc: "Haga una copia de seguridad de sus misiones o compártalas con colegas mediante archivo .cmil o JSON.",
+                contactLink: "Contacto",
+                privacyLink: "Política de Privacidad",
+                copyrightText: "Todos los derechos reservados.",
+                labelTotal: "Total Estimado"
+            }
+        };
+
+        function applyTranslations(lang) {
+            const t = translations[lang];
+
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            document.querySelectorAll('.store-text-small')[0].textContent = t.storeSmall1;
+            document.querySelectorAll('.store-text-large')[0].textContent = t.storeLarge1;
+            document.querySelectorAll('.store-text-small')[1].textContent = t.storeSmall2;
+            document.querySelectorAll('.store-text-large')[1].textContent = t.storeLarge2;
+
+            document.getElementById('features-main-title').textContent = t.featuresMainTitle;
+
+            document.getElementById('sim1-title').textContent = t.sim1Title;
+            document.getElementById('sim1-desc').textContent = t.sim1Desc;
+            if (document.getElementById('label-sim1-row1')) document.getElementById('label-sim1-row1').textContent = t.sim1Row1;
+            if (document.getElementById('label-sim1-row2')) document.getElementById('label-sim1-row2').textContent = t.sim1Row2;
+            if (document.getElementById('label-sim1-row3')) document.getElementById('label-sim1-row3').textContent = t.sim1Row3;
+
+            document.getElementById('sim2-title').textContent = t.sim2Title;
+            document.getElementById('sim2-desc').textContent = t.sim2Desc;
+            if (document.getElementById('label-sim2-row1')) document.getElementById('label-sim2-row1').textContent = t.sim2Row1;
+            if (document.getElementById('label-sim2-row2')) document.getElementById('label-sim2-row2').textContent = t.sim2Row2;
+
+            document.getElementById('sim3-title').textContent = t.sim3Title;
+            document.getElementById('sim3-desc').textContent = t.sim3Desc;
+            document.getElementById('sim3-text').textContent = t.sim3Text;
+
+            document.getElementById('screenshots-title').textContent = t.screenshotsTitle;
+            document.getElementById('resources-title').textContent = t.resourcesTitle;
+
+            document.getElementById('feat1-title').textContent = t.feat1Title;
+            document.getElementById('feat1-desc').textContent = t.feat1Desc;
+            document.getElementById('feat2-title').textContent = t.feat2Title;
+            document.getElementById('feat2-desc').textContent = t.feat2Desc;
+            document.getElementById('feat3-title').textContent = t.feat3Title;
+            document.getElementById('feat3-desc').textContent = t.feat3Desc;
+            document.getElementById('feat4-title').textContent = t.feat4Title;
+            document.getElementById('feat4-desc').textContent = t.feat4Desc;
+
+            if (document.getElementById('contact-link')) document.getElementById('contact-link').textContent = t.contactLink;
+            if (document.getElementById('privacy-link')) document.getElementById('privacy-link').textContent = t.privacyLink;
+            if (document.getElementById('copyright-text')) document.getElementById('copyright-text').textContent = t.copyrightText;
+
+            document.querySelectorAll('.calc-total span:first-child').forEach(el => el.textContent = t.labelTotal);
+
+            // Flags
+            document.querySelectorAll('.lang-flag').forEach(flag => {
+                flag.classList.remove('active');
+                if (flag.dataset.lang === lang) flag.classList.add('active');
+            });
+
+            localStorage.setItem('cadrimil-lang', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cadrimil-lang') || 'pt';
+            applyTranslations(savedLang);
+
+            document.querySelectorAll('.lang-flag').forEach(flag => {
+                flag.addEventListener('click', () => applyTranslations(flag.dataset.lang));
+            });
+        });
+    </script>
+</body>
+
+</html>
