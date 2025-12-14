@@ -88,9 +88,9 @@
       "categoryId": "tools",
       "name": "TS Blockchain",
       "description": {
-        "pt": "TS Blockchain é um protótipo de um sistema de blockchain construído com Node.js e TypeScript. Implementa os conceitos fundamentais de uma blockchain, incluindo a estrutura do bloco, a validação da cadeia e um algoritmo de consenso Proof of Work (PoW).",
-        "en": "TS Blockchain is a prototype of a blockchain system built with Node.js and TypeScript. It implements the core concepts of a blockchain, including block structure, chain validation, and a Proof of Work (PoW) consensus algorithm.",
-        "es": "TS Blockchain es un prototipo de un sistema de cadena de bloques construido con Node.js y TypeScript. Implementa los conceptos fundamentais de una cadena de bloques, incluyendo la estructura del bloque, la validación de la cadena y un algoritmo de consenso de Proof of Work (PoW)."
+        "pt": "Protótipo de blockchain em Node.js e TypeScript com validação de cadeia e algoritmo Proof of Work.",
+        "en": "Blockchain prototype built with Node.js and TypeScript featuring chain validation and Proof of Work algorithm.",
+        "es": "Prototipo de blockchain en Node.js y TypeScript con validación de cadena y algoritmo Proof of Work."
       },
       "image": "TS BLOCKCHAIN",
       "links": {
@@ -122,11 +122,11 @@
     {
       "id": "react-components",
       "categoryId": "tools",
-      "name": "TS Blockchain",
+      "name": "React Components",
       "description": {
-        "pt": "Mabesi React Components é uma biblioteca de interface de usuário abrangente, criada para acelerar o desenvolvimento web com React. Ela se concentra em fornecer um conjunto de componentes de alta qualidade, personalizáveis ​​e acessíveis, que se integram perfeitamente a aplicações modernas.",
-        "en": "Mabesi React Components is a comprehensive UI library built to accelerate web development with React. It focuses on providing a set of high-quality, customizable, and accessible components that fit seamlessly into modern applications.",
-        "es": "Mabesi React Components es una completa biblioteca de interfaz de usuario (UI) diseñada para acelerar el desarrollo web con React. Se centra en proporcionar un conjunto de componentes de alta calidad, personalizables y accesibles que se integran a la perfección en aplicaciones modernas."
+        "pt": "Biblioteca React com componentes de UI personalizáveis e acessíveis para acelerar o desenvolvimento web moderno.",
+        "en": "React library with customizable and accessible UI components to accelerate modern web development.",
+        "es": "Biblioteca React con componentes UI personalizables y accesibles para acelerar el desarrollo web moderno."
       },
       "image": "REACT COMPONENTS",
       "links": {
