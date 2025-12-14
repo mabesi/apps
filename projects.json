@@ -85,20 +85,20 @@
       }
     },
     {
-      "id": "ts-blockchain",
-      "featured": false,
+      "id": "react-components",
+      "featured": true,
       "categoryId": "tools",
-      "name": "TS Blockchain",
+      "name": "React Components",
       "description": {
-        "pt": "Protótipo de sistema blockchain desenvolvido com Node.js e TypeScript, implementando estrutura de blocos, validação de cadeia e algoritmo de consenso Proof of Work (PoW).",
-        "en": "Blockchain system prototype built with Node.js and TypeScript, implementing block structure, chain validation, and Proof of Work (PoW) consensus algorithm.",
-        "es": "Prototipo de sistema blockchain desarrollado con Node.js y TypeScript, implementando estructura de bloques, validación de cadena y algoritmo de consenso Proof of Work (PoW)."
+        "pt": "Biblioteca abrangente de componentes React de alta qualidade, personalizáveis e acessíveis, desenvolvida para acelerar o desenvolvimento de aplicações web modernas.",
+        "en": "Comprehensive React component library with high-quality, customizable, and accessible components designed to accelerate modern web application development.",
+        "es": "Biblioteca completa de componentes React de alta calidad, personalizables y accesibles, diseñada para acelerar el desarrollo de aplicaciones web modernas."
       },
-      "image": "TS BLOCKCHAIN",
+      "image": "REACT COMPONENTS",
       "links": {
-        "github": "ts-blockchain",
-        "npm": null,
-        "website": null,
+        "github": "react-components",
+        "npm": "@mabesi/react-components",
+        "website": "https://mabesi.github.io/react-components/",
         "playstore": null,
         "appstore": null
       }
@@ -123,40 +123,21 @@
       }
     },
     {
-      "id": "react-components",
+      "id": "ts-blockchain",
       "featured": true,
       "categoryId": "tools",
-      "name": "React Components",
+      "name": "TS Blockchain",
       "description": {
-        "pt": "Biblioteca abrangente de componentes React de alta qualidade, personalizáveis e acessíveis, desenvolvida para acelerar o desenvolvimento de aplicações web modernas.",
-        "en": "Comprehensive React component library with high-quality, customizable, and accessible components designed to accelerate modern web application development.",
-        "es": "Biblioteca completa de componentes React de alta calidad, personalizables y accesibles, diseñada para acelerar el desarrollo de aplicaciones web modernas."
+        "pt": "Protótipo de sistema blockchain desenvolvido com Node.js e TypeScript, implementando estrutura de blocos, validação de cadeia e algoritmo de consenso Proof of Work (PoW).",
+        "en": "Blockchain system prototype built with Node.js and TypeScript, implementing block structure, chain validation, and Proof of Work (PoW) consensus algorithm.",
+        "es": "Prototipo de sistema blockchain desarrollado con Node.js y TypeScript, implementando estructura de bloques, validación de cadena y algoritmo de consenso Proof of Work (PoW)."
       },
-      "image": "REACT COMPONENTS",
+      "image": "TS BLOCKCHAIN",
       "links": {
-        "github": "react-components",
-        "npm": "@mabesi/react-components",
-        "website": "https://mabesi.github.io/react-components/",
-        "playstore": null,
-        "appstore": null
-      }
-    },
-    {
-      "id": "cadrimil",
-      "featured": false,
-      "categoryId": "utilities",
-      "name": "Cadrimil",
-      "description": {
-        "pt": "Calculadora de diárias militares para missões e deslocamentos.",
-        "en": "Military per diem calculator for missions and deployments.",
-        "es": "Calculadora de dietas militares para misiones y desplazamientos."
-      },
-      "image": "CADRIMIL",
-      "links": {
-        "github": "cadrimil",
+        "github": "ts-blockchain",
         "npm": null,
-        "website": "cadrimil",
-        "playstore": "cadrimil",
+        "website": null,
+        "playstore": null,
         "appstore": null
       }
     },
@@ -180,8 +161,27 @@
       }
     },
     {
+      "id": "cadrimil",
+      "featured": false,
+      "categoryId": "utilities",
+      "name": "Cadrimil",
+      "description": {
+        "pt": "Calculadora de diárias militares para missões e deslocamentos.",
+        "en": "Military per diem calculator for missions and deployments.",
+        "es": "Calculadora de dietas militares para misiones y desplazamientos."
+      },
+      "image": "CADRIMIL",
+      "links": {
+        "github": "cadrimil",
+        "npm": null,
+        "website": "cadrimil",
+        "playstore": "cadrimil",
+        "appstore": null
+      }
+    },
+    {
       "id": "rdsim",
-      "featured": true,
+      "featured": false,
       "categoryId": "tools",
       "name": "RD Simulator",
       "description": {
