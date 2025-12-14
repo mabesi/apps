@@ -1,6 +1,6 @@
 <div align="center">
 
-![Mabesi Apps Logo](img/mabesiapps_logo.png)
+<img src="img/mabesiapps_logo.png" alt="Mabesi Apps Logo" width="200">
 
 # Mabesi Apps
 
