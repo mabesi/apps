@@ -1,6 +1,7 @@
 {
   "linkPatterns": {
     "github": "https://github.com/mabesi/",
+    "npm": "https://www.npmjs.com/package/",
     "website": "https://apps.mabesi.dev/",
     "playstore": "https://play.google.com/store/apps/details?id=com.mabesi.",
     "appstore": "https://apps.apple.com/app/"
@@ -76,6 +77,7 @@
       "image": "CERBERUS",
       "links": {
         "github": "cerberus",
+        "npm": null,
         "website": "cerberus",
         "playstore": null,
         "appstore": null
@@ -93,6 +95,7 @@
       "image": "TS BLOCKCHAIN",
       "links": {
         "github": "ts-blockchain",
+        "npm": null,
         "website": null,
         "playstore": null,
         "appstore": null
@@ -110,7 +113,26 @@
       "image": "WEBCLASS",
       "links": {
         "github": "webclass",
+        "npm": null,
         "website": "webclass",
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "react-components",
+      "categoryId": "tools",
+      "name": "TS Blockchain",
+      "description": {
+        "pt": "Mabesi React Components é uma biblioteca de interface de usuário abrangente, criada para acelerar o desenvolvimento web com React. Ela se concentra em fornecer um conjunto de componentes de alta qualidade, personalizáveis ​​e acessíveis, que se integram perfeitamente a aplicações modernas.",
+        "en": "Mabesi React Components is a comprehensive UI library built to accelerate web development with React. It focuses on providing a set of high-quality, customizable, and accessible components that fit seamlessly into modern applications.",
+        "es": "Mabesi React Components es una completa biblioteca de interfaz de usuario (UI) diseñada para acelerar el desarrollo web con React. Se centra en proporcionar un conjunto de componentes de alta calidad, personalizables y accesibles que se integran a la perfección en aplicaciones modernas."
+      },
+      "image": "REACT COMPONENTS",
+      "links": {
+        "github": "react-components",
+        "npm": "@mabesi/react-components",
+        "website": "https://mabesi.github.io/react-components/",
         "playstore": null,
         "appstore": null
       }
@@ -127,6 +149,7 @@
       "image": "CADRIMIL",
       "links": {
         "github": "cadrimil",
+        "npm": null,
         "website": "cadrimil",
         "playstore": "cadrimil",
         "appstore": null
@@ -144,6 +167,7 @@
       "image": "MYSPLIT",
       "links": {
         "github": "mysplit",
+        "npm": null,
         "website": "mysplit",
         "playstore": "mysplit",
         "appstore": null
@@ -161,6 +185,7 @@
       "image": "RDSIM",
       "links": {
         "github": null,
+        "npm": null,
         "website": "rdsim",
         "playstore": null,
         "appstore": null
@@ -178,6 +203,7 @@
       "image": "GEANA",
       "links": {
         "github": null,
+        "npm": null,
         "website": "geana",
         "playstore": null,
         "appstore": null

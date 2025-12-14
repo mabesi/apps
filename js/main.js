@@ -4,6 +4,7 @@ const icons = {
     web: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 16.057v-3.057h2.994c-.059 1.143-.212 2.24-.456 3.279-.823-.12-1.674-.188-2.538-.222zm1.957 2.162c-.499 1.33-1.159 2.497-1.957 3.456v-3.62c.666.028 1.319.081 1.957.164zm-1.957-7.219v-3.015c.868-.034 1.721-.103 2.548-.224.238 1.027.389 2.111.446 3.239h-2.994zm0-5.014v-3.661c.806.969 1.471 2.15 1.971 3.496-.642.084-1.3.137-1.971.165zm2.703-3.267c1.237.496 2.354 1.228 3.29 2.146-.642.234-1.311.442-2.019.607-.344-.992-.775-1.91-1.271-2.753zm-7.241 13.56c-.244-1.039-.398-2.136-.456-3.279h2.994v3.057c-.865.034-1.714.102-2.538.222zm2.538 1.776v3.62c-.798-.959-1.458-2.126-1.957-3.456.638-.083 1.291-.136 1.957-.164zm-2.994-7.055c.057-1.128.207-2.212.446-3.239.827.121 1.68.19 2.548.224v3.015h-2.994zm1.024-5.179c.5-1.346 1.165-2.527 1.97-3.496v3.661c-.671-.028-1.329-.081-1.97-.165zm-2.005-.35c-.708-.165-1.377-.373-2.018-.607.937-.918 2.053-1.65 3.29-2.146-.496.844-.927 1.762-1.272 2.753zm-.549 1.918c-.264 1.151-.434 2.36-.492 3.611h-3.933c.165-1.658.739-3.197 1.617-4.518.88.361 1.816.67 2.808.907zm.009 9.262c-.988.236-1.92.542-2.797.9-.89-1.328-1.471-2.879-1.637-4.551h3.934c.058 1.265.231 2.488.5 3.651zm.553 1.917c.342.976.768 1.881 1.257 2.712-1.223-.49-2.326-1.211-3.256-2.115.636-.229 1.299-.435 1.999-.597zm9.924 0c.7.163 1.362.367 1.999.597-.931.903-2.034 1.625-3.257 2.116.489-.832.915-1.737 1.258-2.713zm.553-1.917c.27-1.163.442-2.386.501-3.651h3.934c-.167 1.672-.748 3.223-1.638 4.551-.877-.358-1.81-.664-2.797-.9zm.501-5.651c-.058-1.251-.229-2.46-.492-3.611.992-.237 1.929-.546 2.809-.907.877 1.321 1.451 2.86 1.616 4.518h-3.933z"/></svg>',
     playstore: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#34A853" d="M3.609 1.814L13.792 12 3.609 22.186a1.966 1.966 0 01-.071-1.493V3.307c-.007-.522.154-1.032.428-1.493z"/><path fill="#FBBC04" d="M3.609 22.186L13.792 12l4.393 4.393-13.637 7.88a1.966 1.966 0 01-.939-.087z"/><path fill="#EA4335" d="M18.185 16.393l3.91-2.256c.538-.311.905-.885.905-1.537 0-.652-.367-1.226-.905-1.537l-3.91-2.256L13.792 12l4.393 4.393z"/><path fill="#4285F4" d="M3.609 1.814l13.637 7.88-4.454 2.306L3.609 1.814z"/></svg>',
     appstore: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>',
+    npm: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#CB3837" d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z"/></svg>',
     heart: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>',
     email: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>',
     home: '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>'
@@ -23,7 +24,7 @@ const translations = {
         aboutCommunityText: "Desenvolvido com feedback dos usuários e mantido pela comunidade.",
         aboutSupport: "Suporte",
         aboutSupportText: "Manutenção contínua, atualizações regulares e suporte dedicado.",
-        projectsTitle: "Nossos Projetos",
+        projectsTitle: "Galeria de Projetos",
         filterAll: "Todos",
         filterFinance: "Finanças",
         filterUtilities: "Utilidades",
@@ -39,6 +40,7 @@ const translations = {
         footerBy: "por",
         footerLicense: "Licenciado sob",
         linkGithub: "Código no GitHub",
+        linkNpm: "Pacote no NPM",
         linkWebsite: "Visitar Site",
         linkPlayStore: "Baixar na Play Store",
         linkAppStore: "Baixar na App Store"
@@ -55,7 +57,7 @@ const translations = {
         aboutCommunityText: "Developed with user feedback and maintained by the community.",
         aboutSupport: "Support",
         aboutSupportText: "Continuous maintenance, regular updates, and dedicated support.",
-        projectsTitle: "Our Projects",
+        projectsTitle: "Project Gallery",
         filterAll: "All",
         filterFinance: "Finance",
         filterUtilities: "Utilities",
@@ -71,6 +73,7 @@ const translations = {
         footerBy: "by",
         footerLicense: "Licensed under",
         linkGithub: "Code on GitHub",
+        linkNpm: "Package on NPM",
         linkWebsite: "Visit Website",
         linkPlayStore: "Download on Play Store",
         linkAppStore: "Download on App Store"
@@ -87,7 +90,7 @@ const translations = {
         aboutCommunityText: "Desarrollado con comentarios de usuarios y mantenido por la comunidad.",
         aboutSupport: "Soporte",
         aboutSupportText: "Mantenimiento continuo, actualizaciones regulares y soporte dedicado.",
-        projectsTitle: "Nuestros Proyectos",
+        projectsTitle: "Galería de Proyectos",
         filterAll: "Todos",
         filterFinance: "Finanzas",
         filterUtilities: "Utilidades",
@@ -103,6 +106,7 @@ const translations = {
         footerBy: "por",
         footerLicense: "Licenciado bajo",
         linkGithub: "Código en GitHub",
+        linkNpm: "Paquete en NPM",
         linkWebsite: "Visitar Sitio",
         linkPlayStore: "Descargar en Play Store",
         linkAppStore: "Descargar en App Store"
@@ -231,12 +235,21 @@ function createProjectCard(project) {
     const categoryName = categoryInfo?.name[currentLang] || categoryInfo?.name.pt || '';
     const categoryIcon = categoryInfo?.icon || '';
 
-    // Build complete URLs from patterns
+    // Build complete URLs from patterns or use complete URLs if provided
+    const buildLink = (linkValue, patternKey) => {
+        if (!linkValue) return null;
+        // If link starts with http, use it as is (complete URL)
+        if (linkValue.startsWith('http')) return linkValue;
+        // Otherwise, use the pattern
+        return linkPatterns[patternKey] + linkValue;
+    };
+
     const links = {
-        github: project.links.github ? linkPatterns.github + project.links.github : null,
-        website: project.links.website ? linkPatterns.website + project.links.website : null,
-        playstore: project.links.playstore ? linkPatterns.playstore + project.links.playstore : null,
-        appstore: project.links.appstore ? linkPatterns.appstore + project.links.appstore : null
+        github: buildLink(project.links.github, 'github'),
+        npm: buildLink(project.links.npm, 'npm'),
+        website: buildLink(project.links.website, 'website'),
+        playstore: buildLink(project.links.playstore, 'playstore'),
+        appstore: buildLink(project.links.appstore, 'appstore')
     };
 
     card.innerHTML = `
@@ -252,6 +265,7 @@ function createProjectCard(project) {
             <p class="project-description">${description}</p>
             <div class="project-links">
                 ${createIconLink(links.github, 'github', 'linkGithub')}
+                ${createIconLink(links.npm, 'npm', 'linkNpm')}
                 ${createIconLink(links.website, 'web', 'linkWebsite')}
                 ${createIconLink(links.playstore, 'playstore', 'linkPlayStore')}
                 ${createIconLink(links.appstore, 'appstore', 'linkAppStore')}
