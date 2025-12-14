@@ -67,6 +67,7 @@
   "projects": [
     {
       "id": "cerberus",
+      "featured": true,
       "categoryId": "finance",
       "name": "Cerberus Dex Bot",
       "description": {
@@ -85,6 +86,7 @@
     },
     {
       "id": "ts-blockchain",
+      "featured": false,
       "categoryId": "tools",
       "name": "TS Blockchain",
       "description": {
@@ -103,6 +105,7 @@
     },
     {
       "id": "webclass",
+      "featured": true,
       "categoryId": "education",
       "name": "WebClass",
       "description": {
@@ -121,6 +124,7 @@
     },
     {
       "id": "react-components",
+      "featured": true,
       "categoryId": "tools",
       "name": "React Components",
       "description": {
@@ -139,6 +143,7 @@
     },
     {
       "id": "cadrimil",
+      "featured": false,
       "categoryId": "utilities",
       "name": "Cadrimil",
       "description": {
@@ -157,6 +162,7 @@
     },
     {
       "id": "mysplit",
+      "featured": true,
       "categoryId": "finance",
       "name": "MySplit",
       "description": {
@@ -175,6 +181,7 @@
     },
     {
       "id": "rdsim",
+      "featured": true,
       "categoryId": "tools",
       "name": "RD Simulator",
       "description": {
@@ -193,6 +200,7 @@
     },
     {
       "id": "geana",
+      "featured": false,
       "categoryId": "utilities",
       "name": "GE Analyzer",
       "description": {

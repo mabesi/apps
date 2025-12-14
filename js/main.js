@@ -155,7 +155,12 @@ async function loadProjects() {
         const data = await response.json();
         linkPatterns = data.linkPatterns;
         categories = data.categories;
-        allProjects = data.projects;
+
+        // Separate featured and non-featured projects while maintaining order
+        const featured = data.projects.filter(p => p.featured);
+        const nonFeatured = data.projects.filter(p => !p.featured);
+        allProjects = [...featured, ...nonFeatured];
+
         renderProjects(allProjects);
         setupFilters();
     } catch (error) {
