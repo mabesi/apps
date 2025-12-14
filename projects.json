@@ -88,9 +88,9 @@
       "categoryId": "tools",
       "name": "TS Blockchain",
       "description": {
-        "pt": "Protótipo de blockchain em Node.js e TypeScript com validação de cadeia e algoritmo Proof of Work.",
-        "en": "Blockchain prototype built with Node.js and TypeScript featuring chain validation and Proof of Work algorithm.",
-        "es": "Prototipo de blockchain en Node.js y TypeScript con validación de cadena y algoritmo Proof of Work."
+        "pt": "Protótipo de sistema blockchain desenvolvido com Node.js e TypeScript, implementando estrutura de blocos, validação de cadeia e algoritmo de consenso Proof of Work (PoW).",
+        "en": "Blockchain system prototype built with Node.js and TypeScript, implementing block structure, chain validation, and Proof of Work (PoW) consensus algorithm.",
+        "es": "Prototipo de sistema blockchain desarrollado con Node.js y TypeScript, implementando estructura de bloques, validación de cadena y algoritmo de consenso Proof of Work (PoW)."
       },
       "image": "TS BLOCKCHAIN",
       "links": {
@@ -124,9 +124,9 @@
       "categoryId": "tools",
       "name": "React Components",
       "description": {
-        "pt": "Biblioteca React com componentes de UI personalizáveis e acessíveis para acelerar o desenvolvimento web moderno.",
-        "en": "React library with customizable and accessible UI components to accelerate modern web development.",
-        "es": "Biblioteca React con componentes UI personalizables y accesibles para acelerar el desarrollo web moderno."
+        "pt": "Biblioteca abrangente de componentes React de alta qualidade, personalizáveis e acessíveis, desenvolvida para acelerar o desenvolvimento de aplicações web modernas.",
+        "en": "Comprehensive React component library with high-quality, customizable, and accessible components designed to accelerate modern web application development.",
+        "es": "Biblioteca completa de componentes React de alta calidad, personalizables y accesibles, diseñada para acelerar el desarrollo de aplicaciones web modernas."
       },
       "image": "REACT COMPONENTS",
       "links": {
