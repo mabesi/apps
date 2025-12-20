@@ -33,6 +33,8 @@ const translations = {
         filterTools: "Ferramentas",
         filterHealth: "Saúde",
         filterGames: "Jogos",
+        filterBlockchain: "Blockchain",
+        filterLibrary: "Biblioteca",
         footerDonate: "Apoiar Projetos",
         footerGithub: "GitHub",
         footerContact: "Contato",
@@ -66,6 +68,8 @@ const translations = {
         filterTools: "Tools",
         filterHealth: "Health",
         filterGames: "Games",
+        filterBlockchain: "Blockchain",
+        filterLibrary: "Library",
         footerDonate: "Support Projects",
         footerGithub: "GitHub",
         footerContact: "Contact",
@@ -99,6 +103,8 @@ const translations = {
         filterTools: "Herramientas",
         filterHealth: "Salud",
         filterGames: "Juegos",
+        filterBlockchain: "Blockchain",
+        filterLibrary: "Biblioteca",
         footerDonate: "Apoyar Proyectos",
         footerGithub: "GitHub",
         footerContact: "Contacto",
@@ -173,15 +179,25 @@ function setupFilters() {
     const filtersContainer = document.getElementById('category-filters');
     if (!filtersContainer) return;
 
-    const filterCategories = [
-        { id: 'all', key: 'filterAll', icon: '🎯' },
+    // Get categories that have at least one project
+    const usedCategories = new Set(allProjects.map(p => p.categoryId));
+
+    const allFilterCategories = [
         { id: 'finance', key: 'filterFinance', icon: categories.finance?.icon || '💰' },
         { id: 'utilities', key: 'filterUtilities', icon: categories.utilities?.icon || '🎖️' },
         { id: 'productivity', key: 'filterProductivity', icon: categories.productivity?.icon || '🚀' },
         { id: 'education', key: 'filterEducation', icon: categories.education?.icon || '📚' },
         { id: 'tools', key: 'filterTools', icon: categories.tools?.icon || '🔧' },
         { id: 'health', key: 'filterHealth', icon: categories.health?.icon || '💊' },
-        { id: 'games', key: 'filterGames', icon: categories.games?.icon || '🎮' }
+        { id: 'games', key: 'filterGames', icon: categories.games?.icon || '🎮' },
+        { id: 'blockchain', key: 'filterBlockchain', icon: categories.blockchain?.icon || '🔗' },
+        { id: 'library', key: 'filterLibrary', icon: categories.library?.icon || '📦' }
+    ];
+
+    // Filter to only include categories with projects
+    const filterCategories = [
+        { id: 'all', key: 'filterAll', icon: '🎯' },
+        ...allFilterCategories.filter(cat => usedCategories.has(cat.id))
     ];
 
     filtersContainer.innerHTML = '';

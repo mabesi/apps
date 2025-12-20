@@ -62,18 +62,34 @@
         "es": "Salud"
       },
       "icon": "🎮"
+    },
+    "blockchain": {
+      "name": {
+        "pt": "Blockchain",
+        "en": "Blockchain",
+        "es": "Blockchain"
+      },
+      "icon": "🔗"
+    },
+    "library": {
+      "name": {
+        "pt": "Biblioteca",
+        "en": "Library",
+        "es": "Biblioteca"
+      },
+      "icon": "📦"
     }
   },
   "projects": [
     {
       "id": "cerberus",
       "featured": true,
-      "categoryId": "finance",
+      "categoryId": "blockchain",
       "name": "Cerberus Dex Bot",
       "description": {
-        "pt": "Plataforma SaaS educacional para automação de operações em DEX. Web2 + Web3, autenticação segura e monitoramento de mercado.",
-        "en": "Educational SaaS platform for DEX operation automation. Web2 + Web3, secure authentication, and market monitoring.",
-        "es": "Plataforma SaaS educacional para automación de operaciones en DEX. Web2 + Web3, autenticación segura y monitoreo del mercado."
+        "pt": "Plataforma SaaS educacional híbrida (Web2/Web3) para automação de operações em DEX, oferecendo autenticação segura via carteira, monitoramento de mercado em tempo real e execução de estratégias de trading.",
+        "en": "Hybrid educational SaaS platform (Web2/Web3) for DEX operation automation, offering secure wallet authentication, real-time market monitoring, and execution of trading strategies.",
+        "es": "Plataforma SaaS educativa híbrida (Web2/Web3) para automatización de operaciones en DEX, ofreciendo autenticación segura de billetera, monitoreo de mercado en tiempo real y ejecución de estrategias de trading."
       },
       "image": "CERBERUS",
       "links": {
@@ -85,52 +101,14 @@
       }
     },
     {
-      "id": "react-components",
-      "featured": true,
-      "categoryId": "tools",
-      "name": "React Components",
-      "description": {
-        "pt": "Biblioteca abrangente de componentes React de alta qualidade, personalizáveis e acessíveis, desenvolvida para acelerar o desenvolvimento de aplicações web modernas.",
-        "en": "Comprehensive React component library with high-quality, customizable, and accessible components designed to accelerate modern web application development.",
-        "es": "Biblioteca completa de componentes React de alta calidad, personalizables y accesibles, diseñada para acelerar el desarrollo de aplicaciones web modernas."
-      },
-      "image": "REACT COMPONENTS",
-      "links": {
-        "github": "react-components",
-        "npm": "@mabesi/react-components",
-        "website": "https://mabesi.github.io/react-components/",
-        "playstore": null,
-        "appstore": null
-      }
-    },
-    {
-      "id": "webclass",
-      "featured": true,
-      "categoryId": "education",
-      "name": "WebClass",
-      "description": {
-        "pt": "Sistema completo de gerenciamento de cursos online desenvolvido em Laravel, com ambientes separados para Alunos e Administradores.",
-        "en": "Complete online course management system developed in Laravel, with separate environments for Students and Administrators.",
-        "es": "Sistema completo de gerenciamento de cursos online desenvolvido em Laravel, com ambientes separados para Alunos e Administradores."
-      },
-      "image": "WEBCLASS",
-      "links": {
-        "github": "webclass",
-        "npm": null,
-        "website": "https://mabesi.github.io/webclass/",
-        "playstore": null,
-        "appstore": null
-      }
-    },
-    {
       "id": "ts-blockchain",
       "featured": true,
-      "categoryId": "tools",
+      "categoryId": "blockchain",
       "name": "TS Blockchain",
       "description": {
-        "pt": "Protótipo de sistema blockchain desenvolvido com Node.js e TypeScript, implementando estrutura de blocos, validação de cadeia e algoritmo de consenso Proof of Work (PoW).",
-        "en": "Blockchain system prototype built with Node.js and TypeScript, implementing block structure, chain validation, and Proof of Work (PoW) consensus algorithm.",
-        "es": "Prototipo de sistema blockchain desarrollado con Node.js y TypeScript, implementando estructura de bloques, validación de cadena y algoritmo de consenso Proof of Work (PoW)."
+        "pt": "Protótipo educacional de blockchain em Node.js e TypeScript, implementando estrutura completa de blocos, validação segura de cadeia e algoritmo de consenso Proof of Work (PoW) para aprendizado prático.",
+        "en": "Educational blockchain prototype in Node.js and TypeScript, implementing complete block structure, secure chain validation, and Proof of Work (PoW) consensus algorithm for hands-on learning purposes.",
+        "es": "Prototipo educativo de blockchain en Node.js y TypeScript, implementando estructura completa de bloques, validación segura de cadena y algoritmo de consenso Proof of Work (PoW) para aprendizaje práctico."
       },
       "image": "TS BLOCKCHAIN",
       "links": {
@@ -142,21 +120,78 @@
       }
     },
     {
-      "id": "mysplit",
+      "id": "react-components",
       "featured": true,
-      "categoryId": "finance",
-      "name": "MySplit",
+      "categoryId": "library",
+      "name": "React Components",
       "description": {
-        "pt": "Este é um aplicativo móvel construído com React Native e Expo para dividir contas entre amigos e gerenciar despesas compartilhadas.",
-        "en": "This is a mobile application built with React Native and Expo for splitting bills among friends and managing shared expenses.",
-        "es": "Este es una aplicación móvil construida con React Native y Expo para dividir cuentas entre amigos y gestionar gastos compartidos."
+        "pt": "Biblioteca de componentes React moderna baseada em TypeScript, projetada para flexibilidade e acessibilidade, fornecendo um conjunto de elementos de interface de alta qualidade e totalmente personalizáveis.",
+        "en": "Modern TypeScript-based React component library, designed for flexibility and accessibility, providing a set of high-quality and fully customizable interface elements.",
+        "es": "Biblioteca de componentes React moderna basada en TypeScript, diseñada para flexibilidad y accesibilidad, proporcionando un conjunto de elementos de interfaz de alta calidad y totalmente personalizables."
       },
-      "image": "MYSPLIT",
+      "image": "REACT COMPONENTS",
       "links": {
-        "github": "mysplit",
+        "github": "react-components",
+        "npm": "@mabesi/react-components",
+        "website": "https://mabesi.github.io/react-components/",
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "hardhat-fixture-kit",
+      "featured": true,
+      "categoryId": "tools",
+      "name": "Hardhat Fixture Kit",
+      "description": {
+        "pt": "Toolkit amigável para desenvolvedores focado na configuração de estado e semeadura de tokens e NFTs em forks da mainnet do Hardhat, otimizado para segurança e produtividade.",
+        "en": "Developer-friendly toolkit focused on state setup and token/NFT seeding in Hardhat mainnet forks, optimized for security and productivity.",
+        "es": "Toolkit amigable para desarrolladores enfocado en la configuración de estado y siembra de tokens y NFTs en forks de mainnet de Hardhat, optimizado para seguridad y productividad."
+      },
+      "image": "HARDHAT FIXTURE KIT",
+      "links": {
+        "github": "hardhat-fixture-kit",
+        "npm": "hardhat-fixture-kit",
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "hardhat-gas-track",
+      "featured": true,
+      "categoryId": "tools",
+      "name": "Hardhat Gas Track",
+      "description": {
+        "pt": "Ferramenta automatizada para prevenção de regressão de gás em Contratos Inteligentes, integrando-se ao seu CI para monitorar custos e evitar atualizações caras despercebidas no código.",
+        "en": "Automated gas regression prevention tool for Smart Contracts, integrating into your CI to monitor costs and prevent unnoticed expensive code updates.",
+        "es": "Herramienta automatizada para prevención de regresión de gas en Contratos Inteligentes, integrándose a su CI para monitorear costos y evitar actualizaciones costosas desapercibidas en el código."
+      },
+      "image": "HARDHAT GAS TRACK",
+      "links": {
+        "github": "hardhat-gas-track",
+        "npm": "hardhat-gas-track",
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "azuki-nft",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "Azuki NFT",
+      "description": {
+        "pt": "Implementação profissional de coleção NFT baseada no padrão ERC-721A da Azuki, focada em otimização extrema de gás para mintagem em lote e estrutura completa para lançamentos.",
+        "en": "Professional NFT collection implementation based on the Azuki ERC-721A standard, focused on extreme gas optimization for batch minting and complete structure for launches.",
+        "es": "Implementación profesional de colección NFT basada en el estándar Azuki ERC-721A, enfocada en optimización extrema de gas para acuñación por lotes y estructura completa para lanzamientos."
+      },
+      "image": "AZUKI NFT",
+      "links": {
+        "github": "azuki-nft",
         "npm": null,
-        "website": "mysplit",
-        "playstore": "mysplit",
+        "website": null,
+        "playstore": null,
         "appstore": null
       }
     },
@@ -166,9 +201,9 @@
       "categoryId": "utilities",
       "name": "Cadrimil",
       "description": {
-        "pt": "Calculadora de diárias militares para missões e deslocamentos.",
-        "en": "Military per diem calculator for missions and deployments.",
-        "es": "Calculadora de dietas militares para misiones y desplazamientos."
+        "pt": "Ferramenta especializada para cálculo preciso de diárias militares referentes a missões e deslocamentos, simplificando processos administrativos e garantindo conformidade com as regulamentações vigentes das forças armadas.",
+        "en": "Specialized tool for precise calculation of military per diems regarding missions and travel, simplifying administrative processes and ensuring compliance with current armed forces regulations.",
+        "es": "Herramienta especializada para cálculo preciso de viáticos militares referentes a misiones y desplazamientos, simplificando procesos administrativos y garantizando conformidad con las regulaciones vigentes de las fuerzas armadas."
       },
       "image": "CADRIMIL",
       "links": {
@@ -180,14 +215,185 @@
       }
     },
     {
+      "id": "crud-hardhat",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "CRUD Hardhat",
+      "description": {
+        "pt": "Exemplo educacional de Sistema de Votação em Condomínio construído com Solidity e Hardhat, demonstrando operações CRUD essenciais e padrões seguros de controle de acesso na blockchain.",
+        "en": "Educational Condominium Voting System example built with Solidity and Hardhat, demonstrating essential CRUD operations and secure access control patterns on the blockchain.",
+        "es": "Ejemplo educativo de Sistema de Votación en Condominio construido con Solidity y Hardhat, demostrando operaciones CRUD esenciales y patrones seguros de control de acceso en blockchain."
+      },
+      "image": "CRUD HARDHAT",
+      "links": {
+        "github": "crud-hardhat",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "dao-condominium",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "DAO Condominium",
+      "description": {
+        "pt": "Solução Web3 completa para gestão de condomínios através de contratos inteligentes, apresentando uma estrutura de organização autônoma descentralizada (DAO) integrada com Frontend React e Backend Node.js.",
+        "en": "Complete Web3 solution for condominium management through smart contracts, featuring a decentralized autonomous organization (DAO) structure integrated with React Frontend and Node.js Backend.",
+        "es": "Solución Web3 completa para gestión de condominios a través de contratos inteligentes, presentando una estructura de organización autónoma descentralizada (DAO) integrada con Frontend React y Backend Node.js."
+      },
+      "image": "DAO CONDOMINIUM",
+      "links": {
+        "github": "dao-condominium",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "dapp-nft",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "DApp NFT",
+      "description": {
+        "pt": "Interface frontend moderna desenvolvida para interação fluida com contratos inteligentes de coleções NFT, permitindo aos usuários conectar carteiras, visualizar galeria e realizar mintagem de tokens.",
+        "en": "Modern frontend interface developed for fluid interaction with NFT collection smart contracts, allowing users to connect wallets, view gallery, and perform token minting.",
+        "es": "Interfaz frontend moderna desarrollada para interacción fluida con contratos inteligentes de colecciones NFT, permitiendo a los usuarios conectar billeteras, ver galería y realizar acuñación de tokens."
+      },
+      "image": "DAPP NFT",
+      "links": {
+        "github": "dapp-nft",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "geana",
+      "featured": false,
+      "categoryId": "utilities",
+      "name": "GE Analyzer",
+      "description": {
+        "pt": "Sistema especializado em Análise de Sinais Eletrônicos, fornecendo interfaces avançadas para filtragem precisa, análise detalhada e geração automática de relatórios técnicos a partir de dados brutos de radar.",
+        "en": "Specialized Electronic Signal Analysis system, providing advanced interfaces for precise filtering, detailed analysis, and automatic generation of technical reports from raw radar data.",
+        "es": "Sistema especializado en Análisis de Señales Electrónicas, proporcionando interfaces avanzadas para filtrado preciso, análisis detallado y generación automática de informes técnicos a partir de datos brutos de radar."
+      },
+      "image": "GEANA",
+      "links": {
+        "github": null,
+        "npm": null,
+        "website": "geana",
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "laravel-coreui",
+      "featured": false,
+      "categoryId": "tools",
+      "name": "Laravel CoreUI",
+      "description": {
+        "pt": "Boilerplate de desenvolvimento rápido integrando o framework PHP Laravel com o template CoreUI, facilitando a criação de painéis administrativos modernos, responsivos e com estrutura pré-configurada.",
+        "en": "Rapid development boilerplate integrating the PHP Laravel framework with the CoreUI template, facilitating the creation of modern, responsive administrative dashboards with pre-configured structure.",
+        "es": "Boilerplate de desarrollo rápido integrando el framework PHP Laravel con la plantilla CoreUI, facilitando la creación de paneles administrativos modernos, responsivos y con estructura preconfigurada."
+      },
+      "image": "LARAVEL COREUI",
+      "links": {
+        "github": "laravel-coreui",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "mysplit",
+      "featured": false,
+      "categoryId": "finance",
+      "name": "MySplit",
+      "description": {
+        "pt": "Aplicativo móvel intuitivo construído com React Native e Expo, projetado para facilitar a divisão justa de contas entre amigos e o gerenciamento eficiente de despesas compartilhadas em grupos.",
+        "en": "Intuitive mobile application built with React Native and Expo, designed to facilitate fair bill splitting among friends and efficient management of shared expenses in groups.",
+        "es": "Aplicación móvil intuitiva construida con React Native y Expo, diseñada para facilitar la división justa de cuentas entre amigos y la gestión eficiente de gastos compartidos en grupos."
+      },
+      "image": "MYSPLIT",
+      "links": {
+        "github": "mysplit",
+        "npm": null,
+        "website": "mysplit",
+        "playstore": "mysplit",
+        "appstore": null
+      }
+    },
+    {
+      "id": "nft-collection",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "NFT Collection",
+      "description": {
+        "pt": "Contrato inteligente de NFT pronto para produção implementando o padrão ERC721 com recursos avançados, incluindo enumeração completa, armazenamento flexível de URI e mecanismo de queima de tokens.",
+        "en": "Production-ready NFT smart contract implementing the ERC721 standard with advanced features, including full enumeration, flexible URI storage, and token burning mechanism.",
+        "es": "Contrato inteligente NFT listo para producción implementando el estándar ERC721 con características avanzadas, incluyendo enumeración completa, almacenamiento flexible de URI y mecanismo de quema de tokens."
+      },
+      "image": "NFT COLLECTION",
+      "links": {
+        "github": "nft-collection",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "openzeppelin-multitoken-erc1155",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "OpenZeppelin Multitoken",
+      "description": {
+        "pt": "Exemplo profissional de contrato Multitoken ERC-1155 em Solidity baseado na biblioteca OpenZeppelin, permitindo o gerenciamento eficiente de múltiplos tipos de tokens dentro de um único contrato inteligente.",
+        "en": "Professional ERC-1155 Multitoken contract example in Solidity based on OpenZeppelin library, allowing efficient management of multiple token types within a single smart contract.",
+        "es": "Ejemplo profesional de contrato Multitoken ERC-1155 en Solidity basado en biblioteca OpenZeppelin, permitiendo gestión eficiente de múltiples tipos de tokens dentro de un único contrato inteligente."
+      },
+      "image": "OPENZEPPELIN MULTITOKEN",
+      "links": {
+        "github": "openzeppelin-multitoken-erc1155",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "openzepellyn-upgradeable-proxy-erc1967",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "OpenZeppelin Upgradeable Proxy",
+      "description": {
+        "pt": "Exemplo profissional de contrato de Proxy Atualizável padrão ERC-1967 em Solidity, baseado na biblioteca OpenZeppelin, focado na otimização de custos de implantação e eficiência no uso de gás.",
+        "en": "Professional ERC-1967 Standard Upgradeable Proxy contract example in Solidity, based on OpenZeppelin library, focused on deployment cost optimization and gas usage efficiency.",
+        "es": "Ejemplo profesional de contrato Proxy Actualizable estándar ERC-1967 en Solidity, basado en la biblioteca OpenZeppelin, enfocado en optimización de costos de despliegue y eficiencia de gas."
+      },
+      "image": "OPENZEPPELIN UPGRADEABLE PROXY",
+      "links": {
+        "github": "openzepellyn-upgradeable-proxy-erc1967",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
       "id": "rdsim",
       "featured": false,
       "categoryId": "tools",
       "name": "RD Simulator",
       "description": {
-        "pt": "Simulador de Painel de Controle e Link de Dados. Componentes interativos para treinamento operacional.",
-        "en": "Radio Control Panel & Data Link Simulator. Interactive components for operational training.",
-        "es": "Simulador de Panel de Control y Enlace de Datos. Componentes interactivos para entrenamiento operativo."
+        "pt": "Simulador avançado de Painel de Controle e Link de Dados, apresentando componentes visuais interativos desenvolvidos especificamente para apoiar o treinamento operacional técnico e simulação de cenários reais.",
+        "en": "Advanced Control Panel and Data Link simulator, featuring interactive visual components developed specifically to support technical operational training and real-world scenario simulation.",
+        "es": "Simulador avanzado de Panel de Control y Enlace de Datos, presentando componentes visuales interactivos desarrollados específicamente para apoyar el entrenamiento operativo técnico y simulación de escenarios reales."
       },
       "image": "RDSIM",
       "links": {
@@ -199,20 +405,77 @@
       }
     },
     {
-      "id": "geana",
+      "id": "solidity-multitoken-erc1155",
       "featured": false,
-      "categoryId": "utilities",
-      "name": "GE Analyzer",
+      "categoryId": "blockchain",
+      "name": "Solidity Multitoken",
       "description": {
-        "pt": "Sistema de Análise de Sinais Eletrônicos. Interfaces para filtragem, análise e geração de relatórios de dados de radar.",
-        "en": "Electronic Signal Analysis System. Interfaces for filtering, analyzing, and reporting radar data.",
-        "es": "Sistema de Análisis Electrónico de Señales. Interfaces para filtrar, analizar y reportar datos de radar."
+        "pt": "Exemplo básico e didático de contrato Multitoken ERC-1155 em Solidity, demonstrando o gerenciamento simultâneo de tokens fungíveis e não fungíveis dentro de uma única estrutura de contrato.",
+        "en": "Basic and educational ERC-1155 Multitoken contract example in Solidity, demonstrating simultaneous management of fungible and non-fungible tokens within a single contract structure.",
+        "es": "Ejemplo básico y educativo de contrato Multitoken ERC-1155 en Solidity, demostrando gestión simultánea de tokens fungibles y no fungibles dentro de una única estructura de contrato."
       },
-      "image": "GEANA",
+      "image": "SOLIDITY MULTITOKEN",
       "links": {
-        "github": null,
+        "github": "solidity-multitoken-erc1155",
         "npm": null,
-        "website": "geana",
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "solidity-nft-erc721",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "Solidity NFT ERC721",
+      "description": {
+        "pt": "Implementação educacional simples e direta de um contrato inteligente NFT seguindo o padrão ERC721 em Solidity, incluindo extensões de Metadados e Enumeráveis para aprendizado de desenvolvimento blockchain.",
+        "en": "Simple and straightforward educational implementation of an NFT smart contract following the ERC721 standard in Solidity, including Metadata and Enumerable extensions for blockchain development learning.",
+        "es": "Implementación educativa simple y directa de un contrato inteligente NFT siguiendo el estándar ERC721 en Solidity, incluyendo extensiones de Metadatos y Enumerables para aprendizaje de desarrollo blockchain."
+      },
+      "image": "SOLIDITY NFT ERC721",
+      "links": {
+        "github": "solidity-nft-erc721",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "traderteam",
+      "featured": false,
+      "categoryId": "finance",
+      "name": "TraderTeam",
+      "description": {
+        "pt": "Plataforma social de trading construída com Laravel que permite aos traders compartilhar, rastrear e analisar detalhadamente suas estratégias de negociação e operações em um ambiente colaborativo.",
+        "en": "Social trading platform built with Laravel allowing traders to share, track, and analyze their trading strategies and operations in detail within a collaborative environment.",
+        "es": "Plataforma social de trading construida con Laravel que permite a los traders compartir, rastrear y analizar detalladamente sus estrategias de negociación y operaciones en un entorno colaborativo."
+      },
+      "image": "TRADERTEAM",
+      "links": {
+        "github": "traderteam",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "webclass",
+      "featured": false,
+      "categoryId": "education",
+      "name": "WebClass",
+      "description": {
+        "pt": "Sistema robusto de gerenciamento de cursos online (LMS) desenvolvido em Laravel, oferecendo ambientes distintos e personalizados para alunos e administradores, com controle total de conteúdo e matrículas.",
+        "en": "Robust online course management system (LMS) developed in Laravel, offering distinct and personalized environments for students and administrators, with full control over content and enrollments.",
+        "es": "Sistema robusto de gestión de cursos en línea (LMS) desarrollado en Laravel, ofreciendo entornos distintos y personalizados para estudiantes y administradores, con control total sobre contenido y matrículas."
+      },
+      "image": "WEBCLASS",
+      "links": {
+        "github": "webclass",
+        "npm": null,
+        "website": "https://mabesi.github.io/webclass/",
         "playstore": null,
         "appstore": null
       }
