@@ -29,8 +29,8 @@
     --health-secondary: #be185d;
     --games-primary: #a78bfa;
     --games-secondary: #6d28d9;
-    --blockchain-primary: #f59e0b;
-    --blockchain-secondary: #d97706;
+    --blockchain-primary: #10b981;
+    --blockchain-secondary: #059669;
     --library-primary: #ec4899;
     --library-secondary: #db2777;
     --default-primary: #94a3b8;
@@ -293,7 +293,7 @@ header {
 .filter-btn[data-category="blockchain"].active {
     background: linear-gradient(135deg, var(--blockchain-secondary), var(--blockchain-primary));
     border-color: var(--blockchain-primary);
-    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
 }
 
 .filter-btn[data-category="library"].active {
