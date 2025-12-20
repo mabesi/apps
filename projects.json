@@ -120,6 +120,44 @@
       }
     },
     {
+      "id": "controllex",
+      "featured": true,
+      "categoryId": "library",
+      "name": "Controllex",
+      "description": {
+        "pt": "Controllex é uma biblioteca de gerenciamento de estado leve e agnóstica de framework, focada na simplicidade, previsibilidade e escalabilidade, projetada para crescer de uso amigável para iniciantes para aplicações bem estruturadas e manuteníveis.",
+        "en": "ControleX is a lightweight, framework-agnostic state management library focused on simplicity, predictability, and scalability, designed to grow from beginner-friendly usage to well-structured, maintainable applications.",
+        "es": "Controllex es una biblioteca de gestión de estado ligera y agnóstica de framework, enfocada en la simplicidad, previsibilidad y escalabilidad, diseñada para crecer desde el uso amigable para principiantes hasta aplicaciones bien estructuradas y mantenibles."
+      },
+      "image": "CONTROLEX",
+      "links": {
+        "github": "controllex",
+        "npm": "controllex",
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "hardhat-gas-track",
+      "featured": true,
+      "categoryId": "tools",
+      "name": "Hardhat Gas Track",
+      "description": {
+        "pt": "Ferramenta automatizada para prevenção de regressão de gás em Contratos Inteligentes, integrando-se ao seu CI para monitorar custos e evitar atualizações caras despercebidas no código.",
+        "en": "Automated gas regression prevention tool for Smart Contracts, integrating into your CI to monitor costs and prevent unnoticed expensive code updates.",
+        "es": "Herramienta automatizada para prevención de regresión de gas en Contratos Inteligentes, integrándose a su CI para monitorear costos y evitar actualizaciones costosas desapercibidas en el código."
+      },
+      "image": "HARDHAT GAS TRACK",
+      "links": {
+        "github": "hardhat-gas-track",
+        "npm": "hardhat-gas-track",
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
       "id": "react-components",
       "featured": true,
       "categoryId": "library",
@@ -140,7 +178,7 @@
     },
     {
       "id": "hardhat-fixture-kit",
-      "featured": true,
+      "featured": false,
       "categoryId": "tools",
       "name": "Hardhat Fixture Kit",
       "description": {
@@ -152,25 +190,6 @@
       "links": {
         "github": "hardhat-fixture-kit",
         "npm": "hardhat-fixture-kit",
-        "website": null,
-        "playstore": null,
-        "appstore": null
-      }
-    },
-    {
-      "id": "hardhat-gas-track",
-      "featured": true,
-      "categoryId": "tools",
-      "name": "Hardhat Gas Track",
-      "description": {
-        "pt": "Ferramenta automatizada para prevenção de regressão de gás em Contratos Inteligentes, integrando-se ao seu CI para monitorar custos e evitar atualizações caras despercebidas no código.",
-        "en": "Automated gas regression prevention tool for Smart Contracts, integrating into your CI to monitor costs and prevent unnoticed expensive code updates.",
-        "es": "Herramienta automatizada para prevención de regresión de gas en Contratos Inteligentes, integrándose a su CI para monitorear costos y evitar actualizaciones costosas desapercibidas en el código."
-      },
-      "image": "HARDHAT GAS TRACK",
-      "links": {
-        "github": "hardhat-gas-track",
-        "npm": "hardhat-gas-track",
         "website": null,
         "playstore": null,
         "appstore": null
