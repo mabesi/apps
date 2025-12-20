@@ -23,14 +23,14 @@
     --productivity-secondary: #047857;
     --education-primary: #c084fc;
     --education-secondary: #7e22ce;
-    --tools-primary: #2dd4bf;
-    --tools-secondary: #0f766e;
+    --tools-primary: #38bdf8;
+    --tools-secondary: #0284c7;
     --health-primary: #f472b6;
     --health-secondary: #be185d;
     --games-primary: #a78bfa;
     --games-secondary: #6d28d9;
-    --blockchain-primary: #10b981;
-    --blockchain-secondary: #059669;
+    --blockchain-primary: #9b6767;
+    --blockchain-secondary: #501b1b;
     --library-primary: #ec4899;
     --library-secondary: #db2777;
     --default-primary: #94a3b8;
@@ -275,7 +275,7 @@ header {
 .filter-btn[data-category="tools"].active {
     background: linear-gradient(135deg, var(--tools-secondary), var(--tools-primary));
     border-color: var(--tools-primary);
-    box-shadow: 0 4px 16px rgba(45, 212, 191, 0.3);
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.3);
 }
 
 .filter-btn[data-category="health"].active {
@@ -293,7 +293,7 @@ header {
 .filter-btn[data-category="blockchain"].active {
     background: linear-gradient(135deg, var(--blockchain-secondary), var(--blockchain-primary));
     border-color: var(--blockchain-primary);
-    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 16px rgba(155, 103, 103, 0.3);
 }
 
 .filter-btn[data-category="library"].active {
