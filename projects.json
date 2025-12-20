@@ -196,6 +196,25 @@
       }
     },
     {
+      "id": "nft-marketplace",
+      "featured": false,
+      "categoryId": "blockchain",
+      "name": "NFT Marketplace",
+      "description": {
+        "pt": "Implementação profissional de marketplace NFT baseada no padrão ERC-721A da Azuki, focada em otimização extrema de gás para mintagem em lote e estrutura completa para lançamentos.",
+        "en": "Complete NFT marketplace implementation consisting of two integrated layers: a blockchain layer with Solidity smart contracts and a dapp layer with a Next.js web interface.",
+        "es": "Implementación profesional de marketplace NFT basada en el estándar Azuki ERC-721A, enfocada en optimización extrema de gas para acuñación por lotes y estructura completa para lanzamientos."
+      },
+      "image": "NFT MARKETPLACE",
+      "links": {
+        "github": "nft-marketplace",
+        "npm": null,
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
       "id": "cadrimil",
       "featured": false,
       "categoryId": "utilities",
