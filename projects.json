@@ -82,6 +82,25 @@
   },
   "projects": [
     {
+      "id": "controllex",
+      "featured": true,
+      "categoryId": "library",
+      "name": "Controllex",
+      "description": {
+        "pt": "Biblioteca de gerenciamento de estado leve e agnóstica de framework, focada na simplicidade, previsibilidade e escalabilidade, projetada para crescer de uso amigável para iniciantes para aplicações bem estruturadas e manuteníveis.",
+        "en": "Lightweight, framework-agnostic state management library focused on simplicity, predictability, and scalability, designed to grow from beginner-friendly usage to well-structured, maintainable applications.",
+        "es": "Biblioteca de gestión de estado ligera y agnóstica de framework, enfocada en la simplicidad, previsibilidad y escalabilidad, diseñada para crecer desde el uso amigable para principiantes hasta aplicaciones bien estructuradas y mantenibles."
+      },
+      "image": "CONTROLLEX",
+      "links": {
+        "github": "controllex",
+        "npm": "controllex",
+        "website": null,
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
       "id": "cerberus",
       "featured": true,
       "categoryId": "blockchain",
@@ -114,25 +133,6 @@
       "links": {
         "github": "ts-blockchain",
         "npm": null,
-        "website": null,
-        "playstore": null,
-        "appstore": null
-      }
-    },
-    {
-      "id": "controllex",
-      "featured": true,
-      "categoryId": "library",
-      "name": "Controllex",
-      "description": {
-        "pt": "Controllex é uma biblioteca de gerenciamento de estado leve e agnóstica de framework, focada na simplicidade, previsibilidade e escalabilidade, projetada para crescer de uso amigável para iniciantes para aplicações bem estruturadas e manuteníveis.",
-        "en": "ControleX is a lightweight, framework-agnostic state management library focused on simplicity, predictability, and scalability, designed to grow from beginner-friendly usage to well-structured, maintainable applications.",
-        "es": "Controllex es una biblioteca de gestión de estado ligera y agnóstica de framework, enfocada en la simplicidad, previsibilidad y escalabilidad, diseñada para crecer desde el uso amigable para principiantes hasta aplicaciones bien estructuradas y mantenibles."
-      },
-      "image": "CONTROLEX",
-      "links": {
-        "github": "controllex",
-        "npm": "controllex",
         "website": null,
         "playstore": null,
         "appstore": null
