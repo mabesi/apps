@@ -386,7 +386,7 @@
       }
     },
     {
-      "id": "openzepellyn-upgradeable-proxy-erc1967",
+      "id": "openzeppelin-upgradeable-proxy-erc1967",
       "featured": false,
       "categoryId": "blockchain",
       "name": "OpenZeppelin Upgradeable Proxy",
@@ -397,7 +397,7 @@
       },
       "image": "OPENZEPPELIN UPGRADEABLE PROXY",
       "links": {
-        "github": "openzepellyn-upgradeable-proxy-erc1967",
+        "github": "openzeppelin-upgradeable-proxy-erc1967",
         "npm": null,
         "website": null,
         "playstore": null,
