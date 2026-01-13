@@ -220,9 +220,9 @@
       "categoryId": "blockchain",
       "name": "NFT Marketplace",
       "description": {
-        "pt": "Implementação profissional de marketplace NFT baseada no padrão ERC-721A da Azuki, focada em otimização extrema de gás para mintagem em lote e estrutura completa para lançamentos.",
+        "pt": "Um marketplace NFT descentralizado construído em blockchains compatíveis com Ethereum, permitindo que os usuários criem, listem, comprem e vendam NFTs com uma interface web moderna.",
         "en": "A decentralized NFT marketplace built on Ethereum-compatible blockchains, enabling users to mint, list, buy, and sell NFTs with a modern web interface.",
-        "es": "Implementación profesional de marketplace NFT basada en el estándar ERC-721A de Azuki, enfocada en optimización extrema de gas para acuñación por lotes y estructura completa para lanzamientos."
+        "es": "Un marketplace de NFT descentralizado construido sobre cadenas de bloques compatibles con Ethereum, que permite a los usuarios acuñar, listar, comprar y vender NFT con una interfaz web moderna."
       },
       "image": "NFT MARKETPLACE",
       "links": {
