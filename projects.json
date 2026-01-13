@@ -221,8 +221,8 @@
       "name": "NFT Marketplace",
       "description": {
         "pt": "Implementação profissional de marketplace NFT baseada no padrão ERC-721A da Azuki, focada em otimização extrema de gás para mintagem em lote e estrutura completa para lançamentos.",
-        "en": "Complete NFT marketplace implementation consisting of two integrated layers: a blockchain layer with Solidity smart contracts and a dapp layer with a Next.js web interface.",
-        "es": "Implementación profesional de marketplace NFT basada en el estándar Azuki ERC-721A, enfocada en optimización extrema de gas para acuñación por lotes y estructura completa para lanzamientos."
+        "en": "A decentralized NFT marketplace built on Ethereum-compatible blockchains, enabling users to mint, list, buy, and sell NFTs with a modern web interface.",
+        "es": "Implementación profesional de marketplace NFT basada en el estándar ERC-721A de Azuki, enfocada en optimización extrema de gas para acuñación por lotes y estructura completa para lanzamientos."
       },
       "image": "NFT MARKETPLACE",
       "links": {
@@ -324,25 +324,6 @@
         "github": null,
         "npm": null,
         "website": "geana",
-        "playstore": null,
-        "appstore": null
-      }
-    },
-    {
-      "id": "laravel-coreui",
-      "featured": false,
-      "categoryId": "tools",
-      "name": "Laravel CoreUI",
-      "description": {
-        "pt": "Boilerplate de desenvolvimento rápido integrando o framework PHP Laravel com o template CoreUI, facilitando a criação de painéis administrativos modernos, responsivos e com estrutura pré-configurada.",
-        "en": "Rapid development boilerplate integrating the PHP Laravel framework with the CoreUI template, facilitating the creation of modern, responsive administrative dashboards with pre-configured structure.",
-        "es": "Boilerplate de desarrollo rápido integrando el framework PHP Laravel con la plantilla CoreUI, facilitando la creación de paneles administrativos modernos, responsivos y con estructura preconfigurada."
-      },
-      "image": "LARAVEL COREUI",
-      "links": {
-        "github": "laravel-coreui",
-        "npm": null,
-        "website": null,
         "playstore": null,
         "appstore": null
       }
@@ -514,6 +495,25 @@
         "github": "webclass",
         "npm": null,
         "website": "https://mabesi.github.io/webclass/",
+        "playstore": null,
+        "appstore": null
+      }
+    },
+    {
+      "id": "project-manager-spa",
+      "featured": false,
+      "categoryId": "tools",
+      "name": "Project Manager SPA",
+      "description": {
+        "pt": "Um gerenciador de projetos simples construído com PHP Laravel (backend) e AngularJS (frontend).",
+        "en": "A simple project management system built with PHP Laravel (backend) and AngularJS (frontend).",
+        "es": "Un simple sistema de gestión de proyectos construido con PHP Laravel (backend) y AngularJS (frontend)."
+      },
+      "image": "PROJECT MANAGER SPA",
+      "links": {
+        "github": "project-manager-spa",
+        "npm": null,
+        "website": "https://mabesi.github.io/project-manager-spa/",
         "playstore": null,
         "appstore": null
       }
