@@ -517,6 +517,25 @@
         "playstore": null,
         "appstore": null
       }
+    },
+    {
+      "id": "ocrio",
+      "featured": false,
+      "categoryId": "productivity",
+      "name": "Ocrio",
+      "description": {
+        "pt": "Aplicativo Android offline para digitalizar, reconhecer texto e organizar documentos com PDF pesquisável. Sem conta, sem nuvem, sem anúncios e sem permissão de internet no release. O reconhecimento de texto roda no próprio aparelho.",
+        "en": "Offline Android app to scan, recognize text, and organize documents with searchable PDFs. No account, no cloud, no ads, and no internet permission in release builds. Text recognition runs on the device.",
+        "es": "Aplicación Android sin conexión para escanear, reconocer texto y organizar documentos con PDFs searchables. Sin cuenta, sin nube, sin anuncios y sin permiso de internet en la versión de release. El reconocimiento de texto se ejecuta en el dispositivo."
+      },
+      "image": "OCRIO",
+      "links": {
+        "github": null,
+        "npm": null,
+        "website": "https://apps.mabesi.dev/ocrio/",
+        "playstore": null,
+        "appstore": null
+      }
     }
   ]
 }

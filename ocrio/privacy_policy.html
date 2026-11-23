@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Política de privacidade — Ocrio</title>
+    <link rel="icon" type="image/png" href="img/icon.png" />
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5ebdd;
+        --surface: #fff9ef;
+        --text: #2f2a20;
+        --muted: #6b604e;
+        --olive: #59612b;
+        --border: #d7c4a5;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 40px 20px;
+        background: var(--paper);
+        color: var(--text);
+        font:
+          16px/1.6 -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px;
+      }
+      .back {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: var(--olive);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      h1 {
+        margin: 0 0 4px;
+        font-size: 28px;
+      }
+      h2 {
+        margin: 32px 0 8px;
+        font-size: 20px;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0 0 24px;
+      }
+      a {
+        color: var(--olive);
+      }
+      ul {
+        padding-left: 22px;
+      }
+      .note {
+        border-left: 3px solid var(--olive);
+        padding-left: 12px;
+        color: var(--muted);
+      }
+      @media (max-width: 520px) {
+        main {
+          padding: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="./">← Ocrio</a>
+      <h1>Política de privacidade do Ocrio</h1>
+      <p class="meta">Versão 1.0 · 23 de novembro de 2026</p>
+
+      <p>
+        O Ocrio e o Ocrio Pro são aplicativos Android para digitalizar, reconhecer
+        texto e organizar documentos. Esta política descreve o que acontece com os
+        seus dados. Ela se aplica aos builds de release distribuídos pela Google
+        Play.
+      </p>
+
+      <h2>Resumo</h2>
+      <ul>
+        <li>Não há conta, login, nuvem ou sincronização.</li>
+        <li>Não coletamos telemetria, analytics ou relatórios de falha remotos.</li>
+        <li>
+          Seus documentos ficam no armazenamento privado do aplicativo, no seu
+          aparelho.
+        </li>
+        <li>
+          O build de release não declara a permissão de internet e não envia dados
+          para servidores.
+        </li>
+      </ul>
+
+      <h2>Dados que permanecem no aparelho</h2>
+      <p>
+        Documentos, imagens, PDFs, texto reconhecido, pastas, etiquetas,
+        configurações e o estado de bloqueio ficam em arquivos e em um banco
+        SQLite privados do aplicativo. Nada disso é transmitido para o
+        desenvolvedor ou para terceiros.
+      </p>
+
+      <h2>Permissões</h2>
+      <ul>
+        <li>
+          <strong>Câmera:</strong> usada apenas quando você escolhe digitalizar um
+          documento.
+        </li>
+        <li>
+          <strong>Fotos:</strong> usada apenas quando você escolhe importar uma
+          imagem da galeria.
+        </li>
+        <li>
+          <strong>Biometria:</strong> opcional, para bloquear o acesso ao
+          aplicativo. A verificação é feita pelo sistema Android; o aplicativo não
+          recebe nem armazena a biometria.
+        </li>
+      </ul>
+      <p>
+        O aplicativo não solicita microfone, localização, contatos nem acesso
+        amplo a arquivos.
+      </p>
+
+      <h2>Rede e serviços de terceiros</h2>
+      <p>
+        O reconhecimento de texto roda no aparelho com o ML Kit empacotado no
+        aplicativo. Não há envio de imagens para a nuvem. Links para a Google Play
+        e para esta política, quando exibidos, abrem em outro aplicativo ou
+        navegador.
+      </p>
+
+      <h2>Exportação, compartilhamento e backup</h2>
+      <p>
+        Exportar, compartilhar ou criar um backup só acontece por ação sua. O
+        arquivo é gravado no local que você escolher e não passa pelos servidores
+        do desenvolvedor.
+      </p>
+
+      <h2>Retenção e exclusão</h2>
+      <p>
+        Os dados permanecem no aparelho enquanto o aplicativo estiver instalado.
+        Desinstalar o aplicativo remove os dados locais; por isso, exporte um
+        backup antes se quiser guardá-los. Não há prazo automático de expiração da
+        lixeira.
+      </p>
+
+      <h2>Crianças</h2>
+      <p>
+        O aplicativo não é direcionado a crianças e não coleta dados pessoais de
+        nenhum usuário.
+      </p>
+
+      <h2>Alterações</h2>
+      <p>
+        Mudanças nesta política serão publicadas nesta página com nova data e
+        versão. Mudanças relevantes também serão descritas na ficha do aplicativo
+        na Google Play.
+      </p>
+
+      <h2>Contato</h2>
+      <p>
+        Dúvidas sobre privacidade podem ser enviadas pelo perfil
+        <a href="https://github.com/mabesi">github.com/mabesi</a>.
+      </p>
+
+      <p class="note">
+        Builds de desenvolvimento mantêm a permissão de internet para se conectar
+        ao servidor local de desenvolvimento. Eles não são distribuídos ao
+        público e não fazem parte desta política.
+      </p>
+    </main>
+  </body>
+</html>

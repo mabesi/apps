@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Ocrio: digitalize, reconheça texto e organize documentos sem conta, sem nuvem e sem permissão de internet no release."
+    />
+    <title>Ocrio — documentos sem nuvem</title>
+    <link rel="icon" type="image/png" href="img/icon.png" />
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5ebdd;
+        --surface: #fff9ef;
+        --surface-raised: #fffdf8;
+        --text: #2f2a20;
+        --muted: #6b604e;
+        --olive: #59612b;
+        --olive-deep: #3c451f;
+        --terracotta: #a94b2b;
+        --border: #d7c4a5;
+        --border-strong: #927b58;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--text);
+        font:
+          16px/1.6 -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+      .wrap {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      header img {
+        width: 96px;
+        height: 96px;
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        letter-spacing: -0.02em;
+      }
+      .tagline {
+        margin: 4px 0 0;
+        color: var(--muted);
+        max-width: 560px;
+      }
+      .pill {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border-strong);
+        color: var(--olive-deep);
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .hero {
+        margin-top: 32px;
+        padding: 28px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+      }
+      .hero h2 {
+        margin: 0 0 8px;
+        font-size: 22px;
+      }
+      .grid {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 14px;
+      }
+      .card {
+        background: var(--surface-raised);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+      }
+      .card strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      .card span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .actions {
+        margin-top: 28px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      a.button {
+        display: inline-block;
+        padding: 12px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 600;
+        background: var(--olive);
+        color: #fff;
+      }
+      a.button.secondary {
+        background: transparent;
+        color: var(--olive-deep);
+        border: 1px solid var(--border-strong);
+      }
+      footer {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 14px;
+      }
+      footer a {
+        color: var(--olive);
+      }
+      @media (max-width: 520px) {
+        .wrap {
+          padding-top: 28px;
+        }
+        h1 {
+          font-size: 28px;
+        }
+        .hero {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <img src="img/icon.png" alt="Ícone do Ocrio" />
+        <div>
+          <h1>Ocrio</h1>
+          <p class="tagline">
+            Digitalize, reconheça texto e organize documentos sem conta, sem nuvem
+            e sem permissão de internet no aplicativo.
+          </p>
+          <span class="pill">Em breve na Google Play</span>
+        </div>
+      </header>
+
+      <section class="hero">
+        <h2>Seus documentos ficam no seu aparelho</h2>
+        <p>
+          O Ocrio transforma fotos de documentos em arquivos organizados e
+          pesquisáveis. O reconhecimento de texto roda no próprio celular, com o ML
+          Kit empacotado no aplicativo.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <strong>Sem conta e sem nuvem</strong>
+            <span>Nada para cadastrar. Nenhum arquivo sai do aparelho.</span>
+          </div>
+          <div class="card">
+            <strong>OCR local</strong>
+            <span>Texto reconhecido no dispositivo, inclusive sem rede.</span>
+          </div>
+          <div class="card">
+            <strong>PDF com texto</strong>
+            <span>PDFs multipágina com camada de texto extraível.</span>
+          </div>
+          <div class="card">
+            <strong>Busca por conteúdo</strong>
+            <span>Encontre qualquer palavra do texto reconhecido.</span>
+          </div>
+          <div class="card">
+            <strong>Organização</strong>
+            <span>Pastas, etiquetas, favoritos e lixeira manual.</span>
+          </div>
+          <div class="card">
+            <strong>Privacidade por padrão</strong>
+            <span>Sem anúncios, rastreamento ou telemetria.</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <a class="button" href="privacy_policy.html">Política de privacidade</a>
+        <a class="button secondary" href="https://github.com/mabesi">GitHub</a>
+      </div>
+
+      <footer>
+        Ocrio faz parte dos
+        <a href="https://apps.mabesi.dev/">Mabesi Apps</a>. O Ocrio Pro será uma
+        compra única com OCR em lote, PDFs combinados, senha e redação.
+      </footer>
+    </div>
+  </body>
+</html>
