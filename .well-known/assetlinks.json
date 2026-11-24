@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mabesi.mysplit",
+      "sha256_cert_fingerprints": [
+        "29:38:B0:D9:50:16:76:3C:74:3E:DE:E9:C2:FB:A2:92:A3:2B:30:FF:BA:7B:33:EF:56:A6:9D:BB:03:B1:4F:85"
+      ]
+    }
+  }
+]
